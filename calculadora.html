@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerTrack | Calculadora Financeira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="cabecalho">
+
+        <img src="imagem.png" class="logo">
+
+        <div>
+            <h1>Calculadora Financeira</h1>
+            <p>Simule a economia com a redução de inspeções presenciais.</p>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <h2>Dados da empresa</h2>
+        <div class="linha">
+            <div class="campo">
+                <label>Nome fantasia</label>
+                <input type="text" id="ip_empresa">
+            </div>
+
+            <div class="campo">
+                <label>Quantidade de geradores</label>
+                <input type="text" id="ip_geradores">
+            </div>
+        </div>
+
+        <div class="linha">
+            <div class="campo">
+                <label>Total de inspeções presenciais por mês</label>
+                <input type="text" id="ip_visitas">
+            </div>
+
+            <div class="campo">
+                <label>Custo médio de cada inspeção</label>
+                <input type="text" id="ip_custo">
+            </div>
+
+        </div>
+
+
+        <button onclick="calcular()">Calcular</button>
+
+
+        <h2>Referências utilizadas</h2>
+
+        <div class="cenarios">
+
+            <div class="cenario">
+                <h3>Conservador</h3>
+                <b>25%</b>
+
+                <p>
+                    Fonte: DPS.
+                </p>
+            </div>
+
+
+            <div class="cenario">
+                <h3>Intermediário</h3>
+                <b>50%</b>
+
+                <p>
+                    Percentual intermediário adotado para a simulação.
+                </p>
+            </div>
+
+
+            <div class="cenario">
+                <h3>Otimista</h3>
+                <b>70%</b>
+
+                <p>
+                    Fonte: PowerOptix.
+                </p>
+            </div>
+
+        </div>
+
+
+        <p class="aviso">
+            Os percentuais são referências e os resultados podem variar de acordo
+            com a operação de cada empresa.
+        </p>
+
+
+        <h2>Resultado</h2>
+
+        <div id="div_result">
+            Preencha os campos para realizar a simulação.
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    function calcular() {
+
+        let empresa = ip_empresa.value;
+        let geradores = Number(ip_geradores.value);
+        let visitas = Number(ip_visitas.value);
+        let custo = Number(ip_custo.value);
+
+        let visitasAno = visitas * 12;
+        let custoMes = visitas * custo;
+        let custoAno = custoMes * 12;
+
+
+        let visitas25 = visitasAno * 25 / 100;
+        let economia25 = visitas25 * custo;
+
+
+        let visitas50 = visitasAno * 50 / 100;
+        let economia50 = visitas50 * custo;
+
+
+        let visitas70 = visitasAno * 70 / 100;
+        let economia70 = visitas70 * custo;
+
+
+        let economiaGerador = economia50 / geradores;
+
+
+        if (geradores > 0 && visitas > 0 && custo > 0) {
+
+            div_result.innerHTML = `
+
+                <h3>${empresa}</h3>
+
+                <p>
+                    Atualmente são realizadas <b>${visitas}</b> inspeções por mês,
+                    totalizando <b>${visitasAno}</b> inspeções por ano.
+                </p>
+
+                <p>
+                    Custo atual com inspeções:
+                    <b>R$ ${custoMes.toFixed(2)} por mês</b> e
+                    <b>R$ ${custoAno.toFixed(2)} por ano</b>.
+                </p>
+
+
+                <div class="resultadoCenarios">
+
+                    <div class="resultado">
+                        <h3>Cenário conservador - 25%</h3>
+
+                        <p>
+                            Inspeções evitadas no ano:
+                            <b>${visitas25.toFixed(0)}</b>
+                        </p>
+
+                        <p>
+                            Economia anual:
+                            <b>R$ ${economia25.toFixed(2)}</b>
+                        </p>
+                    </div>
+
+
+                    <div class="resultado">
+                        <h3>Cenário intermediário - 50%</h3>
+
+                        <p>
+                            Inspeções evitadas no ano:
+                            <b>${visitas50.toFixed(0)}</b>
+                        </p>
+
+                        <p>
+                            Economia anual:
+                            <b>R$ ${economia50.toFixed(2)}</b>
+                        </p>
+                    </div>
+
+
+                    <div class="resultado">
+                        <h3>Cenário otimista - 70%</h3>
+
+                        <p>
+                            Inspeções evitadas no ano:
+                            <b>${visitas70.toFixed(0)}</b>
+                        </p>
+
+                        <p>
+                            Economia anual:
+                            <b>R$ ${economia70.toFixed(2)}</b>
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <p>
+                    No cenário intermediário, a economia média seria de
+                    <b>R$ ${economiaGerador.toFixed(2)} por gerador ao ano</b>.
+                </p>
+
+            `;
+
+        }
+
+        else {
+
+            div_result.innerHTML = `Preencha os campos corretamente.`;
+
+        }
+
+    }
+
+</script>
