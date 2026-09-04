@@ -2,6 +2,8 @@ CREATE DATABASE power_track;
 
 USE power_track;
 
+-- CRIAÇÃO TABELAS
+
 CREATE TABLE dimensao_tanque(
 id_tanque INT PRIMARY KEY AUTO_INCREMENT,
 codigo_gerador VARCHAR (20) NOT NULL,
