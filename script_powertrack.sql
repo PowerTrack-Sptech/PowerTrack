@@ -94,7 +94,6 @@ nome_completo VARCHAR(150) NOT NULL,
 email_usuario VARCHAR(100) NOT NULL UNIQUE,
 usuario_login VARCHAR(20) NOT NULL UNIQUE,
 empresa VARCHAR(50) NOT NULL,
-ultimo_acesso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 senha_usuario VARCHAR(45) NOT NULL,
 status_usuario TINYINT DEFAULT 1 CONSTRAINT chStatus_usuario CHECK(status_usuario IN('1', '0'))
 );
