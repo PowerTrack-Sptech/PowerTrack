@@ -5,59 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerTrack | Calculadora Financeira</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="cabecalho">
-
-        <img src="imagem.png" class="logo">
+    <div>
 
         <div>
-            <h1>Calculadora Financeira</h1>
+            <h1 style="color: blue">Calculadora Financeira</h1>
             <p>Simule a economia com a redução de inspeções presenciais.</p>
         </div>
 
     </div>
 
 
-    <div class="container">
+    <div>
         <h2>Dados da empresa</h2>
-        <div class="linha">
-            <div class="campo">
-                <label>Nome fantasia</label>
-                <input type="text" id="ip_empresa">
+        <div>
+            <div>
+                <label for="ip_empresa">Nome fantasia</label>
+                <input type="text" id="ip_empresa" style="border: 1px solid blue;">
             </div>
 
-            <div class="campo">
-                <label>Quantidade de geradores</label>
-                <input type="text" id="ip_geradores">
+            <div>
+                <label for="ip_geradores">Quantidade de geradores</label>
+                <input type="text" id="ip_geradores" style="border: 1px solid blue;">
             </div>
         </div>
 
-        <div class="linha">
-            <div class="campo">
-                <label>Total de inspeções presenciais por mês</label>
-                <input type="text" id="ip_visitas">
+        <div>
+            <div>
+                <label for="ip_visitas">Total de inspeções presenciais por mês</label>
+                <input type="text" id="ip_visitas" style="border: 1px solid blue;">
             </div>
 
-            <div class="campo">
-                <label>Custo médio de cada inspeção</label>
-                <input type="text" id="ip_custo">
+            <div>
+                <label for="ip_custo">Custo médio de cada inspeção</label>
+                <input type="text" id="ip_custo" style="border: 1px solid blue;">
             </div>
 
         </div>
 
 
-        <button onclick="calcular()">Calcular</button>
+        <button onclick="calcular()" style="background-color: blue; color: white;">Calcular</button>
 
 
         <h2>Referências utilizadas</h2>
 
-        <div class="cenarios">
+        <div style="display: flex; gap: 100px;">
 
-            <div class="cenario">
+            <div>
                 <h3>Conservador</h3>
                 <b>25%</b>
 
@@ -67,7 +64,7 @@
             </div>
 
 
-            <div class="cenario">
+            <div>
                 <h3>Intermediário</h3>
                 <b>50%</b>
 
@@ -77,7 +74,7 @@
             </div>
 
 
-            <div class="cenario">
+            <div>
                 <h3>Potencial</h3>
                 <b>70%</b>
 
@@ -89,16 +86,18 @@
         </div>
 
 
-        <p class="aviso">
+        <p>
             Os percentuais são referências e os resultados podem variar de acordo
             com a operação de cada empresa.
         </p>
 
 
-        <h2>Resultado</h2>
+        <h2 style="color: blue;">Resultado</h2>
 
-        <div id="div_result">
+        <div id="div_result"> 
+            
             Preencha os campos para realizar a simulação.
+
         </div>
 
     </div>
@@ -133,15 +132,13 @@
         let visitas70 = visitasAno * 70 / 100;
         let economia70 = visitas70 * custo;
 
-
-        let economiaGerador = economia50 / geradores;
-
-
-        if (geradores > 0 && visitas > 0 && custo > 0) {
+        let economiaGerador25 = economia25 / geradores;
+        let economiaGerador50 = economia50 / geradores;
+        let economiaGerador70 = economia70 / geradores;
 
             div_result.innerHTML = `
 
-                <h3>${empresa}</h3>
+                <h2>${empresa}</h2>
 
                 <p>
                     Atualmente são realizadas <b>${visitas}</b> inspeções por mês,
@@ -155,70 +152,73 @@
                 </p>
 
 
-                <div class="resultadoCenarios">
+                <div style="display: flex; gap: 40px;">
 
-                    <div class="resultado">
+                    <div>
                         <h3>Cenário conservador - 25%</h3>
 
                         <p>
                             Inspeções evitadas no ano:
-                            <b>${visitas25.toFixed(0)}</b>
+                            <b>≈ ${visitas25.toFixed(0)}</b>
                         </p>
 
                         <p>
                             Economia anual:
                             <b>R$ ${economia25.toFixed(2)}</b>
                         </p>
+
+                        <p>
+                            Economia média por gerador ao ano: 
+                            <b>R$ ${economiaGerador25.toFixed(0)}</b>
+                        </p>
                     </div>
 
 
-                    <div class="resultado">
+                    <div>
                         <h3>Cenário intermediário - 50%</h3>
 
                         <p>
                             Inspeções evitadas no ano:
-                            <b>${visitas50.toFixed(0)}</b>
+                            <b>≈ ${visitas50.toFixed(0)}</b>
                         </p>
 
                         <p>
                             Economia anual:
                             <b>R$ ${economia50.toFixed(2)}</b>
                         </p>
+
+                        <p>
+                            Economia média por gerador ao ano: 
+                            <b>R$ ${economiaGerador50.toFixed(0)}</b>
+                        </p>
                     </div>
 
 
-                    <div class="resultado">
-                        <h3>Cenário potencial - 70%</h3>
+                    <div>
+                        <h3>Cenário Potencial - 70%</h3>
 
                         <p>
                             Inspeções evitadas no ano:
-                            <b>${visitas70.toFixed(0)}</b>
+                            <b>≈ ${visitas70.toFixed(0)}</b>
                         </p>
 
                         <p>
                             Economia anual:
                             <b>R$ ${economia70.toFixed(2)}</b>
                         </p>
+
+                        <p>
+                            Economia média por gerador ao ano: 
+                            <b>R$ ${economiaGerador70.toFixed(0)}</b>
+                        </p>
                     </div>
 
                 </div>
-
-
-                <p>
-                    No cenário intermediário, a economia anual estimada é de <b>R$ ${economia50.toFixed(2)}</b>,
-                    equivalente a <b>R$ ${economiaGerador.toFixed(2)} por gerador monitorado</b>.
-                </p>
 
             `;
 
         }
 
-        else {
-
-            div_result.innerHTML = `Preencha os campos corretamente.`;
-
-        }
-
-    }
+    
 
 </script>
