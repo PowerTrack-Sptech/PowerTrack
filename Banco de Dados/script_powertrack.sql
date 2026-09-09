@@ -209,6 +209,14 @@ INSERT INTO usuario VALUES
 -- CONSULTAS
 
 
+-- VERIFICAR GERADORES INSTALADOS EM HOSPITAIS
+SELECT codigo_gerador,
+nome_fabricante,
+modelo_gerador,
+local_instalacao
+FROM gerador
+WHERE local_instalacao LIKE ('Hospital%');
+
 -- VERIFICAR SENSORES QUE NÃO ESTÃO FUNCIONANDO 100%
 SELECT codigo_sensor,
 codigo_gerador, 
@@ -226,63 +234,6 @@ CASE
 END AS alerta
 FROM medicao;
 
--- CALCULAR O NÍVEL EM PORCENTAGEM DE ABASTECIMENTO
-SELECT codigo_gerador,
-responsavel_abastecimento, 
-nivel_anterior_percentual,
-nivel_posterior_percentual,
-nivel_posterior_percentual - nivel_anterior_percentual AS percentual_abastecido
-FROM abastecimento; 
 
--- FILTRAR EMPRESAS BENEFICIADAS DO RAMO INDUSTRIA
-SELECT nome_empresa,
-ramo_empresa,
-endereco_empresa
-FROM empresa_beneficiada
-WHERE ramo_empresa LIKE ('Industria%');
 
--- 	VERIFICAR CONSUMO DOS GERADORES EM ORDEM DECRESCENTE
-SELECT
-codigo_gerador, 
-modelo_gerador,
-local_instalacao,
-consumo_medio_litro_hora AS consumo
-FROM gerador
-ORDER BY consumo DESC;
-
--- VERIFICAR USUARIOS ATIVOS E INATIVOS NO SISTEMA
-SELECT 
-nome_completo,
-email_usuario,
-usuario_login, empresa, 
-CASE 
-	WHEN status_usuario = 1 THEN 'Ativo'
-    ELSE 'Inativo'
-END AS status_usuario
-FROM usuario;
-
--- VERIFICAR GERADORES INSTALADOS EM HOSPITAIS
-SELECT codigo_gerador,
-nome_fabricante,
-modelo_gerador,
-local_instalacao
-FROM gerador
-WHERE local_instalacao LIKE ('Hospital%');
-
--- FILTRAR APENAS TANQUES NO FOMRATO CILINDRICO
-SELECT codigo_gerador,
-formato_tanque
-FROM dimensao_tanque 
-WHERE formato_tanque = 'cilindrico';
-
--- VERIFICAR GERADORES QUE POSSUEM MENOR AUTONOMIA E PRECISAM DE ATENCAO
-SELECT codigo_sensor,
-nivel_percentual, 
-volume_litros,
-autonomia_horas,
-status_criticidade
-FROM medicao
-WHERE nivel_percentual < 50 AND
-autonomia_horas < 6
-ORDER BY autonomia_horas ASC;
 
