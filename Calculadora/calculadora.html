@@ -23,31 +23,31 @@
         <h2>Dados da empresa</h2>
         <div>
             <div>
-                <label for="ip_empresa">Nome fantasia</label>
+                <label for="ip_empresa">Nome fantasia: </label>
                 <input type="text" id="ip_empresa" style="border: 1px solid blue;">
             </div>
 
             <div>
-                <label for="ip_geradores">Quantidade de geradores</label>
+                <br><label for="ip_geradores">Quantidade de geradores monitorados (Total): </label>
                 <input type="text" id="ip_geradores" style="border: 1px solid blue;">
             </div>
         </div>
 
         <div>
             <div>
-                <label for="ip_visitas">Total de inspeções presenciais por mês</label>
+                <br><label for="ip_visitas">Total de inspeções presenciais (mês): </label>
                 <input type="text" id="ip_visitas" style="border: 1px solid blue;">
             </div>
 
             <div>
-                <label for="ip_custo">Custo médio de cada inspeção</label>
+                <br><label for="ip_custo">Custo médio de cada inspeção (R$): </label>
                 <input type="text" id="ip_custo" style="border: 1px solid blue;">
             </div>
 
         </div>
 
 
-        <button onclick="calcular()" style="background-color: blue; color: white;">Calcular</button>
+        <br><button onclick="calcular()" style="background-color: blue; color: white;">Calcular</button>
 
 
         <h2>Referências utilizadas</h2>
@@ -78,8 +78,8 @@
                 <h3>Potencial</h3>
                 <b>70%</b>
 
-                <p>
-                    Fonte: PowerOptix.
+                <p> 
+                    Fonte: PowerOptix / Technoton
                 </p>
             </div>
 
@@ -155,7 +155,7 @@
                 <div style="display: flex; gap: 40px;">
 
                     <div>
-                        <h3>Cenário conservador - 25%</h3>
+                        <h3 style="color: blue">Cenário conservador - 25%</h3>
 
                         <p>
                             Inspeções evitadas no ano:
@@ -175,7 +175,7 @@
 
 
                     <div>
-                        <h3>Cenário intermediário - 50%</h3>
+                        <h3 style="color: blue">Cenário intermediário - 50%</h3>
 
                         <p>
                             Inspeções evitadas no ano:
@@ -195,7 +195,7 @@
 
 
                     <div>
-                        <h3>Cenário Potencial - 70%</h3>
+                        <h3 style="color: blue">Cenário Potencial - 70%</h3>
 
                         <p>
                             Inspeções evitadas no ano:
