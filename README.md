@@ -8,7 +8,7 @@
 
 O **PowerTrack** é uma plataforma de Internet das Coisas (IoT) desenvolvida para fabricantes, empresas de manutenção e prestadores de suporte técnico de grupos geradores. 
 
-O objetivo principal é automatizar o acompanhamento do nível de combustível em tanques de geradores instalados em operações críticas (como hospitais, data centers e indústrias)[cite: 2], eliminando a dependência de verificações presenciais e prevenindo falhas no fornecimento de energia por falta de combustível.
+O objetivo principal é automatizar o acompanhamento do nível de combustível em tanques de geradores instalados em operações críticas (como hospitais, data centers e indústrias), eliminando a dependência de verificações presenciais e prevenindo falhas no fornecimento de energia por falta de combustível.
 
 ---
 
@@ -24,7 +24,7 @@ O objetivo principal é automatizar o acompanhamento do nível de combustível e
 * **Dashboard em Tempo Real:** Painel centralizado para acompanhar o nível (%), volume disponível ($L$) e status de cada gerador cadastrado.
 * **Cálculo de Autonomia Estimada:** Estimativa de tempo restante de operação baseada na capacidade do tanque e no consumo médio do equipamento ($L/h$).
 * **Alertas de Criticidade:** Notificação imediata quando o combustível atinge níveis abaixo do limite de segurança.
-* **Histórico e Detecção de Reabastecimento:** Registro contínuo das medições com detecção automática de entradas de combustível no tanque[cite: 2].
+* **Histórico e Detecção de Reabastecimento:** Registro contínuo das medições com detecção automática de entradas de combustível no tanque.
 * **Simulador Financeiro:** Ferramenta para estimar a redução de custos operacionais com a diminuição de inspeções presenciais.
 * **Controle de Acesso (RBAC):** Níveis de acesso diferenciados entre empresas de suporte/fabricantes e seus clientes finais.
 
@@ -33,7 +33,7 @@ O objetivo principal é automatizar o acompanhamento do nível de combustível e
 ## Tecnologias e Arquitetura
 
 ### Hardware & IoT
-* **Placa Microcontroladora:** Arduino Uno R3[cite: 1]
+* **Placa Microcontroladora:** Arduino Uno R3
 * **Sensor de Medição:** Sensor Ultrassônico HC-SR04 (Mede a distância até a superfície do combustível)
 * **Frequência de Leitura:** Coleta e envio de medições em intervalos configuráveis (ex: a cada 30 minutos)
 
