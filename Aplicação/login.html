@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+
+<body>
+    <div>
+        <ul>
+            <img src="assets/logo.png" alt="logo">
+            <li>
+                <a href=""></a>Home</a>
+            </li>
+            <li>
+                <a href=""></a>Sobre nós</a>
+            </li>
+            <li>
+                <a href=""></a>Nossa solução</a> 
+            </li>
+            <li>
+                <a href=""></a>Simulador financeiro</a>
+            </li>
+        </ul>
+        <div>
+            <button onclick="">Login</button>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h4>Bem vindo(a)</h4>
+            <span>Entre na sua conta para continuar.</span>
+        </div>
+        <div>
+            <h4>Insira seu login</h4>
+        </div>
+        <div>
+            <label for="ipt_email">E-mail</label>
+            <br>
+            <input type="text" id="ipt_email" value="">
+            <br>
+            <label for="ipt_senha">Senha</label>
+            <br>
+            <input type="password" id="ipt_senha">
+            <div id="div_msg_senha"></div>
+        </div>
+
+        <div>
+            <button onclick="Entrar()">Entrar</button>
+        </div>
+
+        <div>
+            <a href="">Esqueceu a senha?<a>
+            <br>
+            <a href="cadastro.html">Cadastre-se</a>
+        </div>
+
+        <div>
+            <img src="assets/icon_defender.png" alt="segurança">
+            <span> Seus dados estão protegido de ponta a ponta.</span>
+        </div>
+
+    </div>
+</body>
+<script>
+    let Banco = ["joao123@gmail.com", "brandao@gmail.com", "heitor@gmail.com"]
+    let Banco_Senha = ["joao123", "brandao123", "heitor123"]
+
+    function Entrar(){
+    let email = ipt_email.value.trim()
+    let senha = ipt_senha.value
+    let indice = Banco.indexOf(email);
+
+     if (indice != -1 && Banco_Senha[indice] == senha) 
+     { 
+        div_msg_senha.innerHTML = `Logado com sucesso!`
+     }
+     else 
+     { div_msg_senha.innerHTML = `Senha ou E-mail inválido!` }
+}
+</script>
+
+</html>
