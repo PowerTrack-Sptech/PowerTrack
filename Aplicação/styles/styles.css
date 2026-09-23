@@ -74,9 +74,13 @@ body {
     padding: 10px;
     margin-top: 6px;
     margin-bottom: 12px;
-    border: 1px solid white;
+    border: 1px solid #888888;
     font-family: inherit;
     font-size: 12px;
+}
+.campos img{
+    width: 16px;
+    margin-right: 6px;
 }
 #div_msg_senha {
     font-size: 12px;
