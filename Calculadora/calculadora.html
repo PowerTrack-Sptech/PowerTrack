@@ -132,13 +132,14 @@
         let visitas70 = visitasAno * 70 / 100;
         let economia70 = visitas70 * custo;
 
-        let economiaGerador25 = economia25 / geradores;
-        let economiaGerador50 = economia50 / geradores;
-        let economiaGerador70 = economia70 / geradores;
 
             div_result.innerHTML = `
 
                 <h2>${empresa}</h2>
+
+                <p>
+                    A empresa possui <b>${geradores}</b> geradores monitorados.
+                </p>
 
                 <p>
                     Atualmente são realizadas <b>${visitas}</b> inspeções por mês,
@@ -166,11 +167,6 @@
                             Economia anual:
                             <b>R$ ${economia25.toFixed(2)}</b>
                         </p>
-
-                        <p>
-                            Economia média por gerador ao ano: 
-                            <b>R$ ${economiaGerador25.toFixed(0)}</b>
-                        </p>
                     </div>
 
 
@@ -186,11 +182,6 @@
                             Economia anual:
                             <b>R$ ${economia50.toFixed(2)}</b>
                         </p>
-
-                        <p>
-                            Economia média por gerador ao ano: 
-                            <b>R$ ${economiaGerador50.toFixed(0)}</b>
-                        </p>
                     </div>
 
 
@@ -205,12 +196,7 @@
                         <p>
                             Economia anual:
                             <b>R$ ${economia70.toFixed(2)}</b>
-                        </p>
-
-                        <p>
-                            Economia média por gerador ao ano: 
-                            <b>R$ ${economiaGerador70.toFixed(0)}</b>
-                        </p>
+                        </p>    
                     </div>
 
                 </div>
@@ -218,7 +204,5 @@
             `;
 
         }
-
-    
 
 </script>
