@@ -38,15 +38,21 @@ body {
     border-radius: 5px;
     padding: 8px 30px;
 }
+.conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 7%;
+}
+.logo-dois {
+    width: 280px;
+}
 .box-login {
     width: 300px;
     background-color: white;
     border: 1px solid white;
     border-radius: 12px;
     padding: 20px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    margin-left: 48%;
     text-align: center;
 }
 .boas-vindas h4 {
