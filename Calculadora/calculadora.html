@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerTrack | Calculadora Financeira</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <header class="cabecalho">
-        <img class="logo" src="img/logo-powertrack.png" alt="Logo PowerTrack">
-
-        <p></p>
+        <img class="logo" src="../Aplicação/assets/logo.png" alt="Logo PowerTrack">
 
         <nav class="menu">
             <a href="#">Home</a>
@@ -41,9 +43,9 @@
                 </p>
 
                 <div class="beneficios">
-                    <p>✓ Menos visitas presenciais</p>
-                    <p>✓ Menos deslocamentos</p>
-                    <p>✓ Mais eficiência operacional</p>
+                    <p><span class="check">✓</span> Menos visitas presenciais</p>
+                    <p><span class="check">✓</span> Menos deslocamentos</p>
+                     <p><span class="check">✓</span> Mais eficiência operacional</p>
                 </div>
             </div>
 
@@ -59,19 +61,19 @@
                 </div>
 
                 <div class="campo">
-                    <br><label for="ipt_geradores">Quantidade de geradores monitorados (Total): </label>
+                    <label for="ipt_geradores">Geradores monitorados:</label>
                     <input type="text" id="ipt_geradores" placeholder="Ex.: 100">
                 </div>
             </div>
 
             <div class="linha-campos">
                 <div class="campo">
-                    <br><label for="ipt_visitas">Total de inspeções presenciais (mês): </label>
+                    <label for="ipt_visitas">Inspeções presenciais (mês): </label>
                     <input type="text" id="ipt_visitas" placeholder="Ex.: 200">
                 </div>
 
                 <div class="campo">
-                    <br><label for="ipt_custo">Custo médio de cada inspeção (R$): </label>
+                    <label for="ipt_custo">Custo médio por inspeção (R$): </label>
                     <input type="text" id="ipt_custo" placeholder="Ex.: 300">
                 </div>
 
@@ -84,6 +86,12 @@
 
         </div>
     </main>
+
+    <div class="secao-resultado" id="resultado">
+        <div id="div_result" class="resultado-vazio">
+            Preencha os campos para realizar a simulação.
+        </div>
+    </div>
 
     <div>
         <h2>Referências utilizadas</h2>
@@ -127,15 +135,6 @@
             com a operação de cada empresa.
         </p>
 
-
-        <h2 style="color: blue;">Resultado</h2>
-
-        <div id="div_result">
-
-            Preencha os campos para realizar a simulação.
-
-        </div>
-
     </div>
 
 </body>
@@ -170,74 +169,59 @@
 
 
         div_result.innerHTML = `
+    <div class="resultado-card">
+        <p class="resultado-status">Simulação concluída</p>
 
-                <h2>${empresa}</h2>
+        <h2>${empresa}</h2>
 
-                <p>
-                    A empresa possui <b>${geradores}</b> geradores monitorados.
-                </p>
+        <p class="resultado-geradores">
+            ${geradores} geradores monitorados
+        </p>
 
-                <p>
-                    Atualmente são realizadas <b>${visitas}</b> inspeções por mês,
-                    totalizando <b>${visitasAno}</b> inspeções por ano.
-                </p>
+        <div class="resumo-custo">
+            <p>Custo atual com inspeções</p>
 
-                <p>
-                    Custo atual com inspeções:
-                    <b>R$ ${custoMes.toFixed(2)} por mês</b> e
-                    <b>R$ ${custoAno.toFixed(2)} por ano</b>.
-                </p>
+            <strong>R$ ${custoAno.toFixed(2)} por ano</strong>
 
+            <span>
+                R$ ${custoMes.toFixed(2)} por mês ·
+                ${visitasAno} inspeções por ano
+            </span>
+        </div>
 
-                <div style="display: flex; gap: 40px;">
+        <div class="cenarios-resultados">
+            <div class="cenario-card">
+                <h3>Conservador · 25%</h3>
 
-                    <div>
-                        <h3 style="color: blue">Cenário conservador - 25%</h3>
+                <p>Inspeções evitadas no ano</p>
+                <strong>≈ ${visitas25.toFixed(0)}</strong>
 
-                        <p>
-                            Inspeções evitadas no ano:
-                            <b>≈ ${visitas25.toFixed(0)}</b>
-                        </p>
+                <p>Economia anual</p>
+                <b>R$ ${economia25.toFixed(2)}</b>
+            </div>
 
-                        <p>
-                            Economia anual:
-                            <b>R$ ${economia25.toFixed(2)}</b>
-                        </p>
-                    </div>
+            <div class="cenario-card destaque">
+                <h3>Intermediário · 50%</h3>
 
+                <p>Inspeções evitadas no ano</p>
+                <strong>≈ ${visitas50.toFixed(0)}</strong>
 
-                    <div>
-                        <h3 style="color: blue">Cenário intermediário - 50%</h3>
+                <p>Economia anual</p>
+                <b>R$ ${economia50.toFixed(2)}</b>
+            </div>
 
-                        <p>
-                            Inspeções evitadas no ano:
-                            <b>≈ ${visitas50.toFixed(0)}</b>
-                        </p>
+            <div class="cenario-card">
+                <h3>Potencial · 70%</h3>
 
-                        <p>
-                            Economia anual:
-                            <b>R$ ${economia50.toFixed(2)}</b>
-                        </p>
-                    </div>
+                <p>Inspeções evitadas no ano</p>
+                <strong>≈ ${visitas70.toFixed(0)}</strong>
 
-
-                    <div>
-                        <h3 style="color: blue">Cenário Potencial - 70%</h3>
-
-                        <p>
-                            Inspeções evitadas no ano:
-                            <b>≈ ${visitas70.toFixed(0)}</b>
-                        </p>
-
-                        <p>
-                            Economia anual:
-                            <b>R$ ${economia70.toFixed(2)}</b>
-                        </p>    
-                    </div>
-
-                </div>
-
-            `;
+                <p>Economia anual</p>
+                <b>R$ ${economia70.toFixed(2)}</b>
+            </div>
+        </div>
+    </div>
+        `;
 
     }
 
