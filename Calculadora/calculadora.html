@@ -5,51 +5,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerTrack | Calculadora Financeira</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <div>
+    <header class="cabecalho">
+        <img class="logo" src="../Aplicação/assets/logo.png" alt="Logo PowerTrack">
 
-        <div>
-            <h1 style="color: blue">Calculadora Financeira</h1>
-            <p>Simule a economia com a redução de inspeções presenciais.</p>
+        <nav class="menu">
+            <a href="#">Home</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Nossa solução</a>
+            <a href="#">Simulador financeiro</a>
+        </nav>
+
+        <button class="botao-login">Login</button>
+    </header>
+
+    <main class="principal">
+
+        <div class="lado-esquerdo">
+
+            <div class="introducao">
+                <h1>
+                    Simule quanto sua empresa
+                    <span>pode economizar</span>
+                </h1>
+
+                <p class="descricao">
+                    Descubra o impacto financeiro que o monitoramento remoto
+                    pode trazer para sua operação.
+                </p>
+
+                <div class="beneficios">
+                    <p><span class="check">✓</span> Menos visitas presenciais</p>
+                    <p><span class="check">✓</span> Menos deslocamentos</p>
+                     <p><span class="check">✓</span> Mais eficiência operacional</p>
+                </div>
+            </div>
+
         </div>
 
+
+        <div class="card-simulador">
+            <h2>Simulador financeiro</h2>
+            <div class="linha-campos">
+                <div class="campo">
+                    <label for="ipt_empresa">Nome fantasia: </label>
+                    <input type="text" id="ipt_empresa" placeholder="Ex.: Nome fantasia">
+                </div>
+
+                <div class="campo">
+                    <label for="ipt_geradores">Geradores monitorados:</label>
+                    <input type="text" id="ipt_geradores" placeholder="Ex.: 100">
+                </div>
+            </div>
+
+            <div class="linha-campos">
+                <div class="campo">
+                    <label for="ipt_visitas">Inspeções presenciais (mês): </label>
+                    <input type="text" id="ipt_visitas" placeholder="Ex.: 200">
+                </div>
+
+                <div class="campo">
+                    <label for="ipt_custo">Custo médio por inspeção (R$): </label>
+                    <input type="text" id="ipt_custo" placeholder="Ex.: 300">
+                </div>
+
+            </div>
+
+
+            <br>
+
+            <button class="botao-calcular" onclick="calcular()">Calcular economia</button>
+
+        </div>
+    </main>
+
+    <div class="secao-resultado" id="resultado">
+        <div id="div_result" class="resultado-vazio">
+            Preencha os campos para realizar a simulação.
+        </div>
     </div>
 
-
     <div>
-        <h2>Dados da empresa</h2>
-        <div>
-            <div>
-                <label for="ip_empresa">Nome fantasia: </label>
-                <input type="text" id="ip_empresa" style="border: 1px solid blue;">
-            </div>
-
-            <div>
-                <br><label for="ip_geradores">Quantidade de geradores monitorados (Total): </label>
-                <input type="text" id="ip_geradores" style="border: 1px solid blue;">
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <br><label for="ip_visitas">Total de inspeções presenciais (mês): </label>
-                <input type="text" id="ip_visitas" style="border: 1px solid blue;">
-            </div>
-
-            <div>
-                <br><label for="ip_custo">Custo médio de cada inspeção (R$): </label>
-                <input type="text" id="ip_custo" style="border: 1px solid blue;">
-            </div>
-
-        </div>
-
-
-        <br><button onclick="calcular()" style="background-color: blue; color: white;">Calcular</button>
-
-
         <h2>Referências utilizadas</h2>
 
         <div style="display: flex; gap: 100px;">
@@ -78,7 +122,7 @@
                 <h3>Potencial</h3>
                 <b>70%</b>
 
-                <p> 
+                <p>
                     Fonte: PowerOptix / Technoton
                 </p>
             </div>
@@ -91,15 +135,6 @@
             com a operação de cada empresa.
         </p>
 
-
-        <h2 style="color: blue;">Resultado</h2>
-
-        <div id="div_result"> 
-            
-            Preencha os campos para realizar a simulação.
-
-        </div>
-
     </div>
 
 </body>
@@ -111,10 +146,10 @@
 
     function calcular() {
 
-        let empresa = ip_empresa.value;
-        let geradores = Number(ip_geradores.value);
-        let visitas = Number(ip_visitas.value);
-        let custo = Number(ip_custo.value);
+        let empresa = ipt_empresa.value;
+        let geradores = Number(ipt_geradores.value);
+        let visitas = Number(ipt_visitas.value);
+        let custo = Number(ipt_custo.value);
 
         let visitasAno = visitas * 12;
         let custoMes = visitas * custo;
@@ -133,76 +168,61 @@
         let economia70 = visitas70 * custo;
 
 
-            div_result.innerHTML = `
+        div_result.innerHTML = `
+    <div class="resultado-card">
+        <p class="resultado-status">Simulação concluída</p>
 
-                <h2>${empresa}</h2>
+        <h2>${empresa}</h2>
 
-                <p>
-                    A empresa possui <b>${geradores}</b> geradores monitorados.
-                </p>
+        <p class="resultado-geradores">
+            ${geradores} geradores monitorados
+        </p>
 
-                <p>
-                    Atualmente são realizadas <b>${visitas}</b> inspeções por mês,
-                    totalizando <b>${visitasAno}</b> inspeções por ano.
-                </p>
+        <div class="resumo-custo">
+            <p>Custo atual com inspeções</p>
 
-                <p>
-                    Custo atual com inspeções:
-                    <b>R$ ${custoMes.toFixed(2)} por mês</b> e
-                    <b>R$ ${custoAno.toFixed(2)} por ano</b>.
-                </p>
+            <strong>R$ ${custoAno.toFixed(2)} por ano</strong>
 
+            <span>
+                R$ ${custoMes.toFixed(2)} por mês ·
+                ${visitasAno} inspeções por ano
+            </span>
+        </div>
 
-                <div style="display: flex; gap: 40px;">
+        <div class="cenarios-resultados">
+            <div class="cenario-card">
+                <h3>Conservador · 25%</h3>
 
-                    <div>
-                        <h3 style="color: blue">Cenário conservador - 25%</h3>
+                <p>Inspeções evitadas no ano</p>
+                <strong>≈ ${visitas25.toFixed(0)}</strong>
 
-                        <p>
-                            Inspeções evitadas no ano:
-                            <b>≈ ${visitas25.toFixed(0)}</b>
-                        </p>
+                <p>Economia anual</p>
+                <b>R$ ${economia25.toFixed(2)}</b>
+            </div>
 
-                        <p>
-                            Economia anual:
-                            <b>R$ ${economia25.toFixed(2)}</b>
-                        </p>
-                    </div>
+            <div class="cenario-card destaque">
+                <h3>Intermediário · 50%</h3>
 
+                <p>Inspeções evitadas no ano</p>
+                <strong>≈ ${visitas50.toFixed(0)}</strong>
 
-                    <div>
-                        <h3 style="color: blue">Cenário intermediário - 50%</h3>
+                <p>Economia anual</p>
+                <b>R$ ${economia50.toFixed(2)}</b>
+            </div>
 
-                        <p>
-                            Inspeções evitadas no ano:
-                            <b>≈ ${visitas50.toFixed(0)}</b>
-                        </p>
+            <div class="cenario-card">
+                <h3>Potencial · 70%</h3>
 
-                        <p>
-                            Economia anual:
-                            <b>R$ ${economia50.toFixed(2)}</b>
-                        </p>
-                    </div>
+                <p>Inspeções evitadas no ano</p>
+                <strong>≈ ${visitas70.toFixed(0)}</strong>
 
+                <p>Economia anual</p>
+                <b>R$ ${economia70.toFixed(2)}</b>
+            </div>
+        </div>
+    </div>
+        `;
 
-                    <div>
-                        <h3 style="color: blue">Cenário Potencial - 70%</h3>
-
-                        <p>
-                            Inspeções evitadas no ano:
-                            <b>≈ ${visitas70.toFixed(0)}</b>
-                        </p>
-
-                        <p>
-                            Economia anual:
-                            <b>R$ ${economia70.toFixed(2)}</b>
-                        </p>    
-                    </div>
-
-                </div>
-
-            `;
-
-        }
+    }
 
 </script>

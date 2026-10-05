@@ -1,0 +1,287 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    color: #001B46;
+}
+
+/* TOPO */
+.cabecalho {
+    height: 86px;
+    padding: 0 9%;
+    background-color: #002885;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+}
+
+.logo {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.botao-login {
+     margin-left: auto;
+    background-color: white;
+    color: #001B46;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 35px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* ÁREA PRINCIPAL */
+.principal {
+    min-height: 620px;
+    padding: 55px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #F5F9FF;
+    background-image: url("../Aplicação/assets/background_image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.lado-esquerdo,
+.card-simulador {
+    position: relative;
+    z-index: 1;
+}
+
+.lado-esquerdo {
+    width: 400px;
+}
+
+.introducao h1 {
+    margin: 0 0 24px;
+    color: #001B46;
+    font-size: 36px;
+    line-height: 1.15;
+}
+
+.introducao h1 span {
+    display: block;
+    color: #0078FE;
+}
+
+.descricao {
+    margin: 0;
+    color: #001B46;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.beneficios {
+    margin-top: 55px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.beneficios p {
+    margin: 10px 0;
+}
+
+/* CARD */
+.card-simulador {
+    width: 530px;
+    padding: 26px 30px 38px;
+    border: 1px solid #E2E2E2;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 25px rgba(0, 27, 70, 0.08);
+}
+
+.card-simulador h2 {
+    margin: 0 0 20px;
+    color: #0078FE;
+    font-size: 25px;
+    text-align: center;
+}
+
+.linha-campos {
+    display: flex;
+    gap: 28px;
+    max-width: 620px;
+    margin: 0 auto 18px;
+}
+
+.campo {
+    width: 50%;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    color: #001B46;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.campo input {
+    width: 100%;
+    height: 35px;
+    padding: 8px 10px;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 11px;
+}
+
+.campo input::placeholder {
+    color: #A0A0A0;
+}
+
+.botao-calcular {
+    width: 100%;
+    margin-top: 28px;
+    padding: 11px;
+    border: none;
+    border-radius: 7px;
+    background-color: #0078FE;
+    color: #FFFFFF;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botao-calcular:hover {
+    background-color: #001B46;
+}
+
+/* PARTE DE BAIXO */
+body>div {
+    padding: 35px 10%;
+}
+
+body>div h2 {
+    color: #001B46;
+}
+
+.secao-resultado {
+    padding: 60px 10%;
+    background-color: white;
+}
+
+.resultado-vazio {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #F4F8FF;
+    color: #001B46;
+}
+
+.resultado-card {
+    max-width: 1100px;
+    margin: auto;
+    padding: 32px;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 8px 24px rgba(0, 27, 70, 0.10);
+}
+
+.resultado-status {
+    margin: 0;
+    color: #0078FE;
+    font-weight: bold;
+}
+
+.resultado-card h2 {
+    margin: 5px 0;
+    color: #001B46;
+}
+
+.resultado-geradores {
+    color: #60708A;
+}
+
+.resumo-custo {
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #EAF3FF;
+}
+
+.resumo-custo p,
+.resumo-custo span {
+    display: block;
+    margin: 0;
+}
+
+.resumo-custo strong {
+    display: block;
+    margin: 5px 0;
+    color: #0078FE;
+    font-size: 24px;
+}
+
+.cenarios-resultados {
+    display: flex;
+    gap: 18px;
+}
+
+.cenario-card {
+    width: 33.33%;
+    padding: 20px;
+    border: 1px solid #DCE8F8;
+    border-radius: 10px;
+}
+
+.cenario-card h3 {
+    margin-top: 0;
+    color: #001B46;
+}
+
+.cenario-card p {
+    margin: 12px 0 3px;
+    color: #60708A;
+    font-size: 13px;
+}
+
+.cenario-card strong,
+.cenario-card b {
+    color: #0078FE;
+    font-size: 19px;
+}
+
+.destaque {
+    border-color: #0078FE;
+    background-color: #F4F8FF;
+}
+
+.check {
+    color: #0078FE;
+}
