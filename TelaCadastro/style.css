@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(../assets/background_image.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #062454;
+}
+
+.cabecalho {
+    background-color: #062454;
+    width: 100vw; /* vw = view widht */
+    height: 12vh; /* vh = view height */
+    display: flex ;
+    justify-content: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; 
+    width: 100%;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none; /* none = nao ter sublinhado */
+}
+
+.menu button {
+    height: 50%;
+    width: 10%;
+    border-radius: 10px;
+    border: none;
+    font-size: medium;
+}
+
+.box-login-pai {
+    display: flex;
+    justify-content: end;
+}
+
+.box-login-filho {
+    display: flex;
+    margin-top: 5vh;
+    margin-right: 10vw;
+    flex-direction: column; /* serve para organizar em linha ou coluna os elementos filhos */
+    height: 75vh;
+    width: 45vw;
+    background-color: white;
+    border: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgb(161, 160, 163);
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.botao-entrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 100%;
+}
+
+.botao-entrar  button{
+    background-color: #00A8FF;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    border: none;
+}
+
+.boas-vindas {
+    display: flex;
+    height: 5%;
+    width: 100%;
+    font-size: x-large;
+    font-weight: bold;
+    color: #00A8FF;
+    justify-content: center;
+}
+
+.boas-vindas span {
+    height: 100%;
+}
+
+.campos {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.campos input {
+    width: 70%;
+    height: 7%;
+}
+
+.campos label {
+    font-weight: bold;
+    width: 70%;
+    text-align: start;
+}
+
+.box-checkbox-pai {
+    display: flex;
+    width: 70%;
+    flex-direction: row;
+    text-align: start;
+}
+
+.box-checkbox-pai input {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.box-checkbox-pai a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #00A8FF;
+}
+
+.seguranca {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: #666666;
+}
+
+
