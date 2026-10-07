@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url(../assets/background_image.png);
+    background-image: url("assets/background_image.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,6 +14,7 @@ body {
     height: 12vh; /* vh = view height */
     display: flex ;
     justify-content: center;
+    font-size: small;
 }
 
 .menu {
@@ -33,28 +34,31 @@ body {
 .menu button {
     height: 50%;
     width: 10%;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
-    font-size: medium;
+    font-size: small;
 }
 
 .box-login-pai {
     display: flex;
-    justify-content: end;
+    justify-content: space-around;
+    height: 88vh;
+    align-items: center;
+    
 }
+
 
 .box-login-filho {
     display: flex;
-    margin-top: 5vh;
     margin-right: 10vw;
     flex-direction: column; /* serve para organizar em linha ou coluna os elementos filhos */
-    height: 75vh;
-    width: 45vw;
+    height: 80vh;
+    width: 40vw;
     background-color: white;
     border: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 20px;
-    border-color: rgb(161, 160, 163);
+    border-color: #F2F5F7;
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
@@ -105,12 +109,16 @@ body {
 .campos input {
     width: 70%;
     height: 7%;
+    border-color: #F2F5F7;
+    border-width: 0.5px;
+    border-radius: 5px;
 }
 
 .campos label {
     font-weight: bold;
     width: 70%;
     text-align: start;
+    font-size: small;
 }
 
 .box-checkbox-pai {
@@ -118,6 +126,7 @@ body {
     width: 70%;
     flex-direction: row;
     text-align: start;
+    font-size: small;
 }
 
 .box-checkbox-pai input {
@@ -137,6 +146,15 @@ body {
     width: 100%;
     justify-content: center;
     color: #666666;
+    font-size: small;
 }
 
+.logo-box {
+    background-image: url("assets/logo_dois.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30vw;
+    height: 30vh;
 
+}
