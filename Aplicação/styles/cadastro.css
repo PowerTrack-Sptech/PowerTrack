@@ -22,8 +22,7 @@ body {
     justify-content: space-evenly;
     align-items: center; 
     width: 100%;
-    font-weight: bold;
-    font-size: larger;
+    font-size: 12px;
 }
 
 .menu a {
@@ -39,7 +38,12 @@ body {
     font-size: small;
 }
 
-.box-login-pai {
+.menu img{
+    width: 90px;
+    margin-right: 60px;
+}
+
+.box-login-pai {    
     display: flex;
     justify-content: space-around;
     height: 88vh;
@@ -50,10 +54,10 @@ body {
 
 .box-login-filho {
     display: flex;
-    margin-right: 10vw;
+    margin-right: 4vw;
     flex-direction: column; /* serve para organizar em linha ou coluna os elementos filhos */
     height: 80vh;
-    width: 40vw;
+    width: 50vw;
     background-color: white;
     border: solid;
     border-width: 1px;
@@ -112,7 +116,7 @@ body {
     border-color: #F2F5F7;
     border-width: 0.5px;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .campos label {
