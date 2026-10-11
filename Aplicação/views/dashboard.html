@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard PowerTrack</title>
+</head>
+
+<body>
+
+    <div class="cabecalho">
+        <ul class="menu">
+            <li>
+                <img src="../assets/logo.png" alt="Logo PowerTrack">
+            </li>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Geradores</a></li>
+            <li><a href="#">Alertas</a></li>
+        </ul>
+    </div>
+
+    <main class="conteudo">
+
+        <div class="titulo">
+            <h1>Monitoramento de Geradores</h1>
+        </div>
+
+        <div class="menu-card">
+            <div class="card">
+                <h5>Geradores Monitorados</h5>
+                <p>8</p>
+            </div>
+
+            <div class="card">
+                <h5>Operando Normal</h5>
+                <p>4</p>
+            </div>
+
+            <div class="card">
+                <h5>Em Atenção</h5>
+                <p>2</p>
+            </div>
+
+            <div class="card">
+                <h5>Crítico</h5>
+                <p>2</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="table">
+                <div class="box">
+                    <h4>Geradores</h4>
+                    <h5>ID</h5>
+                    <p><img src="../assets/gerador.png"> GER 1</p>
+                    <p><img src="../assets/gerador.png"> GER 2</p>
+                    <p><img src="../assets/gerador.png"> GER 3</p>
+                    <p><img src="../assets/gerador.png"> GER 4</p>
+                    <p><img src="../assets/gerador.png"> GER 5</p>
+                </div>
+
+                <div class="box">
+                    <h5>Cliente</h5>
+                    <p>Hospital Campo Limpo</p>
+                    <p>Eskala DataCenter</p>
+                    <p>Hospital Center</p>
+                    <p>Hospital São Gonçalo</p>
+                    <p>Eskala DataCenter</p>
+                </div>
+
+                <div class="box">
+                    <h5>Última Leitura</h5>
+                    <p>2 min</p>
+                    <p>8 min</p>
+                    <p>12 min</p>
+                    <p>20 min</p>
+                    <p>29 min</p>
+                </div>
+
+                <div class="box">
+                    <h5>Status</h5>
+                    <p>Crítico</p>
+                    <p>Em atenção</p>
+                    <p>Em atenção</p>
+                    <p>Normal</p>
+                    <p>Normal</p>
+                </div>
+            </div>
+
+            <div class="grafico">
+                <canvas id="combustivelIndividual"></canvas>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="grafico">
+                 <h3>Nível de Combustível por Gerador</h3>
+                 <div class="area-grafico">
+                <canvas id="graficoCombustivel"></canvas>
+                </div>
+            </div>
+
+            <div class="table">
+
+                <div class="box">
+                    <h4>Geradores</h4>
+                    <h5>ID</h5>
+                    <p>GER 1</p>
+                    <p>GER 2</p>
+                    <p>GER 3</p>
+                    <p>GER 4</p>
+                    <p>GER 5</p>
+                </div>
+
+
+                <div class="box">
+                    <h5>Ultima Medições</h5>
+                    <p>19:03</p>
+                    <p>18:57</p>
+                    <p>18:53</p>
+                    <p>18:45</p>
+                    <p>18:36</p>
+                </div>
+
+
+                <div class="box">
+                    <h5>Status</h5>
+                    <p>Crítico</p>
+                    <p>Em atenção</p>
+                    <p>Em atenção</p>
+                    <p>Normal</p>
+                    <p>Normal</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const ctx = document.getElementById('graficoCombustivel');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['GER 1', 'GER 2', 'GER 3', 'GER 4', 'GER 5'],
+                datasets: [{
+                    data: [70, 45, 40, 20, 10],
+                    borderWidth: 1,
+                    backgroundColor: ['#03BB0F',
+                        '#03BB0F',
+                        '#FFC005',
+                        '#D31B1B',
+                        '#D31B1B'],
+                    borderRadius: 10,
+                },
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: true
+                            },
+                            beginAtZero: true,
+                            max: 100,
+                        }
+                    }
+            }
+        });
+
+        const ct = document.getElementById('combustivelIndividual');
+
+        new Chart(ct, {
+            type: 'line',
+            data: {
+                labels: ['13:30','14:00', '14:30', '15:00','15:30', '16:00', '16:30','17:00', '17:30', '18:00', '18:30','19:00'],
+                datasets: [{
+                    label: 'GER 1',
+                    data: [80, 79, 70, 65, 62, 57, 40, 35, 48, 55, 66, 70],
+                    borderWidth: 2,
+                    borderColor: '#0000FF',
+                    tension: 0.1,
+                      backgroundColor: 'rgba(0, 0, 255, 0.15)',
+                    fill: true,
+                    pointRadius: 1
+                },
+            {
+                    data: [20, 20, 20, 20, 20, 20,20, 20, 20, 20, 20, 20],
+                    borderWidth: 1,
+                    borderColor: '#D31B1B',
+                    tension: 0.1,
+                    backgroundColor: '#D31B1B',
+                    pointRadius: 0
+                
+                },
+             {
+                    data: [50, 50, 50, 50, 50, 50,50, 50, 50, 50, 50, 50],
+                    borderWidth: 1,
+                    borderColor: '#FFC005',
+                    tension: 0.1,
+                    backgroundColor: '#FFC005',
+                    pointRadius: 0
+                
+                },]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        min: 0
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
