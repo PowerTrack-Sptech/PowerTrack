@@ -90,19 +90,19 @@
                 </div>
             </div>
 
-             <div class="grafico">
-                 <h3>Histórico de Nível de Combustível</h3>
-                 <div class="area-grafico">
-                <canvas id="combustivelIndividual"></canvas>
+            <div class="grafico">
+                <h3>Histórico de Nível de Combustível</h3>
+                <div class="area-grafico">
+                    <canvas id="combustivelIndividual"></canvas>
                 </div>
             </div>
         </div>
 
         <div class="container">
             <div class="grafico">
-                 <h3>Nível de Combustível por Gerador</h3>
-                 <div class="area-grafico">
-                <canvas id="graficoCombustivel"></canvas>
+                <h3>Nível de Combustível por Gerador</h3>
+                <div class="area-grafico">
+                    <canvas id="graficoCombustivel"></canvas>
                 </div>
             </div>
 
@@ -174,23 +174,23 @@
                         display: false
                     },
                 },
-                    scales: {
-                        x: {
-                            grid: {
-                                display: false
-                            }
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: true
                         },
-                        y: {
-                            grid: {
-                                display: true
-                            },
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
                             stepSize: 20
                         }
-                        }
                     }
+                }
             }
         });
 
@@ -199,31 +199,34 @@
         new Chart(ct, {
             type: 'line',
             data: {
-                labels: ['13:30','14:00', '14:30', '15:00','15:30', '16:00', '16:30','17:00', '17:30', '18:00', '18:30','19:00'],
+                labels: ['13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'],
                 datasets: [{
                     label: 'GER 1',
                     data: [80, 79, 70, 65, 62, 57, 40, 35, 48, 55, 66, 70],
                     borderWidth: 3,
                     borderColor: '#1774FF',
                     tension: 0.1,
-                      backgroundColor: gradiente,
+                    backgroundColor: gradiente,
                     fill: true,
-                    pointRadius: 1,
+                    pointRadius: 2,
                     order: 2
                 },
-            {
-                    data: [20, 20, 20, 20, 20, 20,20, 20, 20, 20, 20, 20],
+                {
+                    data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
                     borderWidth: 2,
                     borderColor: '#D31B1B',
                     tension: 0.1,
                     backgroundColor: '#D31B1B',
                     pointRadius: 0,
                     borderDash: [10, 10],
-                    order: 1
-                
+                    order: 1,
+                    legend: {
+                        display: false
+                    }
+
                 },
-             {
-                    data: [50, 50, 50, 50, 50, 50,50, 50, 50, 50, 50, 50],
+                {
+                    data: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
                     borderWidth: 2,
                     borderColor: '#FFC005',
                     tension: 0.1,
@@ -231,12 +234,27 @@
                     pointRadius: 0,
                     borderDash: [10, 10],
                     order: 1
-                
+                    ,
+                    legend: {
+                        display: false
+                    }
+
                 },]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            filter: function (item) {
+                                return item.datasetIndex === 0;
+                            }
+                        }
+                    }
+                },
+
+
                 scales: {
                     y: {
                         max: 100,
