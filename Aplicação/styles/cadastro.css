@@ -115,6 +115,11 @@ body {
     justify-content: space-around;
 }
 
+.campos img{
+    width: 16px;
+    margin-right: 6px;
+}
+
 .campos input {
     width: 70%;
     height: 7%;
@@ -136,7 +141,7 @@ body {
     width: 70%;
     flex-direction: row;
     text-align: start;
-    font-size: small;
+    font-size: 12px;
 }
 
 .box-checkbox-pai input {
