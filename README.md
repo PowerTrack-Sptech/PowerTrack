@@ -22,7 +22,6 @@ O objetivo principal é automatizar o acompanhamento do nível de combustível e
 ## Funcionalidades Principais
 
 * **Dashboard em Tempo Real:** Painel centralizado para acompanhar o nível (%), volume disponível ($L$) e status de cada gerador cadastrado.
-* **Cálculo de Autonomia Estimada:** Estimativa de tempo restante de operação baseada na capacidade do tanque e no consumo médio do equipamento ($L/h$).
 * **Alertas de Criticidade:** Notificação imediata quando o combustível atinge níveis abaixo do limite de segurança.
 * **Histórico e Detecção de Reabastecimento:** Registro contínuo das medições com detecção automática de entradas de combustível no tanque.
 * **Simulador Financeiro:** Ferramenta para estimar a redução de custos operacionais com a diminuição de inspeções presenciais.
