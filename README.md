@@ -14,7 +14,7 @@ O objetivo principal é automatizar o acompanhamento do nível de combustível e
 
 ## O Problema e a Solução
 
-* **O Problema:** A checagem manual e periódica do nível de combustível gera altos custos logísticos, baixa visibilidade histórica e o risco de o gerador não operar no momento de uma interrupção da rede elétrica[cite: 2].
+* **O Problema:** A checagem manual e periódica do nível de combustível gera altos custos logísticos, baixa visibilidade histórica e o risco de o gerador não operar no momento de uma interrupção da rede elétrica.
 * **A Solução:** Captura automatizada de dados por sensores ultrassônicos, integrados a uma plataforma web centralizada que analisa o consumo, prevê a autonomia do equipamento e emite alertas preventivos.
 
 ---
