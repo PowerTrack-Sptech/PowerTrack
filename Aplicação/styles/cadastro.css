@@ -161,7 +161,12 @@ body {
     width: 100%;
     justify-content: center;
     color: #666666;
-    font-size: small;
+    font-size: 10px;
+}
+
+.seguranca img {
+    width: 16px;
+    margin-right: 6px;
 }
 
 .logo-box {
