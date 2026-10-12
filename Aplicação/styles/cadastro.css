@@ -15,6 +15,7 @@ body {
     display: flex ;
     justify-content: center;
     font-size: small;
+    font-weight: bold;
 }
 
 .menu {
@@ -27,15 +28,18 @@ body {
 
 .menu a {
     color: white;
+    font-size: 14px;
+    font-weight: 600;
     text-decoration: none; /* none = nao ter sublinhado */
 }
 
 .menu button {
-    height: 50%;
-    width: 10%;
+    background-color: #e6e6e6;
+    color: black;
     border-radius: 5px;
     border: none;
-    font-size: small;
+    font-size: 12px;
+    padding: 6px 30px;
 }
 
 .menu img{
@@ -76,15 +80,16 @@ body {
     width: 100%;
 }
 
-.botao-entrar  button{
-    background-color: #00A8FF;
+.botao-entrar button {
+    width: 90%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #176bea;
     color: white;
-    font-weight: bold;
-    font-size: larger;
-    width: 70%;
-    height: 70%;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .boas-vindas {
@@ -93,7 +98,7 @@ body {
     width: 100%;
     font-size: x-large;
     font-weight: bold;
-    color: #00A8FF;
+    color: #136BE5;
     justify-content: center;
 }
 
@@ -123,7 +128,7 @@ body {
     font-weight: bold;
     width: 70%;
     text-align: start;
-    font-size: small;
+    font-size: 12px ;
 }
 
 .box-checkbox-pai {
@@ -159,7 +164,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 30vw;
+    width: 380px;
     height: 30vh;
-
 }

@@ -10,10 +10,10 @@
 .cabecalho {
     display: flex;
     background-color: #062454;
-    border-bottom: 3px solid #1684ff;
     padding: 15px 7%;
     justify-content: space-between;
     align-items: center;
+    font-weight: bold;
 }
 .menu {
     display: flex;
@@ -31,7 +31,8 @@
 }
 .menu a {
     color: white;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
 }
 .cabecalho button {
