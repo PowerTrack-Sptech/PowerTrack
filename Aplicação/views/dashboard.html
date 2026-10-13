@@ -23,37 +23,63 @@
         </ul>
     </div>
 
-    <main class="conteudo">
+    <main class="pagina">
 
-        <div class="titulo">
+        <div class="titulo-pagina">
             <h1>Monitoramento de Geradores</h1>
         </div>
 
-        <div class="menu-card">
-            <div class="card">
-                <h5>Geradores Monitorados</h5>
-                <p>8</p>
+        <p>Monitoramento de combustível dos geradores</p>
+
+        <div class="cartoes">
+
+            <div class="cartao cartao-azul">
+                <div class="icone-cartao">
+                    <img src="../assets/gerador.png" alt="Gerador">
+                </div>
+
+                <div class="texto-cartao">
+                    <h5>Geradores monitorados</h5>
+                    <p class="numero">12</p>
+                    <p class="mensagem">+ 2 desde o último mês</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h5>Operando Normal</h5>
-                <p>4</p>
+            <div class="cartao cartao-verde">
+                <div class="icone-cartao">✓</div>
+
+                <div class="texto-cartao">
+                    <h5>Operando normalmente</h5>
+                    <p class="numero">8</p>
+                    <p class="mensagem">67% do total</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h5>Em Atenção</h5>
-                <p>2</p>
+            <div class="cartao cartao-amarelo">
+                <div class="icone-cartao">!</div>
+
+                <div class="texto-cartao">
+                    <h5>Em atenção</h5>
+                    <p class="numero">3</p>
+                    <p class="mensagem">25% do total</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h5>Crítico</h5>
-                <p>2</p>
+            <div class="cartao cartao-vermelho">
+                <div class="icone-cartao">!</div>
+
+                <div class="texto-cartao">
+                    <h5>Estado crítico</h5>
+                    <p class="numero">1</p>
+                    <p class="mensagem">8% do total</p>
+                </div>
             </div>
+
         </div>
 
-        <div class="container">
-            <div class="table">
-                <div class="box">
+        <div class="linha">
+            <div class="tabela">
+                <div class="coluna">
                     <h4>Geradores</h4>
                     <h5>ID</h5>
                     <p><img src="../assets/gerador.png"> GER 1</p>
@@ -63,7 +89,7 @@
                     <p><img src="../assets/gerador.png"> GER 5</p>
                 </div>
 
-                <div class="box">
+                <div class="coluna">
                     <h5>Cliente</h5>
                     <p>Hospital Campo Limpo</p>
                     <p>Eskala DataCenter</p>
@@ -72,7 +98,7 @@
                     <p>Eskala DataCenter</p>
                 </div>
 
-                <div class="box">
+                <div class="coluna">
                     <h5>Última Leitura</h5>
                     <p>2 min</p>
                     <p>8 min</p>
@@ -81,7 +107,7 @@
                     <p>29 min</p>
                 </div>
 
-                <div class="box">
+                <div class="coluna">
                     <h5>Status</h5>
                     <p>Crítico</p>
                     <p>Em atenção</p>
@@ -91,25 +117,25 @@
                 </div>
             </div>
 
-            <div class="grafico">
+            <div class="painel-grafico">
                 <h3>Histórico de Nível de Combustível</h3>
-                <div class="area-grafico">
+                <div class="espaco-grafico">
                     <canvas id="combustivelIndividual"></canvas>
                 </div>
             </div>
         </div>
 
-        <div class="container">
-            <div class="grafico">
+        <div class="linha">
+            <div class="painel-grafico">
                 <h3>Nível de Combustível por Gerador</h3>
-                <div class="area-grafico">
+                <div class="espaco-grafico">
                     <canvas id="graficoCombustivel"></canvas>
                 </div>
             </div>
 
-            <div class="table">
+            <div class="tabela">
 
-                <div class="box">
+                <div class="coluna">
                     <h4>Geradores</h4>
                     <h5>ID</h5>
                     <p>GER 1</p>
@@ -120,7 +146,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="coluna">
                     <h5>Ultima Medições</h5>
                     <p>19:03</p>
                     <p>18:57</p>
@@ -130,7 +156,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="coluna">
                     <h5>Status</h5>
                     <p>Crítico</p>
                     <p>Em atenção</p>
