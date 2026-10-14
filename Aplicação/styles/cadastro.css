@@ -1,179 +1,162 @@
+/* ===== CORPO DA PÁGINA ===== */
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../assets/background_image.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #062454;
+    margin: 0;                       /* tira o espaço branco que o navegador coloca em volta da página */
+    font-family: Arial, Helvetica, sans-serif; /* tipo de letra (se não tiver Arial, usa a próxima) */
+    background-image: url("../assets/background_image.png"); /* imagem de fundo da página */
+    background-size: cover;          /* a imagem estica para cobrir a tela toda */
+    background-position: center;     /* centraliza a imagem */
+    background-repeat: no-repeat;    /* não repete a imagem */
+    color: #062454;                  /* cor padrão dos textos (azul escuro) */
 }
 
+/* ===== CABEÇALHO (barra azul de cima) ===== */
 .cabecalho {
-    background-color: #062454;
-    width: 100vw; /* vw = view widht */
-    height: 12vh; /* vh = view height */
-    display: flex ;
-    justify-content: center;
-    font-size: small;
-    font-weight: bold;
+    background-color: #062454;       /* cor de fundo da barra */
+    width: 100%;                     /* ocupa a largura toda da tela */
+    height: 12vh;                    /* altura = 12% da altura da tela */
+    display: flex;                   /* coloca os filhos lado a lado */
+    justify-content: center;         /* centraliza os filhos na horizontal */
+    font-weight: bold;               /* letras em negrito */
 }
 
+/* ===== MENU (dentro do cabeçalho) ===== */
 .menu {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center; 
-    width: 100%;
-    font-size: 12px;
+    display: flex;                   /* itens do menu lado a lado */
+    justify-content: space-evenly;   /* espaço igual entre os itens */
+    align-items: center;             /* centraliza os itens na vertical */
+    width: 100%;                     /* ocupa a largura toda do cabeçalho */
+    margin: 0;                       /* tira espaço de fora */
+    padding: 0;                      /* tira espaço de dentro */
+    list-style: none;                /* tira as bolinhas da lista */
 }
 
 .menu a {
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none; /* none = nao ter sublinhado */
+    color: white;                    /* cor dos links */
+    font-size: 14px;                 /* tamanho da letra */
+    font-weight: 600;                /* meio negrito */
+    text-decoration: none;           /* tira o sublinhado dos links */
 }
 
 .menu button {
-    background-color: #e6e6e6;
-    color: black;
-    border-radius: 5px;
-    border: none;
-    font-size: 12px;
-    padding: 6px 30px;
+    background-color: #e6e6e6;       /* fundo cinza claro do botão Login */
+    color: black;                    /* cor da letra */
+    border-radius: 5px;              /* cantos arredondados */
+    border: none;                    /* sem borda */
+    font-size: 12px;                 /* tamanho da letra */
+    padding: 6px 30px;               /* espaço de dentro: 6px em cima/baixo, 30px nos lados */
 }
 
-.menu img{
-    width: 90px;
-    margin-right: 60px;
+.menu img {
+    width: 90px;                     /* largura da logo do menu */
+    margin-right: 60px;              /* espaço à direita da logo */
 }
 
-.box-login-pai {    
-    display: flex;
-    justify-content: space-around;
-    height: 88vh;
-    align-items: center;
-    
+/* ===== ÁREA DO CONTEÚDO (logo + card) ===== */
+.box-login-pai {
+    display: flex;                   /* logo e card lado a lado */
+    justify-content: space-around;   /* espaço ao redor de cada um */
+    align-items: center;             /* centraliza os dois na vertical */
+    padding: 20px 0;                 /* 20px de espaço em cima e embaixo, 0 nos lados */
 }
 
+/* ===== LOGO DA ESQUERDA ===== */
+.logo-box {
+    background-image: url("../assets/logo_dois.png"); /* imagem da logo */
+    background-size: cover;          /* a imagem cobre a caixa toda */
+    background-position: center;     /* centraliza a imagem */
+    background-repeat: no-repeat;    /* não repete */
+    width: 380px;                    /* largura da caixa */
+    height: 30vh;                    /* altura = 30% da altura da tela */
+}
 
+/* ===== CARD BRANCO DO CADASTRO ===== */
 .box-login-filho {
-    display: flex;
-    margin-right: 4vw;
-    flex-direction: column; /* serve para organizar em linha ou coluna os elementos filhos */
-    height: 80vh;
-    width: 50vw;
-    background-color: white;
-    border: solid;
-    border-width: 1px;
-    border-radius: 20px;
-    border-color: #F2F5F7;
-    align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
+    width: 550px;                    /* largura do card */
+    background-color: white;         /* fundo branco */
+    border: 1px solid white;         /* borda fina branca */
+    border-radius: 12px;             /* cantos arredondados */
+    padding: 20px;                   /* espaço entre a borda e o conteúdo */
+    text-align: center;              /* centraliza os textos */
 }
 
-.botao-entrar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10%;
-    width: 100%;
-}
-
-.botao-entrar button {
-    width: 90%;
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #176bea;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
+/* ===== TÍTULO "Cadastrar" ===== */
 .boas-vindas {
-    display: flex;
-    height: 5%;
-    width: 100%;
-    font-size: x-large;
-    font-weight: bold;
-    color: #136BE5;
-    justify-content: center;
+    font-size: 24px;                 /* tamanho da letra */
+    font-weight: bold;               /* negrito */
+    color: #136BE5;                  /* azul */
+    margin-bottom: 20px;             /* espaço embaixo do título */
 }
 
-.boas-vindas span {
-    height: 100%;
-}
-
+/* ===== CAMPOS DO FORMULÁRIO ===== */
 .campos {
-    height: 60%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.campos img{
-    width: 16px;
-    margin-right: 6px;
-}
-
-.campos input {
-    width: 70%;
-    height: 7%;
-    border-color: #F2F5F7;
-    border-width: 0.5px;
-    border-radius: 5px;
-    font-size: 12px;
+    text-align: left;                /* textos alinhados à esquerda */
 }
 
 .campos label {
-    font-weight: bold;
-    width: 70%;
-    text-align: start;
-    font-size: 12px ;
+    font-size: 12px;                 /* tamanho do nome do campo */
+    font-weight: bold;               /* negrito */
 }
 
+.campos input {
+    width: 100%;                     /* input ocupa a largura toda do card */
+    box-sizing: border-box;          /* o padding e a borda ficam dentro dos 100% */
+    padding: 10px;                   /* espaço dentro do input */
+    margin-top: 6px;                 /* espaço em cima do input */
+    margin-bottom: 12px;             /* espaço embaixo do input */
+    border: 1px solid #cccccc;       /* borda fina cinza */
+    border-radius: 5px;              /* cantos arredondados */
+    font-family: inherit;            /* usa o mesmo tipo de letra do resto da página */
+    font-size: 12px;                 /* tamanho da letra digitada */
+}
+
+.campos img {
+    width: 16px;                     /* tamanho dos ícones (pessoa, e-mail, cadeado) */
+    margin-right: 6px;               /* espaço entre o ícone e o texto */
+}
+
+/* ===== CHECKBOX DOS TERMOS ===== */
 .box-checkbox-pai {
-    display: flex;
-    width: 70%;
-    flex-direction: row;
-    text-align: start;
-    font-size: 12px;
+    display: flex;                   /* checkbox e texto lado a lado */
+    text-align: left;                /* alinhado à esquerda */
+    font-size: 12px;                 /* tamanho da letra */
 }
 
 .box-checkbox-pai input {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
+    margin-right: 10px;              /* espaço entre a caixinha e o texto */
+    width: 20px;                     /* largura da caixinha */
+    height: 20px;                    /* altura da caixinha */
 }
 
 .box-checkbox-pai a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #00A8FF;
+    text-decoration: none;           /* tira o sublinhado dos links */
+    font-weight: bold;               /* negrito */
+    color: #00A8FF;                  /* azul claro */
 }
 
+/* ===== BOTÃO CADASTRAR ===== */
+.botao-entrar button {
+    width: 90%;                      /* largura = 90% do card */
+    margin-top: 20px;                /* espaço em cima do botão */
+    padding: 12px;                   /* espaço dentro do botão */
+    background-color: #176bea;       /* fundo azul */
+    color: white;                    /* letra branca */
+    border-radius: 5px;              /* cantos arredondados */
+    border: none;                    /* sem borda */
+    font-weight: bold;               /* negrito */
+    cursor: pointer;                 /* o mouse vira uma mãozinha ao passar por cima */
+}
+
+/* ===== MENSAGEM DE SEGURANÇA (embaixo) ===== */
 .seguranca {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    color: #666666;
-    font-size: 10px;
+    display: flex;                   /* ícone e texto lado a lado */
+    justify-content: center;         /* centraliza na horizontal */
+    align-items: center;             /* centraliza na vertical */
+    margin-top: 20px;                /* espaço em cima */
+    color: #666666;                  /* cinza */
+    font-size: 10px;                 /* letra pequena */
 }
 
 .seguranca img {
-    width: 16px;
-    margin-right: 6px;
-}
-
-.logo-box {
-    background-image: url("../assets/logo_dois.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 380px;
-    height: 30vh;
+    width: 16px;                     /* tamanho do ícone do escudo */
+    margin-right: 6px;               /* espaço entre o ícone e o texto */
 }
