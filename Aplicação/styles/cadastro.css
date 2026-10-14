@@ -1,49 +1,51 @@
 /* ===== CORPO DA PÁGINA ===== */
 body {
-    margin: 0;                       /* tira o espaço branco que o navegador coloca em volta da página */
-    font-family: Arial, Helvetica, sans-serif; /* tipo de letra (se não tiver Arial, usa a próxima) */
-    background-image: url("../assets/background_image.png"); /* imagem de fundo da página */
-    background-size: cover;          /* a imagem estica para cobrir a tela toda */
-    background-position: center;     /* centraliza a imagem */
-    background-repeat: no-repeat;    /* não repete a imagem */
-    color: #062454;                  /* cor padrão dos textos (azul escuro) */
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../assets/background_image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   /* nova: a imagem fica presa na tela */
+    color: #062454;
 }
 
 /* ===== CABEÇALHO (barra azul de cima) ===== */
 .cabecalho {
-    background-color: #062454;       /* cor de fundo da barra */
-    width: 100%;                     /* ocupa a largura toda da tela */
-    height: 12vh;                    /* altura = 12% da altura da tela */
-    display: flex;                   /* coloca os filhos lado a lado */
-    justify-content: center;         /* centraliza os filhos na horizontal */
-    font-weight: bold;               /* letras em negrito */
+    display: flex;
+    background-color: #062454;
+    padding: 15px 7%;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
 }
 
 /* ===== MENU (dentro do cabeçalho) ===== */
 .menu {
-    display: flex;                   /* itens do menu lado a lado */
-    justify-content: space-evenly;   /* espaço igual entre os itens */
-    align-items: center;             /* centraliza os itens na vertical */
-    width: 100%;                     /* ocupa a largura toda do cabeçalho */
-    margin: 0;                       /* tira espaço de fora */
-    padding: 0;                      /* tira espaço de dentro */
-    list-style: none;                /* tira as bolinhas da lista */
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .menu a {
-    color: white;                    /* cor dos links */
-    font-size: 14px;                 /* tamanho da letra */
-    font-weight: 600;                /* meio negrito */
-    text-decoration: none;           /* tira o sublinhado dos links */
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.menu li {
+        margin-right: 30px;
 }
 
-.menu button {
-    background-color: #e6e6e6;       /* fundo cinza claro do botão Login */
-    color: black;                    /* cor da letra */
-    border-radius: 5px;              /* cantos arredondados */
-    border: none;                    /* sem borda */
-    font-size: 12px;                 /* tamanho da letra */
-    padding: 6px 30px;               /* espaço de dentro: 6px em cima/baixo, 30px nos lados */
+.cabecalho button {
+    background-color: #e6e6e6;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+    padding: 6px 30px;
 }
 
 .menu img {
@@ -53,38 +55,33 @@ body {
 
 /* ===== ÁREA DO CONTEÚDO (logo + card) ===== */
 .box-login-pai {
-    display: flex;                   /* logo e card lado a lado */
-    justify-content: space-around;   /* espaço ao redor de cada um */
-    align-items: center;             /* centraliza os dois na vertical */
-    padding: 20px 0;                 /* 20px de espaço em cima e embaixo, 0 nos lados */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;   /* era center: agora a logo começa no topo */
+    padding: 40px 12%;
 }
 
 /* ===== LOGO DA ESQUERDA ===== */
-.logo-box {
-    background-image: url("../assets/logo_dois.png"); /* imagem da logo */
-    background-size: cover;          /* a imagem cobre a caixa toda */
-    background-position: center;     /* centraliza a imagem */
-    background-repeat: no-repeat;    /* não repete */
-    width: 380px;                    /* largura da caixa */
-    height: 30vh;                    /* altura = 30% da altura da tela */
+.logo-dois {
+    width: 380px;
+    margin-top: 100px;
 }
 
 /* ===== CARD BRANCO DO CADASTRO ===== */
 .box-login-filho {
-    width: 550px;                    /* largura do card */
-    background-color: white;         /* fundo branco */
-    border: 1px solid white;         /* borda fina branca */
-    border-radius: 12px;             /* cantos arredondados */
-    padding: 20px;                   /* espaço entre a borda e o conteúdo */
-    text-align: center;              /* centraliza os textos */
-}
+    width: 380px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;}
 
 /* ===== TÍTULO "Cadastrar" ===== */
 .boas-vindas {
-    font-size: 24px;                 /* tamanho da letra */
-    font-weight: bold;               /* negrito */
-    color: #136BE5;                  /* azul */
-    margin-bottom: 20px;             /* espaço embaixo do título */
+    font-size: 22px;
+    font-weight: bold;
+    color: #062454;
+    margin-bottom: 10px;
 }
 
 /* ===== CAMPOS DO FORMULÁRIO ===== */
@@ -98,15 +95,15 @@ body {
 }
 
 .campos input {
-    width: 100%;                     /* input ocupa a largura toda do card */
-    box-sizing: border-box;          /* o padding e a borda ficam dentro dos 100% */
-    padding: 10px;                   /* espaço dentro do input */
-    margin-top: 6px;                 /* espaço em cima do input */
-    margin-bottom: 12px;             /* espaço embaixo do input */
-    border: 1px solid #cccccc;       /* borda fina cinza */
-    border-radius: 5px;              /* cantos arredondados */
-    font-family: inherit;            /* usa o mesmo tipo de letra do resto da página */
-    font-size: 12px;                 /* tamanho da letra digitada */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 12px;
 }
 
 .campos img {
@@ -135,25 +132,66 @@ body {
 
 /* ===== BOTÃO CADASTRAR ===== */
 .botao-entrar button {
-    width: 90%;                      /* largura = 90% do card */
-    margin-top: 20px;                /* espaço em cima do botão */
-    padding: 12px;                   /* espaço dentro do botão */
-    background-color: #176bea;       /* fundo azul */
-    color: white;                    /* letra branca */
-    border-radius: 5px;              /* cantos arredondados */
-    border: none;                    /* sem borda */
-    font-weight: bold;               /* negrito */
-    cursor: pointer;                 /* o mouse vira uma mãozinha ao passar por cima */
+    width: 90%;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #176bea;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* ===== MENSAGEM DE SEGURANÇA (embaixo) ===== */
+
+.box-login-filho {
+    width: 380px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.boas-vindas {
+    font-size: 22px;
+    font-weight: bold;
+    color: #062454;
+    margin-bottom: 10px;
+}
+
+.campos input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.botao-entrar button {
+    width: 90%;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #176bea;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .seguranca {
-    display: flex;                   /* ícone e texto lado a lado */
-    justify-content: center;         /* centraliza na horizontal */
-    align-items: center;             /* centraliza na vertical */
-    margin-top: 20px;                /* espaço em cima */
-    color: #666666;                  /* cinza */
-    font-size: 10px;                 /* letra pequena */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    color: #666666;
+    font-size: 10px;
 }
 
 .seguranca img {
