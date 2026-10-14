@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/cadastro.css">
     <link rel="icon" href="../assets/logo_dois.png" type="image/png">
 </head>
+
 <body>
     <div class="cabecalho">
         <ul class="menu">
@@ -24,7 +25,7 @@
             <li>
                 <a href="#">Simulador financeiro</a></a>
             </li>
-                <button onclick="">Login</button>
+            <button onclick="">Login</button>
         </ul>
 
     </div>
@@ -58,13 +59,14 @@
             <div class="box-checkbox-pai">
                 <input type="checkbox" id="chk_termos">
                 <label for="chk_termos">
-                    Li e concordo com os <a href="#">Termos de Uso</a> e  <br> <a href="#">Política de Privacidade</a>
+                    Li e concordo com os <a href="#">Termos de Uso</a> e <br> <a href="#">Política de Privacidade</a>
                 </label>
             </div>
 
             <div class="botao-entrar">
                 <button onclick="cadastrar()">Cadastrar</button>
-            </div>
+            </div><br>
+            <div id="div_mensagem"></div>
             <div class="seguranca">
                 <img src="../assets/icon_defender.png" alt="">
                 <span> Seus dados estão protegido de ponta a ponta.</span>
@@ -74,39 +76,58 @@
     </div>
 </body>
 <script>
+    let bancoNomes = []
+    let bancoEmails = []
+    let bancoSenhas = []
 
     function cadastrar() {
-        let bancoNomes = [];
-        let bancoEmails = [];
-        let bancoSenhas = [];
+        let nome = ipt_nome.value.trim()
+        let email = ipt_email.value.trim()
+        let empresa = ipt_empresa.value.trim()
+        let telefone = ipt_telefone.value.trim()
+        let senha = ipt_senha.value
+        let confirmarSenha = ipt_confirmarSenha.value
+        let tudoCerto = true;
 
-        function cadastrar() {
-            let nome = ipt_nomeCompleto.value.trim();
-            let email = ipt_email.value.trim();
-            let empresa = ipt_empresa.value.trim();
-            let telefone = ipt_telefone.value.trim();
-            let senha = ipt_senha.value;
-            let confirmarSenha = ipt_confirmarSenha.value;
-
-            if (nome == "" || email == "" || empresa == "" || telefone == "" || senha == "" || confirmarSenha == "") {
-                div_msg_senha.innerHTML = "Por favor, preencha todos os campos!";
-            }
-
-            if (senha != confirmarSenha) {
-                div_msg_senha.innerHTML = "As senhas não coincidem!";
-            }
-
-            if (bancoEmails.includes(email)) {
-                div_msg_senha.innerHTML = "Este e-mail já está cadastrado!";
-            }
-
-            bancoNomes.push(nome);
-            bancoEmails.push(email);
-            bancoSenhas.push(senha);
-
-            div_msg_senha.innerHTML = `Cadastro efetuado com sucesso, ${nome}!`;
+        if (nome == "" || email == "" || empresa == "" || telefone == "" || senha == "" || confirmarSenha == "") {
+            div_mensagem.innerHTML = "Por favor, preencha todos os campos!"
+            tudoCerto = false
         }
-    }    
+
+        if (tudoCerto == true && senha != confirmarSenha) {
+            div_mensagem.innerHTML = "As senhas não coincidem!"
+            tudoCerto = false
+        }
+
+        if (tudoCerto == true && bancoEmails.includes(email)) {
+            div_mensagem.innerHTML = "Este e-mail já está cadastrado!"
+            tudoCerto = false
+        }
+
+        let aux = 0;
+        let achouArroba = false
+
+        while (aux < email.length && achouArroba == false) {
+            if (email[aux] == '@') {
+                achouArroba = true;
+            }
+            aux++;
+        }
+
+        if (achouArroba == false && tudoCerto == true) {
+            div_mensagem.innerHTML = "O e-mail precisa ter @!";
+            tudoCerto = false;
+        }
+
+
+        if (tudoCerto == true) {
+            bancoNomes.push(nome)
+            bancoEmails.push(email)
+            bancoSenhas.push(senha)
+
+            div_mensagem.innerHTML = `Cadastro efetuado com sucesso, ${nome}!`
+        }
+    }
 </script>
 
 </html>
