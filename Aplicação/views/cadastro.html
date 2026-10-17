@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -115,8 +116,26 @@
             aux++;
         }
 
+        aux = 0;
+        let qtdSenha_sufuciente = false;
+        let qtdCaracteres = 0;
+
+        while (aux < senha.length) {
+            qtdCaracteres++;
+            aux++;
+        }
+
+        if (qtdCaracteres >= 8) {
+            qtdSenha_sufuciente = true;
+        }
+
         if (achouArroba == false && tudoCerto == true) {
             div_mensagem.innerHTML = "O e-mail precisa ter @!";
+            tudoCerto = false;
+        }
+
+        if (qtdSenha_sufuciente == false && tudoCerto == true) {
+            div_mensagem.innerHTML = `A senha precisa ter 8 ou mais caracteres`;
             tudoCerto = false;
         }
 
