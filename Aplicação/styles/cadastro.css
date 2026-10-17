@@ -1,200 +1,202 @@
 /* ===== CORPO DA PÁGINA ===== */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../assets/background_image.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;   /* nova: a imagem fica presa na tela */
-    color: #062454;
+body {                                                      /* seleciona a página inteira */
+    margin: 0;                                              /* tira a margem padrão do navegador */
+    font-family: Arial, Helvetica, sans-serif;              /* fonte do site (se não achar Arial, usa Helvetica, senão qualquer sem serifa) */
+    background-image: url("../assets/background_image.png"); /* imagem de fundo (caminho da pasta assets) */
+    background-size: cover;                                 /* a imagem cobre a tela toda, sem deixar espaços */
+    background-position: center;                            /* centraliza a imagem de fundo */
+    background-repeat: no-repeat;                           /* impede a imagem de se repetir */
+    background-attachment: fixed;                           /* nova: a imagem fica presa na tela */
+    color: #062454;                                         /* cor padrão dos textos (azul escuro) */
 }
 
 /* ===== CABEÇALHO (barra azul de cima) ===== */
-.cabecalho {
-    display: flex;
-    background-color: #062454;
-    padding: 15px 7%;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
+.cabecalho {                                                /* seleciona o elemento com class="cabecalho" */
+    display: flex;                                          /* coloca os itens do cabeçalho lado a lado */
+    background-color: #062454;                              /* cor de fundo azul escuro da barra */
+    padding: 15px 7%;                                       /* espaço interno: 15px em cima/embaixo e 7% nas laterais */
+    justify-content: space-between;                         /* joga o primeiro item para a esquerda e o último para a direita */
+    align-items: center;                                    /* alinha os itens ao centro na vertical */
+    font-weight: bold;                                      /* letras em negrito */
 }
 
 /* ===== MENU (dentro do cabeçalho) ===== */
-.menu {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.menu {                                                     /* seleciona o elemento com class="menu" */
+    display: flex;                                          /* coloca os itens do menu lado a lado */
+    align-items: center;                                    /* alinha os itens ao centro na vertical */
+    margin: 0;                                              /* tira a margem externa */
+    padding: 0;                                             /* tira o espaço interno padrão da lista */
+    list-style: none;                                       /* tira as bolinhas da lista */
 }
 
-.menu a {
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
+.menu a {                                                   /* seleciona os links (a) dentro do menu */
+    color: white;                                           /* texto do link na cor branca */
+    font-size: 14px;                                        /* tamanho da letra */
+    font-weight: 600;                                       /* peso da letra (semi-negrito) */
+    text-decoration: none;                                  /* tira o sublinhado do link */
 }
-.menu li {
-        margin-right: 30px;
-}
-
-.cabecalho button {
-    background-color: #e6e6e6;
-    color: black;
-    border-radius: 5px;
-    border: none;
-    font-size: 12px;
-    padding: 6px 30px;
+.menu li {                                                  /* seleciona cada item (li) do menu */
+        margin-right: 30px;                                 /* espaço de 30px à direita de cada item */
 }
 
-.menu img {
+.cabecalho button {                                         /* seleciona os botões dentro do cabeçalho */
+    background-color: #e6e6e6;                              /* fundo cinza claro */
+    color: black;                                           /* texto preto */
+    border-radius: 5px;                                     /* cantos arredondados */
+    border: none;                                           /* tira a borda do botão */
+    font-size: 12px;                                        /* tamanho da letra */
+    padding: 6px 30px;                                      /* espaço interno: 6px em cima/embaixo e 30px nas laterais */
+}
+
+.menu img {                                                 /* seleciona as imagens dentro do menu */
     width: 90px;                     /* largura da logo do menu */
     margin-right: 60px;              /* espaço à direita da logo */
 }
 
 /* ===== ÁREA DO CONTEÚDO (logo + card) ===== */
-.box-login-pai {
-    display: flex;
-    justify-content: space-between;
+.box-login-pai {                                            /* seleciona a caixa que guarda a logo e o card */
+    display: flex;                                          /* coloca a logo e o card lado a lado */
+    justify-content: space-between;                         /* logo na esquerda e card na direita, com espaço entre eles */
     align-items: flex-start;   /* era center: agora a logo começa no topo */
-    padding: 40px 12%;
+    padding: 40px 12%;                                      /* espaço interno: 40px em cima/embaixo e 12% nas laterais */
 }
 
 /* ===== LOGO DA ESQUERDA ===== */
-.logo-dois {
-    width: 380px;
-    margin-top: 100px;
+.logo-dois {                                                /* seleciona a logo da esquerda */
+    width: 380px;                                           /* largura da logo */
+    margin-top: 100px;                                      /* afasta a logo 100px do topo */
 }
 
 /* ===== CARD BRANCO DO CADASTRO ===== */
-.box-login-filho {
-    width: 380px;
-    background-color: white;
-    border: 1px solid white;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;}
+.box-login-filho {                                          /* seleciona o card branco do cadastro */
+    width: 380px;                                           /* largura do card */
+    background-color: white;                                /* fundo branco */
+    border: 1px solid white;                                /* borda branca de 1px */
+    border-radius: 12px;                                    /* cantos arredondados */
+    padding: 20px;                                          /* espaço interno de 20px em todos os lados */
+    text-align: center;                                     /* centraliza os textos dentro do card */
+}
 
 /* ===== TÍTULO "Cadastrar" ===== */
-.boas-vindas {
-    font-size: 22px;
-    font-weight: bold;
-    color: #062454;
-    margin-bottom: 10px;
+.boas-vindas {                                              /* seleciona o título "Cadastrar" */
+    font-size: 22px;                                        /* tamanho da letra */
+    font-weight: bold;                                      /* negrito */
+    color: #062454;                                         /* azul escuro */
+    margin-bottom: 10px;                                    /* espaço de 10px embaixo do título */
 }
 
 /* ===== CAMPOS DO FORMULÁRIO ===== */
-.campos {
+.campos {                                                   /* seleciona a área dos campos do formulário */
     text-align: left;                /* textos alinhados à esquerda */
 }
 
-.campos label {
+.campos label {                                             /* seleciona os nomes dos campos (label) */
     font-size: 12px;                 /* tamanho do nome do campo */
     font-weight: bold;               /* negrito */
 }
 
-.campos input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 8px;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 12px;
+.campos input {                                             /* seleciona as caixas de digitação (input) dos campos */
+    width: 100%;                                            /* ocupa toda a largura do card */
+    box-sizing: border-box;                                 /* conta padding e borda dentro dos 100%, para não estourar o card */
+    padding: 8px;                                           /* espaço interno de 8px */
+    margin-top: 4px;                                        /* espaço de 4px em cima */
+    margin-bottom: 8px;                                     /* espaço de 8px embaixo */
+    border: 1px solid #cccccc;                              /* borda cinza clara de 1px */
+    border-radius: 5px;                                     /* cantos arredondados */
+    font-family: inherit;                                   /* usa a mesma fonte do resto da página */
+    font-size: 12px;                                        /* tamanho da letra digitada */
 }
 
-.campos img {
+.campos img {                                               /* seleciona os ícones dentro dos campos */
     width: 16px;                     /* tamanho dos ícones (pessoa, e-mail, cadeado) */
     margin-right: 6px;               /* espaço entre o ícone e o texto */
 }
 
 /* ===== CHECKBOX DOS TERMOS ===== */
-.box-checkbox-pai {
+.box-checkbox-pai {                                         /* seleciona a caixa do checkbox dos termos */
     display: flex;                   /* checkbox e texto lado a lado */
     text-align: left;                /* alinhado à esquerda */
     font-size: 12px;                 /* tamanho da letra */
 }
 
-.box-checkbox-pai input {
+.box-checkbox-pai input {                                   /* seleciona o checkbox (a caixinha de marcar) */
     margin-right: 10px;              /* espaço entre a caixinha e o texto */
     width: 20px;                     /* largura da caixinha */
     height: 20px;                    /* altura da caixinha */
 }
 
-.box-checkbox-pai a {
+.box-checkbox-pai a {                                       /* seleciona os links dos termos */
     text-decoration: none;           /* tira o sublinhado dos links */
     font-weight: bold;               /* negrito */
     color: #00A8FF;                  /* azul claro */
 }
 
 /* ===== BOTÃO CADASTRAR ===== */
-.botao-entrar button {
-    width: 90%;
-    margin-top: 10px;
-    padding: 12px;
-    background-color: #176bea;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+.botao-entrar button {                                      /* seleciona o botão "Cadastrar" */
+    width: 90%;                                             /* ocupa 90% da largura do card */
+    margin-top: 10px;                                       /* espaço de 10px em cima */
+    padding: 12px;                                          /* espaço interno de 12px (deixa o botão mais alto) */
+    background-color: #176bea;                              /* fundo azul */
+    color: white;                                           /* texto branco */
+    border-radius: 5px;                                     /* cantos arredondados */
+    border: none;                                           /* tira a borda */
+    font-weight: bold;                                      /* negrito */
+    cursor: pointer;                                        /* o mouse vira "mãozinha" ao passar por cima */
 }
 
 /* ===== MENSAGEM DE SEGURANÇA (embaixo) ===== */
 
-.box-login-filho {
-    width: 380px;
-    background-color: white;
-    border: 1px solid white;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
+/* OBS: os quatro blocos abaixo (.box-login-filho, .boas-vindas, .campos input e .botao-entrar button) são repetidos, já aparecem mais acima com os mesmos valores */
+.box-login-filho {                                          /* seleciona o card branco (repetido) */
+    width: 380px;                                           /* largura do card */
+    background-color: white;                                /* fundo branco */
+    border: 1px solid white;                                /* borda branca de 1px */
+    border-radius: 12px;                                    /* cantos arredondados */
+    padding: 20px;                                          /* espaço interno de 20px */
+    text-align: center;                                     /* centraliza os textos */
 }
 
-.boas-vindas {
-    font-size: 22px;
-    font-weight: bold;
-    color: #062454;
-    margin-bottom: 10px;
+.boas-vindas {                                              /* seleciona o título "Cadastrar" (repetido) */
+    font-size: 22px;                                        /* tamanho da letra */
+    font-weight: bold;                                      /* negrito */
+    color: #062454;                                         /* azul escuro */
+    margin-bottom: 10px;                                    /* espaço de 10px embaixo */
 }
 
-.campos input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 8px;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 12px;
+.campos input {                                             /* seleciona as caixas de digitação (repetido) */
+    width: 100%;                                            /* ocupa toda a largura */
+    box-sizing: border-box;                                 /* conta padding e borda dentro dos 100% */
+    padding: 8px;                                           /* espaço interno de 8px */
+    margin-top: 4px;                                        /* espaço de 4px em cima */
+    margin-bottom: 8px;                                     /* espaço de 8px embaixo */
+    border: 1px solid #cccccc;                              /* borda cinza clara */
+    border-radius: 5px;                                     /* cantos arredondados */
+    font-family: inherit;                                   /* usa a fonte da página */
+    font-size: 12px;                                        /* tamanho da letra */
 }
 
-.botao-entrar button {
-    width: 90%;
-    margin-top: 10px;
-    padding: 12px;
-    background-color: #176bea;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+.botao-entrar button {                                      /* seleciona o botão "Cadastrar" (repetido) */
+    width: 90%;                                             /* 90% da largura do card */
+    margin-top: 10px;                                       /* espaço de 10px em cima */
+    padding: 12px;                                          /* espaço interno de 12px */
+    background-color: #176bea;                              /* fundo azul */
+    color: white;                                           /* texto branco */
+    border-radius: 5px;                                     /* cantos arredondados */
+    border: none;                                           /* sem borda */
+    font-weight: bold;                                      /* negrito */
+    cursor: pointer;                                        /* mouse vira "mãozinha" */
 }
 
-.seguranca {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    color: #666666;
-    font-size: 10px;
+.seguranca {                                                /* seleciona a mensagem de segurança de baixo do card */
+    display: flex;                                          /* coloca o ícone e o texto lado a lado */
+    justify-content: center;                                /* centraliza na horizontal */
+    align-items: center;                                    /* centraliza na vertical */
+    margin-top: 15px;                                       /* espaço de 15px em cima */
+    color: #666666;                                         /* texto cinza */
+    font-size: 10px;                                        /* letra pequena */
 }
 
-.seguranca img {
+.seguranca img {                                            /* seleciona o ícone dentro da mensagem de segurança */
     width: 16px;                     /* tamanho do ícone do escudo */
     margin-right: 6px;               /* espaço entre o ícone e o texto */
 }
