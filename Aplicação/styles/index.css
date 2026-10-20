@@ -278,7 +278,7 @@ body {
     color: #4a5568;
 }
 
-.box-calculadora button {
+.box-calculadora a {
     color: #ffffff;
     background-color: #136be5;
     white-space: nowrap;

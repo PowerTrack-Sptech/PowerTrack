@@ -44,13 +44,22 @@ body {
 }
 
 .botao-login {
-     margin-left: auto;
-    background-color: white;
-    color: #001B46;
+    background-color: #e6e6e6;
+    /* fundo cinza claro */
+    color: black;
+    /* texto preto */
+    border-radius: 5px;
+    /* cantos arredondados */
     border: none;
-    border-radius: 7px;
-    padding: 10px 35px;
-    font-size: 15px;
+    /* tira a borda do botão */
+    font-size: 12px;
+    /* tamanho da letra */
+    padding: 6px 30px;
+    /* espaço interno: 6px em cima/embaixo e 30px nas laterais */
+    width: 100px;
+    /* largura fixa, grande o bastante para o texto */
+    text-align: center;
+    /* texto no meio do botão */
     cursor: pointer;
 }
 
