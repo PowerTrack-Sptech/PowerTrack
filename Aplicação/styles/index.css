@@ -34,6 +34,21 @@ body {
     cursor: pointer;
 }
 
+
+.botao-perfil img{
+    background-color: #e6e6e6;
+    /* fundo cinza claro */
+    border-radius: 100px;
+    /* cantos arredondados */
+    border: none;
+    /* tira a borda do botão */
+    font-size: 12px;
+    /* tamanho da letra */
+    padding: 6px;
+    /* espaço interno: 6px em cima/embaixo e 30px nas laterais */
+    cursor: pointer;
+}
+
 .menu {
     display: flex;
     justify-content: space-evenly;
