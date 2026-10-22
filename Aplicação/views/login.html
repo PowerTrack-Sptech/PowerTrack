@@ -57,7 +57,7 @@
             </div>
 
             <div class="botao-entrar">
-                <button onclick="Entrar()">Entrar</button>
+                <a href="../views/dashboard.html"><button onclick="Entrar()">Entrar</button></a>
             </div>
 
             <div class="links">
@@ -86,10 +86,7 @@
 
         if (indice != -1 && Banco_Senha[indice] == senha) {
             tudoCerto = true;
-            div_msg_senha.innerHTML = `Logado com sucesso!`
-            if (tudoCerto == true) {
-                window.location.href = "dashboard.html";
-            }
+            div_msg_senha.innerHTML = `Logado com sucesso!`   
         }
         else {
             div_msg_senha.innerHTML = `Senha ou E-mail inválido!`;
