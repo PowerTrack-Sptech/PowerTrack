@@ -52,7 +52,7 @@
                 <div class="beneficios">
                     <p><span class="check">✓</span> Menos visitas presenciais</p>
                     <p><span class="check">✓</span> Menos deslocamentos</p>
-                     <p><span class="check">✓</span> Mais eficiência operacional</p>
+                    <p><span class="check">✓</span> Mais eficiência operacional</p>
                 </div>
             </div>
 
@@ -174,18 +174,27 @@
         let visitas70 = visitasAno * 70 / 100;
         let economia70 = visitas70 * custo;
 
+        if (geradores <= 0) {
+            alert('Insira uma quantidade valida de geradores!')
+            ipt_geradores.value = ""
+        } else if (visitas <= 0) {
+            alert('Insira uma quantidade valida de visitas mensais!')
+            ipt_visitas.value = ""
+        } else if (custo <= 0) {
+            alert('Valores de custo invalidos! Nao sera possivel estimar valores!')
+            ipt_custo.value = ""
+        } else {
+            div_result.innerHTML = `
+            <div class="resultado-card">
+                <p class="resultado-status">Simulação concluída</p>
 
-        div_result.innerHTML = `
-    <div class="resultado-card">
-        <p class="resultado-status">Simulação concluída</p>
+                <h2>${empresa}</h2>
 
-        <h2>${empresa}</h2>
+                <p class="resultado-geradores">
+                ${geradores} geradores monitorados
+                </p>
 
-        <p class="resultado-geradores">
-            ${geradores} geradores monitorados
-        </p>
-
-        <div class="resumo-custo">
+            <div class="resumo-custo">
             <p>Custo atual com inspeções</p>
 
             <strong>R$ ${custoAno.toFixed(2)} por ano</strong>
@@ -229,6 +238,7 @@
         </div>
     </div>
         `;
+        }
 
     }
 

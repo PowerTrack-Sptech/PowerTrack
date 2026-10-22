@@ -25,10 +25,13 @@ body {
     gap: 18px;
 }
 
-.menu img {
+.menu perfil {
     display: block;
     width: 170px;
     margin-bottom: 35px;
+    align-self: center;
+    background-color: #dcecff;
+    border-radius: 100px;
 }
 
 .menu a {
@@ -42,6 +45,11 @@ body {
 
 .menu a:hover {
     background-color: #1677ff;
+}
+
+.menu li {
+    color: #dcecff;
+    text-align: center;
 }
 
 /* Página */
