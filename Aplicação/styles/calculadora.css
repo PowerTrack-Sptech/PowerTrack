@@ -1,46 +1,17 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
-    font-family: "Poppins", Arial, sans-serif;
-    color: #001B46;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* TOPO */
 .cabecalho {
-    height: 86px;
-    padding: 0 9%;
     background-color: #062454;
+    width: 98.8vw;
+    /* vw = view widht */
+    height: 12vh;
+    /* vh = view height */
     display: flex;
-    align-items: center;
-    gap: 40px;
-    position: relative;
-}
-
-.logo {
-    width: 110px;
-    height: auto;
-    object-fit: contain;
-}
-
-.menu {
-    display: flex;
-    align-items: center;
-    gap: 45px;
-
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
+    justify-content: center;
+    font-size: small;
 }
 
 .botao-login {
@@ -63,18 +34,47 @@ body {
     cursor: pointer;
 }
 
-.botao-perfil img {
+
+.botao-perfil img{
     background-color: #e6e6e6;
     /* fundo cinza claro */
     border-radius: 100px;
     /* cantos arredondados */
     border: none;
     /* tira a borda do botão */
+    font-size: 12px;
+    /* tamanho da letra */
     padding: 6px;
     /* espaço interno: 6px em cima/embaixo e 30px nas laterais */
-    width: 100px;
-    /* largura fixa, grande o bastante para o texto */
     cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    list-style: none;
+    border-top: 20%;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    /* none = nao ter sublinhado */
+}
+
+.menu button {
+    height: 60%;
+    border-radius: 5px;
+    border: none;
+    font-size: small;
+}
+
+.menu img {
+    width: 100px;
+    margin-right: 70px;
 }
 
 /* ÁREA PRINCIPAL */
@@ -84,9 +84,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 75px;
     position: relative;
-    overflow: hidden;
 
     background-color: #F5F9FF;
     background-image: url("../assets/background_image.png");
@@ -98,7 +96,6 @@ body {
 .lado-esquerdo,
 .card-simulador {
     position: relative;
-    z-index: 1;
 }
 
 .lado-esquerdo {
@@ -205,16 +202,9 @@ body {
 }
 
 /* PARTE DE BAIXO */
-body>div {
-    padding: 35px 10%;
-}
-
-body>div h2 {
-    color: #001B46;
-}
 
 .secao-resultado {
-    padding: 60px 10%;
+    padding: 60px 20%;
     background-color: white;
 }
 
