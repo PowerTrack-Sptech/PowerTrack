@@ -19,7 +19,7 @@
             </li>
             <li><a class="ativo" href="#">Visão geral</a></li>
             <li><a href="#">Geradores</a></li>
-            <li><a href="#">Alertas</a></li>
+            <li><a href="#"> <img src="../assets/alertas_01.png" alt=""> Alertas</a></li>
             <li><a href="index_logado.html">Home</a></li>
             <img class="perfil" src="../assets/icon_pessoa.png" alt="profile_picture">
             <li>`${ipt_nome.value}`</li>
@@ -32,15 +32,15 @@
 
         <div class="titulo-pagina">
             <h1>Visão geral</h1>
-        </div>
 
         <p>Monitoramento de combustível dos geradores</p>
+        </div>
 
         <div class="cartoes">
 
             <div class="cartao cartao-azul">
                 <div class="icone-cartao">
-                    <img src="../assets/gerador.png" alt="Gerador">
+                    <img src="../assets/gerador_dois.png" alt="Gerador">
                 </div>
 
                 <div class="texto-cartao">
@@ -51,7 +51,9 @@
             </div>
 
             <div class="cartao cartao-verde">
-                <div class="icone-cartao">✓</div>
+                <div class="icone-cartao">
+                    <img src="../assets/positivo.png" alt="Positivo">
+                </div>
 
                 <div class="texto-cartao">
                     <h5>Operando normalmente</h5>
@@ -61,7 +63,9 @@
             </div>
 
             <div class="cartao cartao-amarelo">
-                <div class="icone-cartao">⚠</div>
+                <div class="icone-cartao">
+                    <img src="../assets/alerta.png" alt="">
+                </div>
 
                 <div class="texto-cartao">
                     <h5>Em atenção</h5>
@@ -71,7 +75,9 @@
             </div>
 
             <div class="cartao cartao-vermelho">
-                <div class="icone-cartao">!</div>
+                <div class="icone-cartao">
+                    <img src="../assets/perigo.png" alt="">
+                </div>
 
                 <div class="texto-cartao">
                     <h5>Estado crítico</h5>
@@ -95,7 +101,7 @@
                 </div>
 
                 <div class="item-gerador">
-                    <p><img src="../assets/gerador.png" alt="Gerador"> GER-001</p>
+                    <p><img src="../assets/gerador_dois.png" alt="Gerador"> GER - 1</p>
                     <p>Data Center Alpha</p>
 
                     <div class="nivel">
@@ -109,7 +115,7 @@
                 </div>
 
                 <div class="item-gerador">
-                    <p><img src="../assets/gerador.png" alt="Gerador"> GER-002</p>
+                    <p><img src="../assets/gerador_dois.png" alt="Gerador"> GER - 2</p>
                     <p>Hospital Vida+</p>
 
                     <div class="nivel">
@@ -123,7 +129,7 @@
                 </div>
 
                 <div class="item-gerador">
-                    <p><img src="../assets/gerador.png" alt="Gerador"> GER-003</p>
+                    <p><img src="../assets/gerador_dois.png" alt="Gerador"> GER - 3</p>
                     <p>Indústria Silva</p>
 
                     <div class="nivel">
@@ -137,7 +143,7 @@
                 </div>
 
                 <div class="item-gerador">
-                    <p><img src="../assets/gerador.png" alt="Gerador"> GER-004</p>
+                    <p><img src="../assets/gerador_dois.png" alt="Gerador"> GER - 4</p>
                     <p>Shopping Central</p>
 
                     <div class="nivel">
@@ -151,7 +157,7 @@
                 </div>
 
                 <div class="item-gerador">
-                    <p><img src="../assets/gerador.png" alt="Gerador"> GER-005</p>
+                    <p><img src="../assets/gerador_dois.png" alt="Gerador"> GER- 5</p>
                     <p>Universidade SP</p>
 
                     <div class="nivel">
@@ -170,11 +176,11 @@
                     <h3>Histórico de nível de combustível</h3>
 
                     <select class="seletor-gerador">
-                        <option>GER-001</option>
-                        <option>GER-002</option>
-                        <option>GER-003</option>
-                        <option>GER-004</option>
-                        <option>GER-005</option>
+                        <option>GER - 1</option>
+                        <option>GER - 2</option>
+                        <option>GER - 3</option>
+                        <option>GER - 4</option>
+                        <option>GER - 5</option>
                     </select>
                 </div>
 
@@ -208,7 +214,7 @@
                     <p>GER-005</p>
                     <p class="texto-vermelho">Nível crítico</p>
                     <p class="texto-vermelho">12%</p>
-                    <p class="nao-resolvido">Não resolvido</p>
+                    <p class="nao-resolvido"> <img src="../assets/perigo.png" alt=""> Não resolvido</p>
                 </div>
 
                 <div class="item-alerta">
