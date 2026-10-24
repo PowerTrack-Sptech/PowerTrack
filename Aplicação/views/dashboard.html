@@ -45,8 +45,8 @@
 
                 <div class="texto-cartao">
                     <h5>Geradores monitorados</h5>
-                    <p class="numero">5</p>
-                    <p class="mensagem">+ 1 desde o último mês</p>
+                    <p class="numero">7</p>
+                    <p class="mensagem">+3 desde o último mês</p>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                 <div class="texto-cartao">
                     <h5>Operando normalmente</h5>
                     <p class="numero">2</p>
-                    <p class="mensagem">40% do total</p>
+                    <p class="mensagem">28,6% do total</p>
                 </div>
             </div>
 
@@ -69,8 +69,8 @@
 
                 <div class="texto-cartao">
                     <h5>Em atenção</h5>
-                    <p class="numero">2</p>
-                    <p class="mensagem">40% do total</p>
+                    <p class="numero">3</p>
+                    <p class="mensagem">42,8% do total</p>
                 </div>
             </div>
 
@@ -81,8 +81,8 @@
 
                 <div class="texto-cartao">
                     <h5>Estado crítico</h5>
-                    <p class="numero">1</p>
-                    <p class="mensagem">20% do total</p>
+                    <p class="numero">2</p>
+                    <p class="mensagem">28,6% do total</p>
                 </div>
             </div>
 
@@ -176,6 +176,38 @@
                     </div> -->
 
                     <p>17 min</p>
+
+                    <p class="alertas"><img src="../assets/ALERTAS/selo_atencao.svg" alt=""></p>
+                </div>
+
+                <div class="item-gerador">
+                    <p><img src="../assets/ICONS_AZUL/geradores.svg" alt="Gerador"> GER - 6</p>
+                    <p>Data Center Alpha</p>
+
+                    <!-- <div class="nivel">
+                        <p class="porcentagem">82%</p>
+                        <div class="fundo-barra">
+                            <div class="barra verde"></div>
+                        </div>
+                    </div> -->
+
+                    <p>15 min</p>
+
+                    <p class="alertas"><img src="../assets/ALERTAS/selo_critico.svg" alt=""></p>
+                </div>
+
+                <div class="item-gerador">
+                    <p><img src="../assets/ICONS_AZUL/geradores.svg" alt="Gerador"> GER - 7</p>
+                    <p>Data Center Alpha</p>
+
+                    <!-- <div class="nivel">
+                        <p class="porcentagem">82%</p>
+                        <div class="fundo-barra">
+                            <div class="barra verde"></div>
+                        </div>
+                    </div> -->
+
+                    <p>28 min</p>
 
                     <p class="alertas"><img src="../assets/ALERTAS/selo_atencao.svg" alt=""></p>
                 </div>
@@ -280,16 +312,19 @@
             type: 'bar',
             plugins: [ChartDataLabels],
             data: {
-                labels: ['GER - 1', 'GER - 2', 'GER - 3', 'GER - 4', 'GER - 5'],
+                labels: ['GER - 1', 'GER - 2', 'GER - 3', 'GER - 4', 'GER - 5', 'GER - 6', 'GER - 7'],
                 datasets: [{
-                    data: [82, 64, 25, 73, 45],
+                    data: [82, 64, 25, 73, 45, 21, 53],
                     borderWidth: 1,
                     backgroundColor: [
                         '#22A55B',
                         '#F5B800',
                         '#E5484D',
                         '#22A55B',
+                        '#F5B800',
+                        '#E5484D',
                         '#F5B800'
+
                     ],
                     borderRadius: 10,
                 },
