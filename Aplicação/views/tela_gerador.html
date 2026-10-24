@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <title>PowerTrack | Dashboard</title>
+    <link rel="icon" href="../assets/logo_dois.png" type="image/png">
+</head>
+
+<body>
+    <div class="cabecalho">
+        <ul class="menu">
+            <li>
+                <img src="../assets/logo.png" alt="Logo PowerTrack">
+            </li>
+            <li><a class="ativo" href="#"> <img src="../assets/ICONS_BRANCO/visao_geral.svg" alt="">Visão geral</a></li>
+            <li><a href="#"> <img src="../assets/ICONS_BRANCO/geradores.svg" alt="">Geradores</a></li>
+            <li><a href="#"> <img src="../assets/ICONS_BRANCO/alertas.svg" alt=""> Alertas</a></li>
+            <li><a href="index_logado.html"><img src="../assets/ICONS_BRANCO/inicio.svg" alt="">Home</a></li>
+            <li><img class="perfil" src="../assets/ICONS_BRANCO/usuario.svg" alt="profile_picture"></li>
+            <!-- <li>`${ipt_nome.value}`</li> 
+            <li>`${ipt_empresa.value}`</li> -->
+            <li><a href="index.html"> <img src="../assets/ICONS_BRANCO/logout.svg" alt="">Exit</a></li>
+        </ul>
+    </div>
+
+    <main class="pagina">
+
+        <div class="titulo-pagina">
+            <h1>Visão geral</h1>
+
+            <p>Monitoramento de combustível dos geradores</p>
+        </div>
+
+        <div class="cartoes">
+
+            <div class="cartao cartao-azul">
+                <div class="icone-cartao">
+                    <img src="../assets/KPIS/kpi_gerador.svg" alt="Gerador">
+                </div>
+
+                <div class="texto-cartao">
+                    <h5>Geradores monitorados</h5>
+                    <p class="numero">7</p>
+                    <p class="mensagem">+3 desde o último mês</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="linha">
+
+            <div class="tabela tabela-alertas">
+                <h2>Alertas recentes</h2>
+
+                <div class="cabecalho-alertas">
+                    <p>Data e hora</p>
+                    <p>Gerador</p>
+                    <p>Tipo de alerta</p>
+                    <p>Nível</p>
+                    <p>Status</p>
+                </div>
+
+                <div class="item-alerta">
+                    <p>29/09 14:32</p>
+                    <p>GER-005</p>
+                    <p class="texto-vermelho">Nível crítico</p>
+                    <p class="texto-vermelho">12%</p>
+                    <p class="nao-resolvido"> <img src="../assets/perigo.png" alt=""> Não resolvido</p>
+                </div>
+
+                <div class="item-alerta">
+                    <p>29/09 11:15</p>
+                    <p>GER-003</p>
+                    <p>Queda rápida</p>
+                    <p>28%</p>
+                    <p class="nao-resolvido">Não resolvido</p>
+                </div>
+
+                <div class="item-alerta">
+                    <p>29/09 09:20</p>
+                    <p>GER-002</p>
+                    <p class="texto-amarelo">Nível baixo</p>
+                    <p>45%</p>
+                    <p class="resolvido">Resolvido</p>
+                </div>
+
+                <div class="item-alerta">
+                    <p>28/09 18:41</p>
+                    <p>GER-004</p>
+                    <p>Variação anormal</p>
+                    <p>68%</p>
+                    <p class="resolvido">Resolvido</p>
+                </div>
+
+                <div class="item-alerta">
+                    <p>28/09 14:10</p>
+                    <p>GER-001</p>
+                    <p>Operação normal</p>
+                    <p>80%</p>
+                    <p class="resolvido">Resolvido</p>
+                </div>
+            </div>
+
+            <div class="painel-grafico">
+                <div class="titulo-grafico">
+                    <h3>Histórico de nível de combustível</h3>
+
+                    <select class="seletor-gerador">
+                        <option>GER - 1</option>
+                        <option>GER - 2</option>
+                        <option>GER - 3</option>
+                        <option>GER - 4</option>
+                        <option>GER - 5</option>
+                    </select>
+                </div>
+
+                <div class="espaco-grafico">
+                    <canvas id="combustivelIndividual"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        gradiente.addColorStop(0, 'rgba(86, 153, 255, 10)');
+
+        const ct = document.getElementById('combustivelIndividual');
+
+        new Chart(ct, {
+            type: 'line',
+            data: {
+                labels: ['23/09', '24/09', '25/09', '26/09', '27/09', '28/09', '29/09'],
+                datasets: [{
+                    label: 'GER-001',
+                    data: [88, 75, 66, 58, 56, 66, 80],
+                    borderWidth: 3,
+                    borderColor: '#1774FF',
+                    tension: 0.1,
+                    backgroundColor: gradiente,
+                    fill: true,
+                    pointRadius: 2,
+                    order: 2
+                },
+                {
+                    data: [20, 20, 20, 20, 20, 20, 20],
+                    borderWidth: 2,
+                    borderColor: '#D31B1B',
+                    tension: 0.1,
+                    backgroundColor: '#D31B1B',
+                    pointRadius: 0,
+                    borderDash: [10, 10],
+                    order: 1,
+                    legend: {
+                        display: false
+                    }
+
+                },
+                {
+                    data: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+                    borderWidth: 2,
+                    borderColor: '#FFC005',
+                    tension: 0.1,
+                    backgroundColor: '#FFC005',
+                    pointRadius: 0,
+                    borderDash: [10, 10],
+                    order: 1
+                    ,
+                    legend: {
+                        display: false
+                    }
+
+                },]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            filter: function (item) {
+                                return item.datasetIndex === 0;
+                            }
+                        }
+                    }
+                },
+
+
+                scales: {
+                    y: {
+                        max: 100,
+                        min: 0,
+                        ticks: {
+                            stepSize: 25
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            stepSize: 30
+                        }
+
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
