@@ -53,6 +53,17 @@ CREATE TABLE gerador (
     REFERENCES empresa(id)
 );
 
+CREATE TABLE alerta(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	tipo_alerta VARCHAR(30),
+    data_alerta DATETIME DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT chk_tipo_alerta CHECK( tipo_alerta IN ('Atenção','Crítico')),
+    fk_gerador INT,
+    CONSTRAINT fk_alerta_gerador 
+    FOREIGN KEY (fk_gerador) 
+    REFERENCES gerador(id)
+);
+
 CREATE TABLE sensor (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	modelo_sensor VARCHAR(20),
