@@ -3,12 +3,12 @@ USE PowerTrack;
 CREATE TABLE empresa (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	nome_fantasia VARCHAR(100),
-	cnpj CHAR(18),
+	cnpj CHAR(14),
 	email VARCHAR(150),
 	telefone_empresa CHAR(11),
-    fk_empresa_beneficiada INT,
-	CONSTRAINT chk_empresa_beneficiada
-	FOREIGN KEY(fk_empresa_beneficiada)
+    fk_empresa_fabricante INT,
+	CONSTRAINT chk_empresa_fabricante
+	FOREIGN KEY(fk_empresa_fabricante)
 	REFERENCES empresa(id)
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE endereco (
     cidade VARCHAR(50),
     cep CHAR(8),
     fk_empresa INT,
-    CONSTRAINT cjk_endereco_empresa 
+    CONSTRAINT chk_endereco_empresa 
     FOREIGN KEY (fk_empresa) 
     REFERENCES empresa(id)
 );
@@ -46,7 +46,6 @@ CREATE TABLE gerador (
 	largura_tanque_cm DECIMAL(6,2),
 	profundidade_tanque_cm DECIMAL(6,2),
 	altura_tanque_cm DECIMAL(6,2),
-	diametro_tanque_cm DECIMAL(6,2),
 	fk_empresa INT,
 	CONSTRAINT chk_gerador_empresa
     FOREIGN KEY (fk_empresa)
@@ -84,3 +83,49 @@ CREATE TABLE medida (
 	FOREIGN KEY (fk_sensor)
 	REFERENCES sensor(id)
 );
+
+-- INSERINDO DADOS SIMULADOS PARA SELECT DAS DASHBOARDS 
+
+INSERT INTO empresa (nome_fantasia, cnpj, email, telefone_empresa, fk_empresa_fabricante) VALUES 
+('Data Center Alpha','67283849000198', 'datacenteralpha@gmail.com', '11973625364', NULL),
+('Hospital Vida+', '24873281000175', 'hospitalvida@gmail.com', '11928352182', 1),
+('Industria Silva', '36278329000123', 'industriasilva@gmail.com', '11987378001', NULL),
+('Shopping Central', '26137895000177', 'shoppingcentral@gmail.com', '11987886576', 1),
+('Universidade São Paulo', '76243547000197', 'universidadesp@gmail.com', '11924351167', 3);
+
+INSERT INTO endereco (logradouro, numero, bairro, cidade, cep, fk_empresa) VALUES 
+('Avenida Tecnologia', '1200', 'Centro Empresarial', 'São Paulo', 1),
+('Rua das Acácias', '245', 'Jardim Paulista', 'São Paulo', 2),
+('Avenida Industrial', '850', 'Distrito Industrial', 'Santo André', 3),
+('Avenida dos Comerciantes', '377', 'Centro', 'São Bernardo do Campo', 4),
+('Rua do Conhecimento', '233', 'Vila Universitária', 'São Paulo', 5);
+
+INSERT INTO gerador (modelo, capacidade_tanque_litros, largura_tanque_cm, profundidade_tanque_cm, altura_tanque_cm, fk_empresa) VALUES
+('PT-DIESEL-500', 10000.00, 200.00, 200.00, 250.00, 1),
+('PT-DIESEL-400', 5000.00, 160.00, 160.00, 200.00, 2),
+('PT-DIESEL-360', 8000.00, 200.00, 200.00, 200.00, 3),
+('PT-DIESEL-670', 6000.00, 180.00, 180.00, 200.00, 4),
+('PT-DIESEL-250', 3000.00, 150.00, 150.00, 150.00, 5),
+('PT-DIESEL-300', 12000.00, 200.00, 200.00, 300.00, 1),
+('PT-DIESEL-550', 4000.00, 160.00, 160.00, 160.00, 1);
+
+INSERT INTO sensor (modelo_sensor, data_instalacao_sensor, status_sensor, fk_gerador) VALUES 
+('HC-SRC04','2026-10-01','Ativo',1),
+('HC-SRC04','2026-10-02','Ativo',2),
+('HC-SRC04','2026-10-03','Ativo',3),
+('HC-SRC04','2026-10-04','Ativo',4),
+('HC-SRC04','2026-10-05','Ativo',5),
+('HC-SRC04','2026-10-06','Ativo',6),
+('HC-SRC04','2026-10-07','Ativo',7);
+
+-- Dados de acordo com a dashboard
+-- Distância medida = altura do tanque × (1 − percentual de combustível)
+-- O percentual precisa ser convertido para decimal. Por exemplo, 82% vira 0.82.
+INSERT INTO medida (data_medicao, distancia_cm, fk_sensor) VALUES 
+('2026-10-26 21:40:00', 45.00, 1),
+('2026-10-26 21:40:00', 72.00, 2),
+('2026-10-26 21:40:00', 164.00, 3),
+('2026-10-26 21:40:00', 54.00, 4),
+('2026-10-26 21:40:00', 82.50, 5),
+('2026-10-26 21:40:00', 237.00, 6),
+('2026-10-26 21:40:00', 75.20, 7);
