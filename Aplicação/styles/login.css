@@ -11,18 +11,19 @@
 .cabecalho {
     display: flex;
     background-color: #062454;
-    padding: 15px 7%;
-    justify-content: space-between;
-    align-items: center;
+    height: 11vh;
+    justify-content: center;
     font-size: small;
+    width: 100vw;
 }
 .menu {
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    margin: 0;                                              /* tira a margem externa */
-    padding: 0;
-    font-size: 12px;
+    width: 100%;
+    font-size: 15px;
     list-style: none;
+    border-top: 20%;
 }
 
 .menu a {
@@ -49,7 +50,7 @@
 
 .menu img{
     width: 90px;
-    margin-right: 60px;
+    margin-right: 70px;
 }
 .conteudo {
     display: flex;
