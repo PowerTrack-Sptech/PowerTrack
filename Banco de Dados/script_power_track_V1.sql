@@ -21,9 +21,9 @@ CREATE TABLE usuario (
 	senha VARCHAR(45) NOT NULL,
     status_usuario TINYINT NOT NULL DEFAULT 1,
 	CONSTRAINT chk_usuario_status CHECK (status_usuario IN (0, 1)),
-	fk_usuario INT NOT NULL,
+	fk_empresa INT NOT NULL,
 	CONSTRAINT chk_usuario_empresa
-    FOREIGN KEY (fk_usuario)
+    FOREIGN KEY (fk_empresa)
     REFERENCES empresa(id)
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE gerador (
 CREATE TABLE alerta(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	tipo_alerta VARCHAR(30) NOT NULL,
-    data_alerta DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_alerta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
 	CONSTRAINT chk_tipo_alerta CHECK( tipo_alerta IN ('Atenção','Crítico')),
     fk_gerador INT NOT NULL,
     CONSTRAINT fk_alerta_gerador 
@@ -67,7 +67,7 @@ CREATE TABLE alerta(
 CREATE TABLE sensor (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	modelo_sensor VARCHAR(20) NOT NULL,
-	data_instalacao_sensor DATETIME DEFAULT CURRENT_TIMESTAMP,
+	data_instalacao_sensor DATE NOT NULL,
 	status_sensor VARCHAR(20) NOT NULL DEFAULT 'Ativo',
 	CONSTRAINT chk_status_sensor CHECK (status_sensor IN ('Ativo', 'Inativo')),
 	fk_gerador INT NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE sensor (
 
 CREATE TABLE medida (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	data_medicao DATETIME DEFAULT CURRENT_TIMESTAMP,
+	data_medicao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	distancia_cm DECIMAL(6,2) NOT NULL,
 	fk_sensor INT NOT NULL,
   	CONSTRAINT chk_medidas_sensor
