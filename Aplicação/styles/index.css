@@ -5,9 +5,9 @@ body {
 
 .cabecalho {
     background-color: #062454;
-    width: 98.8vw;
+    width: 100vw;
     /* vw = view widht */
-    height: 12vh;
+    height: 11vh;
     /* vh = view height */
     display: flex;
     justify-content: center;
