@@ -277,3 +277,66 @@ body {
 .menu .ativo {
     background-color: #1677ff;
 }
+
+/* Centraliza os minutos e os títulos Última Leitura e Status da tabela */
+.minutos {
+    text-align: center;
+}
+
+.titulo-status {
+    text-align: center;
+}
+
+.titulo-leitura {
+    text-align: center;
+}
+
+
+/* Organiza o cartão do perfil no final do menu */
+.perfil-usuario {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: auto;
+    padding: 12px 12px;
+    border-radius: 30px;
+    background-color: #143d99;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ajusta a logo da SPTech */
+.perfil-usuario .perfil {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 0 8px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    object-fit: cover;
+}
+
+/* USER 01 e SPTech centralizados */
+.perfil-usuario p {
+    margin: 0;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+/* Centraliza o botão Logout na parte de baixo */
+.perfil-usuario a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 18px;
+}
+
+.perfil-usuario a img {
+    width: 24px;
+}
