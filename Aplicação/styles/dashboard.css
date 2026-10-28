@@ -8,6 +8,8 @@ body {
 }
 
 .cabecalho {
+    display: flex;
+    flex-direction: column;
     width: 220px;
     min-height: 100vh;
     padding: 25px 15px;
@@ -17,12 +19,13 @@ body {
 
 .menu {
     display: flex;
+    flex: 1;
     margin: 0;
     padding: 0;
     list-style: none;
     flex-direction: column;
     align-items: stretch;
-    gap: 18px;
+    gap: 10px;
 }
 
 .menu .perfil {
