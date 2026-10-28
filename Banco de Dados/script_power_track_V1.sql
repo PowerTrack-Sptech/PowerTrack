@@ -28,7 +28,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE endereco (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    logadouro VARCHAR(50),
+    logradouro VARCHAR(50),
     numero VARCHAR(50),
     bairro VARCHAR(50),
     cidade VARCHAR(50),
@@ -91,14 +91,18 @@ INSERT INTO empresa (nome_fantasia, cnpj, email, telefone_empresa, fk_empresa_fa
 ('Hospital Vida+', '24873281000175', 'hospitalvida@gmail.com', '11928352182', 1),
 ('Industria Silva', '36278329000123', 'industriasilva@gmail.com', '11987378001', NULL),
 ('Shopping Central', '26137895000177', 'shoppingcentral@gmail.com', '11987886576', 1),
-('Universidade São Paulo', '76243547000197', 'universidadesp@gmail.com', '11924351167', 3);
+('Universidade São Paulo', '76243547000197', 'universidadesp@gmail.com', '11924351167', 3),
+('Data Center Oliveira', '33459087000155', 'datacenteroliveira@gmail.com', '11985429099', NULL),
+('Shopping Paulista', '23775668000139', 'shoppingpaulista@gmail.com', '11988045865', 6);
 
-INSERT INTO endereco (logradouro, numero, bairro, cidade, cep, fk_empresa) VALUES 
-('Avenida Tecnologia', '1200', 'Centro Empresarial', 'São Paulo', 1),
-('Rua das Acácias', '245', 'Jardim Paulista', 'São Paulo', 2),
-('Avenida Industrial', '850', 'Distrito Industrial', 'Santo André', 3),
-('Avenida dos Comerciantes', '377', 'Centro', 'São Bernardo do Campo', 4),
-('Rua do Conhecimento', '233', 'Vila Universitária', 'São Paulo', 5);
+INSERT INTO endereco (logadouro, numero, bairro, cidade, cep, fk_empresa) VALUES 
+('Avenida Tecnologia', '1200', 'Centro Empresarial', 'São Paulo', '09340200', 1),
+('Rua das Acácias', '245', 'Jardim Paulista', 'São Paulo', '25670350', 2),
+('Avenida Industrial', '850', 'Distrito Industrial', 'Santo André', '15800975', 3),
+('Avenida dos Comerciantes', '377', 'Centro', 'São Bernardo do Campo', '35670900', 4),
+('Rua do Conhecimento', '233', 'Vila Universitária', 'São Paulo', '23450875', 5),
+('Avenida dos Data Centers', '1500', 'Polo Tecnológico', 'São Paulo', '04567000', 6),
+('Avenida Paulista', '660', 'Bela Vista', 'São Paulo', '01310100', 7);
 
 INSERT INTO gerador (modelo, capacidade_tanque_litros, largura_tanque_cm, profundidade_tanque_cm, altura_tanque_cm, fk_empresa) VALUES
 ('PT-DIESEL-500', 10000.00, 200.00, 200.00, 250.00, 1),
@@ -106,26 +110,123 @@ INSERT INTO gerador (modelo, capacidade_tanque_litros, largura_tanque_cm, profun
 ('PT-DIESEL-360', 8000.00, 200.00, 200.00, 200.00, 3),
 ('PT-DIESEL-670', 6000.00, 180.00, 180.00, 200.00, 4),
 ('PT-DIESEL-250', 3000.00, 150.00, 150.00, 150.00, 5),
-('PT-DIESEL-300', 12000.00, 200.00, 200.00, 300.00, 1),
-('PT-DIESEL-550', 4000.00, 160.00, 160.00, 160.00, 1);
+('PT-DIESEL-300', 12000.00, 200.00, 200.00, 300.00, 6),
+('PT-DIESEL-550', 4000.00, 160.00, 160.00, 160.00, 7);
 
 INSERT INTO sensor (modelo_sensor, data_instalacao_sensor, status_sensor, fk_gerador) VALUES 
-('HC-SRC04','2026-10-01','Ativo',1),
-('HC-SRC04','2026-10-02','Ativo',2),
-('HC-SRC04','2026-10-03','Ativo',3),
-('HC-SRC04','2026-10-04','Ativo',4),
-('HC-SRC04','2026-10-05','Ativo',5),
-('HC-SRC04','2026-10-06','Ativo',6),
-('HC-SRC04','2026-10-07','Ativo',7);
+('HC-SR04','2026-10-01','Ativo',1),
+('HC-SR04','2026-10-02','Ativo',2),
+('HC-SR04','2026-10-03','Ativo',3),
+('HC-SR04','2026-10-04','Ativo',4),
+('HC-SR04','2026-10-05','Ativo',5),
+('HC-SR04','2026-10-06','Ativo',6),
+('HC-SR04','2026-10-07','Ativo',7);
 
 -- Dados de acordo com a dashboard
 -- Distância medida = altura do tanque × (1 − percentual de combustível)
 -- O percentual precisa ser convertido para decimal. Por exemplo, 82% vira 0.82.
 INSERT INTO medida (data_medicao, distancia_cm, fk_sensor) VALUES 
-('2026-10-26 21:40:00', 45.00, 1),
-('2026-10-26 21:40:00', 72.00, 2),
-('2026-10-26 21:40:00', 164.00, 3),
-('2026-10-26 21:40:00', 54.00, 4),
-('2026-10-26 21:40:00', 82.50, 5),
-('2026-10-26 21:40:00', 237.00, 6),
-('2026-10-26 21:40:00', 75.20, 7);
+('2026-10-26 21:38:00', 45.00, 1),
+('2026-10-26 21:28:00', 50.00, 1),
+('2026-10-26 21:18:00', 55.00, 1),
+
+('2026-10-26 21:35:00', 72.00, 2),
+('2026-10-26 21:25:00', 76.00, 2),
+('2026-10-26 21:15:00', 80.00, 2),
+
+('2026-10-26 21:30:00', 150.00, 3),
+('2026-10-26 21:20:00', 155.00, 3),
+('2026-10-26 21:10:00', 160.00, 3),
+
+('2026-10-26 21:25:00', 54.00, 4),
+('2026-10-26 21:15:00', 59.00, 4),
+('2026-10-26 21:05:00', 64.00, 4),
+
+('2026-10-26 21:23:00', 82.50, 5),
+('2026-10-26 21:13:00', 86.00, 5),
+('2026-10-26 21:03:00', 90.00, 5),
+
+('2026-10-26 21:15:00', 237.00, 6),
+('2026-10-26 20:55:00', 243.00, 6),
+('2026-10-26 20:35:00', 250.00, 6),
+
+('2026-10-26 21:12:00', 75.20, 7),
+('2026-10-26 21:02:00', 80.00, 7),
+('2026-10-26 20:52:00', 85.00, 7);
+
+-- SELECTS DA DASHBOARD 
+
+-- Listar os geradores e suas empresas
+SELECT
+    gerador.id,
+    gerador.modelo,
+    empresa.nome_fantasia
+FROM gerador
+JOIN empresa
+    ON gerador.fk_empresa = empresa.id;
+    
+-- Mostrar a ultima leitura de cada sensor
+SELECT
+    sensor.id,
+    sensor.modelo_sensor,
+    medida.distancia_cm,
+    medida.data_medicao
+FROM sensor
+JOIN medida
+    ON sensor.id = medida.fk_sensor
+WHERE medida.data_medicao = (
+    SELECT MAX(m2.data_medicao)
+    FROM medida m2
+    WHERE m2.fk_sensor = sensor.id
+);
+
+-- KPI: geradores monitorados
+SELECT
+    COUNT(*) AS geradores_monitorados
+FROM gerador;
+
+-- Juntando os dados para a dashboard
+SELECT
+    empresa.nome_fantasia AS empresa,
+    gerador.modelo AS gerador,
+    sensor.id AS id_sensor,
+    medida.distancia_cm AS distancia_cm,
+    medida.data_medicao AS ultima_leitura,
+
+    ROUND(
+        (
+            (gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm
+        ) * 100, 
+        0
+    ) AS percentual_combustivel,
+
+    CASE
+        WHEN (
+            (gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm
+            ) * 100 > 70
+            THEN 'Normal'
+
+        WHEN (
+            (gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm
+        ) * 100 > 25
+            THEN 'Atenção'
+
+        ELSE 'Crítico'
+    END AS status_combustivel
+
+FROM empresa
+JOIN gerador
+    ON empresa.id = gerador.fk_empresa
+JOIN sensor
+    ON gerador.id = sensor.fk_gerador
+JOIN medida
+    ON sensor.id = medida.fk_sensor
+
+WHERE medida.data_medicao = (
+    SELECT MAX(m2.data_medicao)
+    FROM medida m2
+    WHERE m2.fk_sensor = sensor.id
+)
+
+ORDER BY sensor.id;
+
