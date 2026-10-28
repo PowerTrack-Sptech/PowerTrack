@@ -2,10 +2,10 @@ USE PowerTrack;
 
 CREATE TABLE empresa (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	nome_fantasia VARCHAR(100),
-	cnpj CHAR(14),
-	email VARCHAR(150),
-	telefone_empresa CHAR(11),
+	nome_fantasia VARCHAR(100) NOT NULL,
+	cnpj CHAR(14) NOT NULL UNIQUE,
+	email VARCHAR(150) NOT NULL UNIQUE,
+	telefone_empresa CHAR(11) NOT NULL,
     fk_empresa_fabricante INT,
 	CONSTRAINT chk_empresa_fabricante
 	FOREIGN KEY(fk_empresa_fabricante)
@@ -14,13 +14,14 @@ CREATE TABLE empresa (
 
 CREATE TABLE usuario (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	nome VARCHAR(40),
-    sobrenome VARCHAR(100),
-	email VARCHAR(100),
-	codigo_empresa CHAR(8),
-	senha VARCHAR(45),
-	status_usuario TINYINT,
-	fk_usuario INT,
+	nome VARCHAR(40) NOT NULL,
+    sobrenome VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL UNIQUE,
+	codigo_empresa CHAR(8) NOT NULL UNIQUE,
+	senha VARCHAR(45) NOT NULL,
+    status_usuario TINYINT NOT NULL DEFAULT 1,
+	CONSTRAINT chk_usuario_status CHECK (status_usuario IN (0, 1)),
+	fk_usuario INT NOT NULL,
 	CONSTRAINT chk_usuario_empresa
     FOREIGN KEY (fk_usuario)
     REFERENCES empresa(id)
@@ -28,12 +29,12 @@ CREATE TABLE usuario (
 
 CREATE TABLE endereco (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    logradouro VARCHAR(50),
+    logradouro VARCHAR(50) NOT NULL,
     numero VARCHAR(50),
-    bairro VARCHAR(50),
-    cidade VARCHAR(50),
-    cep CHAR(8),
-    fk_empresa INT,
+    bairro VARCHAR(50) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    cep CHAR(8) NOT NULL,
+    fk_empresa INT NOT NULL,
     CONSTRAINT chk_endereco_empresa 
     FOREIGN KEY (fk_empresa) 
     REFERENCES empresa(id)
@@ -41,12 +42,12 @@ CREATE TABLE endereco (
 
 CREATE TABLE gerador (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	modelo VARCHAR(50),
-	capacidade_tanque_litros DECIMAL(12,2),
-	largura_tanque_cm DECIMAL(6,2),
-	profundidade_tanque_cm DECIMAL(6,2),
-	altura_tanque_cm DECIMAL(6,2),
-	fk_empresa INT,
+	modelo VARCHAR(50) NOT NULL,
+	capacidade_tanque_litros DECIMAL(12,2) NOT NULL,
+	largura_tanque_cm DECIMAL(6,2) NOT NULL,
+	profundidade_tanque_cm DECIMAL(6,2) NOT NULL,
+	altura_tanque_cm DECIMAL(6,2) NOT NULL,
+	fk_empresa INT NOT NULL,
 	CONSTRAINT chk_gerador_empresa
     FOREIGN KEY (fk_empresa)
     REFERENCES empresa(id)
@@ -54,10 +55,10 @@ CREATE TABLE gerador (
 
 CREATE TABLE alerta(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	tipo_alerta VARCHAR(30),
+	tipo_alerta VARCHAR(30) NOT NULL,
     data_alerta DATETIME DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT chk_tipo_alerta CHECK( tipo_alerta IN ('Atenção','Crítico')),
-    fk_gerador INT,
+    fk_gerador INT NOT NULL,
     CONSTRAINT fk_alerta_gerador 
     FOREIGN KEY (fk_gerador) 
     REFERENCES gerador(id)
@@ -65,10 +66,11 @@ CREATE TABLE alerta(
 
 CREATE TABLE sensor (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	modelo_sensor VARCHAR(20),
+	modelo_sensor VARCHAR(20) NOT NULL,
 	data_instalacao_sensor DATETIME DEFAULT CURRENT_TIMESTAMP,
-	status_sensor VARCHAR(20),
-	fk_gerador INT,
+	status_sensor VARCHAR(20) NOT NULL DEFAULT 'Ativo',
+	CONSTRAINT chk_status_sensor CHECK (status_sensor IN ('Ativo', 'Inativo')),
+	fk_gerador INT NOT NULL,
 	CONSTRAINT chk_sensor_gerador
 	FOREIGN KEY (fk_gerador)
 	REFERENCES gerador(id)
@@ -77,8 +79,8 @@ CREATE TABLE sensor (
 CREATE TABLE medida (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	data_medicao DATETIME DEFAULT CURRENT_TIMESTAMP,
-	distancia_cm DECIMAL(6,2),
-	fk_sensor INT,
+	distancia_cm DECIMAL(6,2) NOT NULL,
+	fk_sensor INT NOT NULL,
   	CONSTRAINT chk_medidas_sensor
 	FOREIGN KEY (fk_sensor)
 	REFERENCES sensor(id)
