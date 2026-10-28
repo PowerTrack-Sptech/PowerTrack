@@ -1,0 +1,353 @@
+body {
+    display: flex;
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #062454;
+    background-color: #f4f8ff;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    min-height: 100vh;
+    padding: 25px 15px;
+    background-color: #062454;
+    border-right: 3px solid #1684ff;
+}
+
+.menu {
+    display: flex;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.menu .perfil {
+    display: block;
+    width: 80px;
+    margin-bottom: 35px;
+    align-self: center;
+    background-color: #dcecff;
+    border-radius: 100px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    background-color: #1677ff;
+}
+.menu li a img {
+    width: 30px;
+}
+
+.menu li {
+    color: #dcecff;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+}
+
+.menu li:first-child {
+    text-align: center;
+}
+
+.menu li img {
+    width: 150px;
+}
+
+.menu li p {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    align-items: center;
+}
+
+.pagina {
+    flex: 1;
+    padding: 35px;
+}
+
+.titulo-pagina {
+    margin-bottom: 25px;
+}
+
+.titulo-pagina h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.cartoes {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 4px;
+}
+
+.cartao {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    height: 100px;
+    padding: 12px;
+    border: 1px solid #e1e9f5;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.icone-cartao {
+    display: flex;
+    width: 65px;
+    height: 65px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.icone-cartao img {
+    width: 80px;
+}
+
+.texto-cartao h5 {
+    margin: 0 0 5px;
+    font-size: 12px;
+}
+
+.texto-cartao {
+    flex: 1;
+}
+
+.numero {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.mensagem {
+    margin: 4px 0 0;
+    font-size: 12px;
+}
+
+.linha {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.tabela {
+    display: flex;
+    flex: 1;
+    min-height: 380px;
+    padding: 20px;
+    border: 1px solid #dce5f2;
+    border-radius: 12px;
+    background-color: white;
+    justify-content: space-between;
+}
+
+.painel-grafico {
+    display: flex;
+    flex: 1;
+    min-height: 380px;
+    padding: 20px;
+    border: 1px solid #dce5f2;
+    border-radius: 12px;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
+.painel-grafico h3 {
+    margin-top: 0;
+    color: #062454;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.espaco-grafico {
+    width: 560px;
+    height: 400px;
+}
+
+.titulo-pagina p {
+    margin-top: 8px;
+    color: #555252;
+    font-size: 16px;
+}
+
+.verde {
+    background-color: #22a45d;
+}
+
+.amarelo {
+    background-color: #f4b400;
+}
+
+.vermelho {
+    background-color: #e84c4c;
+}
+
+.menu .ativo {
+    background-color: #1677ff;
+}
+
+/* Organiza o cartão do perfil no final do menu */
+.perfil-usuario {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: auto;
+    padding: 12px 12px;
+    border-radius: 30px;
+    background-color: #143d99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ajusta a logo da SPTech */
+.perfil-usuario .perfil {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 0 8px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    object-fit: cover;
+}
+
+/* USER 01 e SPTech centralizados */
+.perfil-usuario p {
+    margin: 0;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+/* Centraliza o botão Logout na parte de baixo */
+.perfil-usuario a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 18px;
+}
+
+.perfil-usuario a img {
+    width: 24px;
+}
+
+/* itens do primeiro grafico da tela de geradores */
+.tabela {
+    flex: 1;
+    min-height: 380px;
+    padding: 20px;
+    border: 1px solid #dce5f2;
+    border-radius: 12px;
+    background-color: white;
+    justify-content: space-between;
+}
+
+.tabela-alertas {
+    display: block;
+}
+
+.tabela-alertas h2 {
+    margin: 0 0 14px;
+    font-size: 22px;
+}
+
+.cabecalho-alertas,
+.item-alerta {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr 1.3fr 0.7fr 1.4fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.cabecalho-alertas {
+    padding: 8px;
+    background-color: #edf5ff;
+}
+
+.cabecalho-alertas,
+.item-alerta {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr 1.3fr 0.7fr 1.4fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.cabecalho-alertas {
+    padding: 8px;
+    background-color: #edf5ff;
+}
+
+.cabecalho-alertas p {
+    margin: 0;
+    color: #062454;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.item-alerta {
+    min-height: 42px;
+    border-bottom: 1px solid #e5edf7;
+}
+
+.item-alerta p {
+    margin: 0;
+    color: #555252;
+    font-size: 10px;
+}
+
+.nao-resolvido,
+.resolvido {
+    padding: 7px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.nao-resolvido {
+    color: #E91D26 !important;
+    background-color: #F98383;
+}
+
+.nao-resolvido img{
+    width: 12px;
+}
+
+.resolvido {
+    color: #08af61 !important;
+    background-color: #e1f8eb;
+}
+
+.texto-vermelho {
+    color: #ef3e4a !important;
+}
+
+.texto-amarelo {
+    color: #e99900 !important;
+}
+
