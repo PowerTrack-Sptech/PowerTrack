@@ -89,12 +89,12 @@
 
             <br>
 
-            <button class="botao-calcular" onclick="calcular()">Calcular economia</button>
+            <button href="#resultado"class="botao-calcular" onclick="calcular() ">Calcular economia</button>
 
         </div>
     </main>
 
-    <div class="secao-resultado" id="resultado">
+    <div class="secao-resultado">
         <div id="div_result" class="resultado-vazio">
             Preencha os campos para realizar a simulação.
         </div>
@@ -137,7 +137,7 @@
         </div>
 
 
-        <p style="display: flex; margin-left: 200px;">
+        <p style="display: flex; margin-left: 200px;" id="resultado">
             Os percentuais são referências e os resultados podem variar de acordo
             com a operação de cada empresa.
         </p>
@@ -185,7 +185,7 @@
             ipt_custo.value = ""
         } else {
             div_result.innerHTML = `
-            <div class="resultado-card">
+            <div class="resultado-card" id="resultado">
                 <p class="resultado-status">Simulação concluída</p>
 
                 <h2>${empresa}</h2>
