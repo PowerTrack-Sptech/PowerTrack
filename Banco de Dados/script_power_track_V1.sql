@@ -1,3 +1,5 @@
+CREATE TABLE PowerTrack;
+
 USE PowerTrack;
 
 CREATE TABLE empresa (
