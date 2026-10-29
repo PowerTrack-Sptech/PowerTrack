@@ -83,8 +83,10 @@
         let senha = ipt_senha.value
         let indice = Banco.indexOf(email);
      
-
-        if(bloqueado == false){
+        if(senha == '' || email == ''){
+            msg_senha.innerHTML = `<div class ="senha">Preencha todos os campos!</div>`
+        }
+        else if(bloqueado == false){
         if (indice != -1 && Banco_Senha[indice] == senha) {
             window.location.href = "dashboard.html";
         }

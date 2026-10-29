@@ -162,3 +162,8 @@ body {                                                      /* seleciona a pági
     width: 16px;                     /* tamanho do ícone do escudo */
     margin-right: 6px;               /* espaço entre o ícone e o texto */
 }
+.senha {
+    color: #c20000;
+    font-size: 12px;
+    margin-top: 5px;
+}

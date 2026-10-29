@@ -66,7 +66,7 @@
             <div class="botao-entrar">
                 <button onclick="cadastrar()">Cadastrar</button>
             </div><br>
-            <div id="div_mensagem"></div>
+            <div id="msg_senha"></div>
             <div class="seguranca">
                 <img src="../assets/icon_defender.png" alt="">
                 <span> Seus dados estão protegido de ponta a ponta.</span>
@@ -90,17 +90,17 @@
         let tudoCerto = true;
 
         if (nome == "" || email == "" || empresa == "" || telefone == "" || senha == "" || confirmarSenha == "") {
-            div_mensagem.innerHTML = "Por favor, preencha todos os campos!"
+            msg_senha.innerHTML = `<div class="senha">Por favor, preencha todos os campos!</div>`
             tudoCerto = false
         }
 
         if (tudoCerto == true && senha != confirmarSenha) {
-            div_mensagem.innerHTML = "As senhas não coincidem!"
+            msg_senha.innerHTML = `<div class="senha">As senhas não coincidem!</div>`
             tudoCerto = false
         }
 
         if (tudoCerto == true && bancoEmails.includes(email)) {
-            div_mensagem.innerHTML = "Este e-mail já está cadastrado!"
+            msg_senha.innerHTML = `<div class="senha">Este e-mail já está cadastrado!</div>`
             tudoCerto = false
         }
 
@@ -128,12 +128,12 @@
         }
 
         if (achouArroba == false && tudoCerto == true) {
-            div_mensagem.innerHTML = "O e-mail precisa ter @!";
+            msg_senha.innerHTML = `<div class="senha">O e-mail precisa ter @!</div>`;
             tudoCerto = false;
         }
 
         if (qtdSenha_sufuciente == false && tudoCerto == true) {
-            div_mensagem.innerHTML = `A senha precisa ter 8 ou mais caracteres`;
+            msg_senha.innerHTML = `<div class="senha">A senha precisa ter 8 ou mais caracteres!</div>`;
             tudoCerto = false;
         }
 
@@ -143,7 +143,7 @@
             bancoEmails.push(email)
             bancoSenhas.push(senha)
 
-            div_mensagem.innerHTML = `Cadastro efetuado com sucesso, ${nome}!`
+            msg_senha.innerHTML = `<div class="senha">Cadastro efetuado com sucesso, ${nome}!</div>`
         }
     }
 </script>
