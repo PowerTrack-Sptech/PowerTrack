@@ -75,20 +75,29 @@
 <script>
     let Banco = ["joaohenri@gmail.com", "matheus@sptech.school", "heitor@gmail.com", "a"]
     let Banco_Senha = ["@020406joao", "@caminholuz", "heitorlogin@", "a"]
+    let contador = 3;
+    let bloqueado = false
 
     function Entrar() {
         let email = ipt_email.value.trim()
         let senha = ipt_senha.value
         let indice = Banco.indexOf(email);
-        let tudoCerto = false;
+     
 
+        if(bloqueado == false){
         if (indice != -1 && Banco_Senha[indice] == senha) {
-            tudoCerto = true;
             window.location.href = "dashboard.html";
         }
+        else if (contador == 1){
+            bloqueado = true
+        }
         else {
-           msg_senha.innerHTML = `Senha ou E-mail inválido!`;
-            window.location.href = "dashboard.html";
+            contador--;
+            msg_senha.innerHTML = `<div class ="senha"> Senha ou E-mail inválido! ${contador} tentativas restantes </div>`;
+        }
+        }
+        else if (bloqueado){
+             msg_senha.innerHTML = `<div class ="senha">Entrada bloqueada!</div>`;
         }
     }
 </script>
