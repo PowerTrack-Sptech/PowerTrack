@@ -17,7 +17,7 @@
             <li>
                 <img src="../assets/logo.png" alt="Logo PowerTrack">
             </li>
-            <li><a class="ativo" href="#"> <img src="../assets/ICONS_BRANCO/visao_geral.svg" alt="">Visão geral</a></li>
+            <li><a class="ativo" href="../views/dashboard.html"> <img src="../assets/ICONS_BRANCO/visao_geral.svg" alt="">Visão geral</a></li>
             <li><a href="#"> <img src="../assets/ICONS_BRANCO/geradores.svg" alt="">Geradores</a></li>
             <li><a href="#"> <img src="../assets/ICONS_BRANCO/alertas.svg" alt=""> Alertas</a></li>
             <li><a href="index_logado.html"><img src="../assets/ICONS_BRANCO/inicio.svg" alt="">Home</a></li>
@@ -76,63 +76,63 @@
                 <div class="cabecalho-alertas">
                     <p>Data e hora</p>
                     <p>Gerador</p>
-                    <p>Tipo de alerta</p>
                     <p>Nível</p>
                     <p>Status</p>
                 </div>
 
                 <div class="item-alerta">
-                    <p>29/09 14:32</p>
-                    <p>GER-005</p>
-                    <p class="texto-vermelho">Nível crítico</p>
-                    <p class="texto-vermelho">12%</p>
-                    <p class="nao-resolvido"> <img src="../assets/perigo.png" alt=""> Não resolvido</p>
-                </div>
-
-                <div class="item-alerta">
-                    <p>29/09 11:15</p>
-                    <p>GER-003</p>
-                    <p>Queda rápida</p>
-                    <p>28%</p>
-                    <p class="nao-resolvido">Não resolvido</p>
-                </div>
-
-                <div class="item-alerta">
-                    <p>29/09 09:20</p>
-                    <p>GER-002</p>
-                    <p class="texto-amarelo">Nível baixo</p>
-                    <p>45%</p>
-                    <p class="resolvido">Resolvido</p>
-                </div>
-
-                <div class="item-alerta">
-                    <p>28/09 18:41</p>
-                    <p>GER-004</p>
-                    <p>Variação anormal</p>
-                    <p>68%</p>
-                    <p class="resolvido">Resolvido</p>
-                </div>
-
-                <div class="item-alerta">
-                    <p>28/09 14:10</p>
-                    <p>GER-001</p>
-                    <p>Operação normal</p>
+                    <p>29/09 15:30</p>
+                    <p>GER-006</p>
                     <p>80%</p>
-                    <p class="resolvido">Resolvido</p>
+                    <p class="alertas"> <img src="../assets/ALERTAS/selo_normal.svg" alt="">
+                </div>
+
+                <div class="item-alerta">
+                    <p>29/09 15:00</p>
+                    <p>GER-006</p>
+                    <p>48%</p>
+                    <p class="alertas"> <img src="../assets/ALERTAS/selo_atencao.svg" alt="">
+                </div>
+
+                <div class="item-alerta">
+                    <p>29/09 14:30</p>
+                    <p>GER-006</p>
+                    <p>52%</p>
+                    <p class="alertas"> <img src="../assets/ALERTAS/selo_normal.svg" alt="">
+                </div>
+
+                <div class="item-alerta">
+                    <p>29/09 14:00</p>
+                    <p>GER-006</p>
+                    <p>58%</p>
+                    <p class="alertas"> <img src="../assets/ALERTAS/selo_normal.svg" alt="">
+                </div>
+
+                <div class="item-alerta">
+                    <p>29/09 13:30</p>
+                    <p>GER-006</p>
+                    <p>66%</p>
+                    <p class="alertas"> <img src="../assets/ALERTAS/selo_normal.svg" alt="">
+                </div>
+
+                <div class="item-alerta">
+                    <p>28/09 13:00</p>
+                    <p>GER-006</p>
+                    <p>75%</p>
+                    <p class="alertas"> <img src="../assets/ALERTAS/selo_normal.svg" alt="">
+                </div>
+
+                <div class="item-alerta">
+                    <p>28/09 12:30</p>
+                    <p>GER-006</p>
+                    <p>80%</p>
+                    <p class="alertas"> <img src="../assets/ALERTAS/selo_normal.svg" alt="">
                 </div>
             </div>
 
             <div class="painel-grafico">
                 <div class="titulo-grafico">
                     <h3>Histórico de nível de combustível</h3>
-
-                    <select class="seletor-gerador">
-                        <option>GER - 1</option>
-                        <option>GER - 2</option>
-                        <option>GER - 3</option>
-                        <option>GER - 4</option>
-                        <option>GER - 5</option>
-                    </select>
                 </div>
 
                 <div class="espaco-grafico">
@@ -152,10 +152,10 @@
         new Chart(ct, {
             type: 'line',
             data: {
-                labels: ['23/09', '24/09', '25/09', '26/09', '27/09', '28/09', '29/09'],
+                labels: ['12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30'],
                 datasets: [{
-                    label: 'GER-001',
-                    data: [88, 75, 66, 58, 56, 66, 80],
+                    label: 'GER-006',
+                    data: [88, 75, 66, 58, 52, 48, 80],
                     borderWidth: 3,
                     borderColor: '#1774FF',
                     tension: 0.1,
@@ -164,7 +164,7 @@
                     order: 2
                 },
                 {
-                    data: [20, 20, 20, 20, 20, 20, 20],
+                    data: [25, 25, 25, 25, 25, 25, 25],
                     borderWidth: 2,
                     borderColor: '#D31B1B',
                     tension: 0.1,
