@@ -221,7 +221,6 @@ SELECT
     empresa.nome_fantasia AS nome_empresa,
     gerador.modelo AS modelo_gerador,
     sensor.id AS id_sensor,
-    medida.distancia_cm AS distancia_cm,
     medida.data_medicao AS ultima_leitura,
 
     ROUND(
@@ -232,7 +231,7 @@ SELECT
     ) AS percentual_combustivel,
 
     CASE
-        WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 65
+        WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 75
 		THEN 'Normal'
 		WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 25
 		THEN 'Atenção'
@@ -306,7 +305,6 @@ ORDER BY medida.data_medicao ASC;
 SELECT
     alerta.data_alerta AS data_alerta,
     gerador.id AS id_gerador,
-    gerador.modelo AS modelo_gerador,
     alerta.tipo_alerta AS tipo_alerta,
     ROUND(
         ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100,
@@ -321,6 +319,5 @@ AND medida.data_medicao = (
     SELECT MAX(m2.data_medicao)
     FROM medida m2
     WHERE m2.fk_sensor = sensor.id
-    AND m2.data_medicao <= alerta.data_alerta
 )
 ORDER BY alerta.data_alerta DESC;
