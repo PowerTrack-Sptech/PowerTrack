@@ -269,7 +269,7 @@ SELECT
     ) AS percentual_combustivel,
 
     CASE
-        WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 65
+        WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 75
 		THEN 'Normal'
         WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 25
 		THEN 'Atenção'
