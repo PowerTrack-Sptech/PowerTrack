@@ -1,4 +1,4 @@
-CREATE TABLE PowerTrack;
+CREATE DATABASE PowerTrack;
 
 USE PowerTrack;
 
@@ -8,6 +8,7 @@ CREATE TABLE empresa (
 	cnpj CHAR(14) NOT NULL UNIQUE,
 	email VARCHAR(150) NOT NULL UNIQUE,
 	telefone_empresa CHAR(11) NOT NULL,
+    codigo_empresa CHAR(8) NOT NULL UNIQUE,
     fk_empresa_fabricante INT,
 	CONSTRAINT chk_empresa_fabricante
 	FOREIGN KEY(fk_empresa_fabricante)
@@ -19,7 +20,6 @@ CREATE TABLE usuario (
 	nome VARCHAR(40) NOT NULL,
     sobrenome VARCHAR(100) NOT NULL,
 	email VARCHAR(100) NOT NULL UNIQUE,
-	codigo_empresa CHAR(8) NOT NULL UNIQUE,
 	senha VARCHAR(45) NOT NULL,
     status_usuario TINYINT NOT NULL DEFAULT 1,
 	CONSTRAINT chk_usuario_status CHECK (status_usuario IN (0, 1)),
@@ -90,23 +90,23 @@ CREATE TABLE medida (
 
 -- INSERINDO DADOS SIMULADOS PARA SELECT DAS DASHBOARDS 
 
-INSERT INTO empresa (nome_fantasia, cnpj, email, telefone_empresa, fk_empresa_fabricante) VALUES 
-('Data Center Alpha','67283849000198', 'datacenteralpha@gmail.com', '11973625364', NULL),
-('Hospital Vida+', '24873281000175', 'hospitalvida@gmail.com', '11928352182', 1),
-('Industria Silva', '36278329000123', 'industriasilva@gmail.com', '11987378001', NULL),
-('Shopping Central', '26137895000177', 'shoppingcentral@gmail.com', '11987886576', 1),
-('Universidade São Paulo', '76243547000197', 'universidadesp@gmail.com', '11924351167', 3),
-('Data Center Oliveira', '33459087000155', 'datacenteroliveira@gmail.com', '11985429099', NULL),
-('Shopping Paulista', '23775668000139', 'shoppingpaulista@gmail.com', '11988045865', 6);
+INSERT INTO empresa (nome_fantasia, cnpj, email, telefone_empresa, codigo_empresa, fk_empresa_fabricante) VALUES 
+('Data Center Alpha','67283849000198', 'datacenteralpha@gmail.com', '11973625364', '77890651', NULL),
+('Hospital Vida+', '24873281000175', 'hospitalvida@gmail.com', '11928352182', '28970985', 1),
+('Industria Silva', '36278329000123', 'industriasilva@gmail.com', '11987378001', '12567680', NULL),
+('Shopping Central', '26137895000177', 'shoppingcentral@gmail.com', '11987886576', '51278642', 1),
+('Universidade São Paulo', '76243547000197', 'universidadesp@gmail.com', '11924351167', '78329045', 3),
+('Data Center Oliveira', '33459087000155', 'datacenteroliveira@gmail.com', '11985429099', '12386258', NULL),
+('Shopping Paulista', '23775668000139', 'shoppingpaulista@gmail.com', '11988045865', '87538426', 6);
 
-INSERT INTO usuario (nome, sobrenome, email, codigo_empresa, senha, status_usuario, fk_empresa) VALUES 
-('Fernando', 'Brandão', 'fernandobrandao@gmail.com', '77890651', 'brandão1234', 1, 1),
-('Júlia', 'Araripe', 'juliararipe@gmail.com', '28970985', 'julia012', 1, 2),
-('Marcos', 'Antônio', 'marcão123@gmail.com', '12567680', 'marcos123', 1, 3),
-('Matheus', 'Matos', 'matheusmatos@gmail.com', '51278642', 'matheusm77@', 0,4),
-('Julia', 'Lima', 'julialima@gmail.com', '78329045', 'julialima00', 0, 5),
-('Claudio', 'Frizzarini', 'freeza@gmail.com', '12386258', 'freeza_uii', 1, 6),
-('Marcio', 'Santana', 'marciosantana@gmail.com', '87538426', 'lubuntu26', 1, 7);
+INSERT INTO usuario (nome, sobrenome, email, senha, status_usuario, fk_empresa) VALUES 
+('Fernando', 'Brandão', 'fernandobrandao@gmail.com', 'brandão1234', 1, 1),
+('Júlia', 'Araripe', 'juliararipe@gmail.com', 'julia012', 1, 2),
+('Marcos', 'Antônio', 'marcão123@gmail.com', 'marcos123', 1, 3),
+('Matheus', 'Matos', 'matheusmatos@gmail.com', 'matheusm77@', 0,4),
+('Julia', 'Lima', 'julialima@gmail.com', 'julialima00', 0, 5),
+('Claudio', 'Frizzarini', 'freeza@gmail.com', 'freeza_uii', 1, 6),
+('Marcio', 'Santana', 'marciosantana@gmail.com', 'lubuntu26', 1, 7);
 
 INSERT INTO endereco (logradouro, numero, bairro, cidade, cep, fk_empresa) VALUES 
 ('Avenida Tecnologia', '1200', 'Centro Empresarial', 'São Paulo', '09340200', 1),
@@ -213,15 +213,15 @@ WHERE medida.data_medicao = (
 
 -- KPI: geradores monitorados
 SELECT
-    COUNT(*) AS geradores_monitorados
+    CONCAT('Total de geradores monitorados: ',COUNT(*)) AS Geradores_Monitorados
 FROM gerador;
 
 -- Juntando os dados para a dashboard
 SELECT
+	gerador.id AS id_gerador,
     empresa.nome_fantasia AS nome_empresa,
-    gerador.modelo AS modelo_gerador,
-    sensor.id AS id_sensor,
     medida.data_medicao AS ultima_leitura,
+    sensor.id AS id_sensor,
 
     ROUND(
         (
@@ -269,7 +269,7 @@ SELECT
     ) AS percentual_combustivel,
 
     CASE
-        WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 65
+        WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 75
 		THEN 'Normal'
         WHEN ((gerador.altura_tanque_cm - medida.distancia_cm) / gerador.altura_tanque_cm) * 100 > 25
 		THEN 'Atenção'

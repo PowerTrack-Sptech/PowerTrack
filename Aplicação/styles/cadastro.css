@@ -82,7 +82,7 @@ body {                                                      /* seleciona a pági
 
 /* ===== TÍTULO "Cadastrar" ===== */
 .boas-vindas {                                              /* seleciona o título "Cadastrar" */
-    font-size: 22px;                                        /* tamanho da letra */
+    font-size: 20px;                                        /* tamanho da letra */
     font-weight: bold;                                      /* negrito */
     color: #062454;                                         /* azul escuro */
     margin-bottom: 10px;                                    /* espaço de 10px embaixo do título */

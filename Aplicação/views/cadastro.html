@@ -37,17 +37,17 @@
             </div>
             <div class="campos">
 
-                <label for="ipt_nome"><img src="../assets/ICONS_AZUL/usuario.svg" alt="">Nome Completo</label>
-                <input type="text" id="ipt_nome" value="" placeholder="Digite o seu nome completo">
+                <label for="ipt_nome"><img src="../assets/ICONS_AZUL/usuario.svg" alt="">Nome</label>
+                <input type="text" id="ipt_nome" value="" placeholder="Digite o seu primeiro nome">
+                <br>
+                <label for="ipt_nome"><img src="../assets/ICONS_AZUL/usuario.svg" alt="">Sobrenome</label>
+                <input type="text" id="ipt_sobrenome" value="" placeholder="Digite o seu sobrenome">
                 <br>
                 <label for="ipt_email"><img src="../assets/ICONS_AZUL/email.svg" alt="">E-mail</label>
                 <input type="text" id="ipt_email" value="" placeholder="seuemail@empresa.com">
                 <br>
-                <label for="ipt_empresa"><img src="../assets/ICONS_AZUL/data_center.svg" alt="">Empresa</label>
-                <input type="text" id="ipt_empresa" value="" placeholder="Nome da sua empresa">
-                <br>
-                <label for="ipt_telefone"><img src="../assets/ICONS_AZUL/telefone.svg" alt="">Telefone</label>
-                <input type="text" id="ipt_telefone" placeholder="(00)00000-0000">
+                <label for="ipt_empresa"><img src="../assets/ICONS_AZUL/data_center.svg" alt="">Código da Empresa</label>
+                <input type="text" id="ipt_empresa" value="" placeholder="Digite o código da empresa">
                 <br>
                 <label for="ipt_senha"><img src="../assets/ICONS_AZUL/senha.svg" alt="">Senha</label>
                 <input type="password" id="ipt_senha" placeholder="Digite a senha">
@@ -84,12 +84,12 @@
         let nome = ipt_nome.value.trim()
         let email = ipt_email.value.trim()
         let empresa = ipt_empresa.value.trim()
-        let telefone = ipt_telefone.value.trim()
+        let sobrenome = ipt_sobrenome.value.trim()
         let senha = ipt_senha.value
         let confirmarSenha = ipt_confirmarSenha.value
         let tudoCerto = true;
 
-        if (nome == "" || email == "" || empresa == "" || telefone == "" || senha == "" || confirmarSenha == "") {
+        if (nome == "" || email == "" || empresa == "" ||  sobrenome =="" || senha == "" || confirmarSenha == "") {
             msg_senha.innerHTML = `<div class="senha">Por favor, preencha todos os campos!</div>`
             tudoCerto = false
         }
