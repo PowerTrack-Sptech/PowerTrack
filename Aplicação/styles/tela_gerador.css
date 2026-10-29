@@ -81,6 +81,8 @@ body {
 
 .pagina {
     flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 35px;
 }
 
@@ -166,7 +168,8 @@ body {
 }
 
 .linha {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 8px;
     margin-bottom: 8px;
 }
@@ -203,8 +206,15 @@ body {
 }
 
 .espaco-grafico {
-    width: 560px;
+    width: 100%;
+    max-width: 560px;
     height: 400px;
+}
+
+.tabela,
+.painel-grafico {
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .titulo-pagina p {
@@ -300,9 +310,13 @@ body {
 .cabecalho-alertas,
 .item-alerta {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 0.4fr;
-    gap: 12px;
+    grid-template-columns: 1.3fr 1.2fr 0.8fr 1fr;
+    justify-items: center;
     align-items: center;
+    text-align: center;
+    gap: 12px;
+    width: 92%;
+    margin: 0 auto;
 }
 
 .cabecalho-alertas {
