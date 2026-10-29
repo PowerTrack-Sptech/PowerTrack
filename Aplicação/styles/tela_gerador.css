@@ -93,57 +93,78 @@ body {
     font-size: 32px;
 }
 
-.cartoes {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 4px;
-}
-
-.cartao {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    gap: 8px;
-    height: 100px;
-    padding: 12px;
+.resumo-gerador {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 16px 22px;
+    margin-bottom: 12px;
+    padding: 18px;
     border: 1px solid #e1e9f5;
     border-radius: 12px;
     background-color: white;
 }
 
-.icone-cartao {
+.resumo-identidade {
     display: flex;
-    width: 65px;
-    height: 65px;
+    align-items: center;
+    gap: 14px;
+    grid-row: span 2;
+}
+
+.icone-resumo {
+    display: flex;
+    width: 88px;
+    height: 88px;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    font-size: 38px;
-    font-weight: bold;
+    border-radius: 18px;
+    background-color: #1677ff;
 }
 
-.icone-cartao img {
-    width: 80px;
+.icone-resumo img {
+    width: 52px;
 }
 
-.texto-cartao h5 {
-    margin: 0 0 5px;
-    font-size: 12px;
-}
-
-.texto-cartao {
-    flex: 1;
-}
-
-.numero {
+.texto-identidade h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 20px;
+}
+
+.texto-identidade .local {
+    margin: 6px 0 8px;
+    font-size: 18px;
+    color: #343434;
     font-weight: bold;
 }
 
-.mensagem {
-    margin: 4px 0 0;
-    font-size: 12px;
+.status-normal {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background-color: #14b85a;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.texto-identidade .nivel {
+    margin: 8px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.info-resumo .rotulo {
+    margin: 0;
+    font-size: 16px;
+    color: #555252;
+}
+
+.info-resumo .valor {
+    margin: 5px 0 0;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
 }
 
 .linha {
