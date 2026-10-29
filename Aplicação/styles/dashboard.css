@@ -46,8 +46,8 @@ a{
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    padding: 16px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 9px;
     color: white;
     font-size: 18px;
     text-decoration: none;
@@ -55,7 +55,7 @@ a{
 }
 
 .menu a:hover {
-    background-color: #1677ff;
+    background-color: #001d45;
 }
 .menu li a img {
     width: 30px;
@@ -65,7 +65,7 @@ a{
     color: #dcecff;
     text-align: left;
     width: 100%;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .menu li:first-child {
@@ -282,7 +282,7 @@ a{
 }
 
 .menu .ativo {
-    background-color: #1677ff;
+    background-color: #001d45;
 }
 
 /* Centraliza os minutos e os títulos Última Leitura e Status da tabela */
@@ -304,9 +304,9 @@ a{
     box-sizing: border-box;
     width: 100%;
     margin-top: auto;
-    padding: 12px 12px;
-    border-radius: 30px;
-    background-color: #143d99;
+    padding: 9px 9px;
+    border-radius: 20px;
+    background-color: #001b6b;
 
     display: flex;
     flex-direction: column;
