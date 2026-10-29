@@ -98,6 +98,7 @@
         <div class="linha">
 
             <div class="tabela tabela-alertas">
+                
                 <h2>Alertas recentes</h2>
 
                 <div class="cabecalho-alertas">
@@ -151,9 +152,25 @@
             </div>
 
             <div class="painel-grafico">
+                
                 <div class="titulo-grafico">
                     <h3>Histórico de nível de combustível</h3>
                 </div>
+                
+                    <div class="legenda">
+                        <div class="legenda-item">
+                            <div class="quadrado verde"></div>
+                            <span>Normal (76% ou mais)</span>
+                        </div>
+                        <div class="legenda-item">
+                            <div class="quadrado amarelo"></div>
+                            <span>Atenção (26% a 75%)</span>
+                        </div>
+                        <div class="legenda-item">
+                            <div class="quadrado vermelho"></div>
+                            <span>Crítico (abaixo de 25%)</span>
+                        </div>
+                    </div>
 
                 <div class="espaco-grafico">
                     <canvas id="combustivelIndividual"></canvas>
@@ -222,6 +239,7 @@
                             filter: function (item) {
                                 return item.datasetIndex === 0;
                             }
+                            
                         }
                     }
                 },

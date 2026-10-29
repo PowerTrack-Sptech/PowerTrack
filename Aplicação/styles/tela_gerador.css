@@ -377,3 +377,34 @@ body {
     color: #e99900 !important;
 }
 
+.legenda {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.quadrado {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.verde {
+    background-color: #22a45d;
+}
+
+.amarelo {
+    background-color: #f4b400;
+}
+
+.vermelho {
+    background-color: #e84c4c;
+}
