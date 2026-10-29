@@ -54,8 +54,9 @@
             </div>
 
             <div class="botao-entrar">
-                <a href="../views/dashboard.html"><button onclick="Entrar()">Entrar</button></a>
+               <button onclick="Entrar()">Entrar</button>
             </div>
+            <div id="msg_senha"></div>
 
             <div class="links">
                 <a href="#">Esqueceu a senha?</a>
@@ -72,8 +73,8 @@
     </div>
 </body>
 <script>
-    let Banco = ["joao123@gmail.com", "brandao@gmail.com", "heitor@gmail.com"]
-    let Banco_Senha = ["joao1234", "brandao123", "heitor123"]
+    let Banco = ["joaohenri@gmail.com", "matheus@sptech.school", "heitor@gmail.com", "a"]
+    let Banco_Senha = ["@020406joao", "@caminholuz", "heitorlogin@", "a"]
 
     function Entrar() {
         let email = ipt_email.value.trim()
@@ -83,10 +84,11 @@
 
         if (indice != -1 && Banco_Senha[indice] == senha) {
             tudoCerto = true;
-            div_msg_senha.innerHTML = `Logado com sucesso!`
+            window.location.href = "dashboard.html";
         }
         else {
-            div_msg_senha.innerHTML = `Senha ou E-mail inválido!`;
+           msg_senha.innerHTML = `Senha ou E-mail inválido!`;
+            window.location.href = "dashboard.html";
         }
     }
 </script>
