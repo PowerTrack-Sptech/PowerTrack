@@ -149,47 +149,6 @@ body {                                                      /* seleciona a pági
 
 /* ===== MENSAGEM DE SEGURANÇA (embaixo) ===== */
 
-/* OBS: os quatro blocos abaixo (.box-login-filho, .boas-vindas, .campos input e .botao-entrar button) são repetidos, já aparecem mais acima com os mesmos valores */
-.box-login-filho {                                          /* seleciona o card branco (repetido) */
-    width: 380px;                                           /* largura do card */
-    background-color: white;                                /* fundo branco */
-    border: 1px solid white;                                /* borda branca de 1px */
-    border-radius: 12px;                                    /* cantos arredondados */
-    padding: 20px;                                          /* espaço interno de 20px */
-    text-align: center;                                     /* centraliza os textos */
-}
-
-.boas-vindas {                                              /* seleciona o título "Cadastrar" (repetido) */
-    font-size: 22px;                                        /* tamanho da letra */
-    font-weight: bold;                                      /* negrito */
-    color: #062454;                                         /* azul escuro */
-    margin-bottom: 10px;                                    /* espaço de 10px embaixo */
-}
-
-.campos input {                                             /* seleciona as caixas de digitação (repetido) */
-    width: 100%;                                            /* ocupa toda a largura */
-    box-sizing: border-box;                                 /* conta padding e borda dentro dos 100% */
-    padding: 8px;                                           /* espaço interno de 8px */
-    margin-top: 4px;                                        /* espaço de 4px em cima */
-    margin-bottom: 8px;                                     /* espaço de 8px embaixo */
-    border: 1px solid #cccccc;                              /* borda cinza clara */
-    border-radius: 5px;                                     /* cantos arredondados */
-    font-family: inherit;                                   /* usa a fonte da página */
-    font-size: 12px;                                        /* tamanho da letra */
-}
-
-.botao-entrar button {                                      /* seleciona o botão "Cadastrar" (repetido) */
-    width: 90%;                                             /* 90% da largura do card */
-    margin-top: 10px;                                       /* espaço de 10px em cima */
-    padding: 12px;                                          /* espaço interno de 12px */
-    background-color: #176bea;                              /* fundo azul */
-    color: white;                                           /* texto branco */
-    border-radius: 5px;                                     /* cantos arredondados */
-    border: none;                                           /* sem borda */
-    font-weight: bold;                                      /* negrito */
-    cursor: pointer;                                        /* mouse vira "mãozinha" */
-}
-
 .seguranca {                                                /* seleciona a mensagem de segurança de baixo do card */
     display: flex;                                          /* coloca o ícone e o texto lado a lado */
     justify-content: center;                                /* centraliza na horizontal */
