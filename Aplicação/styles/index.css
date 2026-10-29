@@ -3,6 +3,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .botao-perfil img{
     background-color: #e6e6e6;
     /* fundo cinza claro */

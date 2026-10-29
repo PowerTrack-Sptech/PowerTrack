@@ -117,12 +117,10 @@ body {
     height: 88px;
     align-items: center;
     justify-content: center;
-    border-radius: 18px;
-    background-color: #1677ff;
 }
 
 .icone-resumo img {
-    width: 52px;
+    width: 88px;
 }
 
 .texto-identidade h2 {
