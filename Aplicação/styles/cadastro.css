@@ -11,46 +11,49 @@ body {                                                      /* seleciona a pági
 }
 
 /* ===== CABEÇALHO (barra azul de cima) ===== */
-.cabecalho {                                                /* seleciona o elemento com class="cabecalho" */
-    display: flex;                                          /* coloca os itens do cabeçalho lado a lado */
-    background-color: #062454;                              /* cor de fundo azul escuro da barra */
-    padding: 15px 7%;                                       /* espaço interno: 15px em cima/embaixo e 7% nas laterais */
-    justify-content: space-between;                         /* joga o primeiro item para a esquerda e o último para a direita */
-    align-items: center;                                    /* alinha os itens ao centro na vertical */
-    font-weight: bold;                                      /* letras em negrito */
+.cabecalho {
+    display: flex;
+    background-color: #062454;
+    height: 11vh;
+    justify-content: center;
+    font-size: small;
+    width: 100vw;
+}
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    list-style: none;
+    border-top: 20%;
 }
 
-/* ===== MENU (dentro do cabeçalho) ===== */
-.menu {                                                     /* seleciona o elemento com class="menu" */
-    display: flex;                                          /* coloca os itens do menu lado a lado */
-    align-items: center;                                    /* alinha os itens ao centro na vertical */
-    margin: 0;                                              /* tira a margem externa */
-    padding: 0;                                             /* tira o espaço interno padrão da lista */
-    list-style: none;                                       /* tira as bolinhas da lista */
+.menu a {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
 }
 
-.menu a {                                                   /* seleciona os links (a) dentro do menu */
-    color: white;                                           /* texto do link na cor branca */
-    font-size: 14px;                                        /* tamanho da letra */
-    font-weight: 600;                                       /* peso da letra (semi-negrito) */
-    text-decoration: none;                                  /* tira o sublinhado do link */
-}
-.menu li {                                                  /* seleciona cada item (li) do menu */
-        margin-right: 30px;                                 /* espaço de 30px à direita de cada item */
+.menu li {
+    margin-right: 30px;
 }
 
-.cabecalho button {                                         /* seleciona os botões dentro do cabeçalho */
-    background-color: #e6e6e6;                              /* fundo cinza claro */
-    color: black;                                           /* texto preto */
-    border-radius: 5px;                                     /* cantos arredondados */
-    border: none;                                           /* tira a borda do botão */
-    font-size: 12px;                                        /* tamanho da letra */
-    padding: 6px 30px;                                      /* espaço interno: 6px em cima/embaixo e 30px nas laterais */
+.cabecalho button {
+    background-color: #e6e6e6;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+    padding: 6px 30px;
+    text-align: center;
+    cursor: pointer;
 }
 
-.menu img {                                                 /* seleciona as imagens dentro do menu */
-    width: 90px;                     /* largura da logo do menu */
-    margin-right: 60px;              /* espaço à direita da logo */
+.menu img{
+    width: 90px;
+    margin-right: 70px;
 }
 
 /* ===== ÁREA DO CONTEÚDO (logo + card) ===== */
