@@ -7,20 +7,28 @@ html {
     scroll-behavior: smooth;
 }
 
-.botao-perfil img{
-    background-color: #e6e6e6;
-    /* fundo cinza claro */
-    border-radius: 100px;
-    /* cantos arredondados */
-    border: none;
-    /* tira a borda do botão */
-    font-size: 12px;
-    /* tamanho da letra */
-    padding: 6px;
-    /* espaço interno: 6px em cima/embaixo e 30px nas laterais */
-    cursor: pointer;
+.menu img {
+    width: 90px;
+    margin-right: 70px;
 }
 
+.menu a img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #001b6b;
+    margin: 0;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
 
 .cabecalho {
     display: flex;
@@ -269,6 +277,7 @@ html {
     margin-left: 2%;
     margin-right: 2%;
 }
+
 
 .box {
     width: 25%;

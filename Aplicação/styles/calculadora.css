@@ -33,6 +33,17 @@ body {
     margin-right: 30px;
 }
 
+.menu a img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #001b6b;
+    margin: 0;
+}
+
 .cabecalho button {
     background-color: #e6e6e6;
     color: black;
