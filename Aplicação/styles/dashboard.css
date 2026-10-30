@@ -68,10 +68,6 @@ a{
     font-size: 13px;
 }
 
-.menu li:first-child {
-    text-align: center;
-}
-
 .menu li img {
     width: 150px;
 }
