@@ -145,94 +145,101 @@
 
 <script>
 
-    function calcular() {
+function calcular() {
 
-        let empresa = ipt_empresa.value;
-        let geradores = Number(ipt_geradores.value);
-        let visitas = Number(ipt_visitas.value);
-        let custo = Number(ipt_custo.value);
+    let empresa = ipt_empresa.value;
+    let geradores = Number(ipt_geradores.value);
+    let visitas = Number(ipt_visitas.value);
+    let custo = Number(ipt_custo.value);
 
-        let visitasAno = visitas * 12;
-        let custoMes = visitas * custo;
-        let custoAno = custoMes * 12;
+    let visitasAno = visitas * 12;
+    let custoMes = visitas * custo;
+    let custoAno = custoMes * 12;
 
+    let visitas25 = visitasAno * 25 / 100;
+    let economia25 = visitas25 * custo;
 
-        let visitas25 = visitasAno * 25 / 100;
-        let economia25 = visitas25 * custo;
+    let visitas50 = visitasAno * 50 / 100;
+    let economia50 = visitas50 * custo;
 
+    let visitas70 = visitasAno * 70 / 100;
+    let economia70 = visitas70 * custo;
 
-        let visitas50 = visitasAno * 50 / 100;
-        let economia50 = visitas50 * custo;
+    const formatado = function(valor) {
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(valor);
+    };
 
+    if (geradores <= 0) {
+        alert('Insira uma quantidade valida de geradores!');
+        ipt_geradores.value = "";
 
-        let visitas70 = visitasAno * 70 / 100;
-        let economia70 = visitas70 * custo;
+    } else if (visitas <= 0) {
+        alert('Insira uma quantidade valida de visitas mensais!');
+        ipt_visitas.value = "";
 
-        if (geradores <= 0) {
-            alert('Insira uma quantidade valida de geradores!')
-            ipt_geradores.value = ""
-        } else if (visitas <= 0) {
-            alert('Insira uma quantidade valida de visitas mensais!')
-            ipt_visitas.value = ""
-        } else if (custo <= 0) {
-            alert('Valores de custo invalidos! Nao sera possivel estimar valores!')
-            ipt_custo.value = ""
-        } else {
-            div_result.innerHTML = `
-            <div class="resultado-card">
-                <p class="resultado-status">Simulação concluída</p>
+    } else if (custo <= 0) {
+        alert('Valores de custo invalidos! Nao sera possivel estimar valores!');
+        ipt_custo.value = "";
 
-                <h2>${empresa}</h2>
+    } else {
+        div_result.innerHTML = `
+        <div class="resultado-card" id="resultado">
+            <p class="resultado-status">Simulação concluída</p>
 
-                <p class="resultado-geradores">
+            <h2>${empresa}</h2>
+
+            <p class="resultado-geradores">
                 ${geradores} geradores monitorados
-                </p>
+            </p>
 
             <div class="resumo-custo">
-            <p>Custo atual com inspeções</p>
+                <p>Custo atual com inspeções</p>
 
-            <strong>R$ ${custoAno.toFixed(2)} por ano</strong>
+                <strong>${formatado(custoAno)} por ano</strong>
 
-            <span>
-                R$ ${custoMes.toFixed(2)} por mês ·
-                ${visitasAno} inspeções por ano
-            </span>
+                <span>
+                    ${formatado(custoMes)} por mês ·
+                    ${visitasAno} inspeções por ano
+                </span>
+            </div>
+
+            <div class="cenarios-resultados">
+                <div class="cenario-card">
+                    <h3>Conservador · 25%</h3>
+
+                    <p>Inspeções evitadas no ano</p>
+                    <strong>≈ ${visitas25.toFixed(0)}</strong>
+
+                    <p>Economia anual</p>
+                    <b>${formatado(economia25)}</b>
+                </div>
+
+                <div class="cenario-card destaque">
+                    <h3>Intermediário · 50%</h3>
+
+                    <p>Inspeções evitadas no ano</p>
+                    <strong>≈ ${visitas50.toFixed(0)}</strong>
+
+                    <p>Economia anual</p>
+                    <b>${formatado(economia50)}</b>
+                </div>
+
+                <div class="cenario-card">
+                    <h3>Potencial · 70%</h3>
+
+                    <p>Inspeções evitadas no ano</p>
+                    <strong>≈ ${visitas70.toFixed(0)}</strong>
+
+                    <p>Economia anual</p>
+                    <b>${formatado(economia70)}</b>
+                </div>
+            </div>
         </div>
-
-        <div class="cenarios-resultados">
-            <div class="cenario-card">
-                <h3>Conservador · 25%</h3>
-
-                <p>Inspeções evitadas no ano</p>
-                <strong>≈ ${visitas25.toFixed(0)}</strong>
-
-                <p>Economia anual</p>
-                <b>R$ ${economia25.toFixed(2)}</b>
-            </div>
-
-            <div class="cenario-card destaque">
-                <h3>Intermediário · 50%</h3>
-
-                <p>Inspeções evitadas no ano</p>
-                <strong>≈ ${visitas50.toFixed(0)}</strong>
-
-                <p>Economia anual</p>
-                <b>R$ ${economia50.toFixed(2)}</b>
-            </div>
-
-            <div class="cenario-card">
-                <h3>Potencial · 70%</h3>
-
-                <p>Inspeções evitadas no ano</p>
-                <strong>≈ ${visitas70.toFixed(0)}</strong>
-
-                <p>Economia anual</p>
-                <b>R$ ${economia70.toFixed(2)}</b>
-            </div>
-        </div>
-    </div>
         `;
-        }
     }
+}
 
 </script>
