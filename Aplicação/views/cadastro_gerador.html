@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/cadastro_gerador.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <title>PowerTrack | Cadastro Gerador</title>
     <link rel="icon" href="../assets/logo_dois.png" type="image/png">
 </head>
@@ -19,26 +17,258 @@
             <li><a href="../views/dashboard.html"> <img src="../assets/ICONS_BRANCO/visao_geral.svg" alt="">Visão geral</a></li>
             <li><a class="ativo" href="#"> <img src="../assets/ICONS_BRANCO/geradores.svg" alt="">Geradores</a></li>
             <li><a href="index_logado.html"><img src="../assets/ICONS_BRANCO/inicio.svg" alt="">Home</a></li>
-            
+
 
             <li class="perfil-usuario">
-                <img 
-                class="perfil" 
+                <img
+                class="perfil"
                 src="../assets/logo_sptech_perfil.png"
                 alt="Logo da SPTech">
 
-                <p>     
+                <p>
                     USER 01<br>
                     SPTech
                 </p>
                 </p>
-            
-            <a href="index.html"> 
+
+            <a href="index.html">
                 <img src="../assets/ICONS_BRANCO/logout.svg"
                      alt="">Logout
                     </a>
             </li>
         </ul>
     </div>
+
+    <main class="pagina">
+
+        <div class="topo-pagina">
+            <div class="titulo-pagina">
+                <h1>Cadastro de Geradores</h1>
+            </div>
+
+            <div class="acoes-topo">
+                <button class="botao-acao botao-filtro" onclick="abrirFiltro()">Filtro</button>
+                <button class="botao-acao botao-editar" onclick="editarGerador()">Editar</button>
+                <button class="botao-acao botao-excluir" onclick="excluirGerador()">Excluir</button>
+            </div>
+        </div>
+
+        <div class="painel-filtro escondido" id="painel_filtro">
+            <label for="slc_geradores">Selecione um gerador</label>
+            <select id="slc_geradores">
+                <option value="">Nenhum gerador cadastrado</option>
+            </select>
+        </div>
+
+        <div class="card-cadastro">
+
+            <img class="logo-card" src="../assets/logo_sem_fundo.png" alt="Logo PowerTrack">
+
+            <div class="campos-gerador">
+
+                <div class="campo">
+                    <label for="ipt_nome">Nome</label>
+                    <input type="text" id="ipt_nome" placeholder="Ex: GER - 6">
+                </div>
+
+                <div class="campo">
+                    <label for="ipt_modelo">Modelo</label>
+                    <input type="text" id="ipt_modelo" placeholder="Ex: VoltForce">
+                </div>
+
+                <div class="campo">
+                    <label for="ipt_capacidade">Capacidade do Tanque (L)</label>
+                    <input type="number" id="ipt_capacidade" placeholder="Ex: 12000">
+                </div>
+
+                <div class="campo">
+                    <label for="ipt_profundidade">Profundidade do Tanque (cm)</label>
+                    <input type="number" id="ipt_profundidade" placeholder="Ex: 200">
+                </div>
+
+                <div class="campo">
+                    <label for="ipt_largura">Largura do Tanque (cm)</label>
+                    <input type="number" id="ipt_largura" placeholder="Ex: 200">
+                </div>
+
+                <div class="campo">
+                    <label for="ipt_altura">Altura do Tanque (cm)</label>
+                    <input type="number" id="ipt_altura" placeholder="Ex: 250">
+                </div>
+
+            </div>
+
+            <div class="botao-cadastrar">
+                <button id="btn_cadastrar" onclick="cadastrarGerador()">Cadastrar</button>
+                <button class="botao-cancelar escondido" id="btn_cancelar" onclick="cancelarEdicao()">Cancelar</button>
+            </div>
+
+            <div id="msg_gerador"></div>
+
+        </div>
+
+    </main>
+
+    <script>
+        let listaGeradores = []
+
+        let indiceEdicao = -1
+
+        function abrirFiltro() {
+            painel_filtro.classList.toggle("escondido")
+        }
+
+        function atualizarFiltro() {
+            let opcoes = ""
+
+            if (listaGeradores.length == 0) {
+                opcoes = `<option value="">Nenhum gerador cadastrado</option>`
+            } else {
+                opcoes = `<option value="">Selecione...</option>`
+
+                for (let i = 0; i < listaGeradores.length; i++) {
+                    opcoes += `<option value="${i}">${listaGeradores[i].nome} - ${listaGeradores[i].modelo}</option>`
+                }
+            }
+
+            slc_geradores.innerHTML = opcoes
+        }
+
+        function limparCampos() {
+            ipt_nome.value = ""
+            ipt_modelo.value = ""
+            ipt_capacidade.value = ""
+            ipt_profundidade.value = ""
+            ipt_largura.value = ""
+            ipt_altura.value = ""
+        }
+
+        function cadastrarGerador() {
+            let nome = ipt_nome.value.trim()
+            let modelo = ipt_modelo.value.trim()
+            let capacidade = ipt_capacidade.value.trim()
+            let profundidade = ipt_profundidade.value.trim()
+            let largura = ipt_largura.value.trim()
+            let altura = ipt_altura.value.trim()
+            let tudoCerto = true
+
+            if (nome == "" || modelo == "" || capacidade == "" || profundidade == "" || largura == "" || altura == "") {
+                msg_gerador.innerHTML = `<div class="msg-erro">Por favor, preencha todos os campos!</div>`
+                tudoCerto = false
+            }
+
+            if (tudoCerto == true && (Number(capacidade) <= 0 || Number(profundidade) <= 0 || Number(largura) <= 0 || Number(altura) <= 0)) {
+                msg_gerador.innerHTML = `<div class="msg-erro">A capacidade e as medidas precisam ser maiores que zero!</div>`
+                tudoCerto = false
+            }
+
+            let aux = 0
+            let nomeRepetido = false
+
+            while (aux < listaGeradores.length && nomeRepetido == false) {
+                if (listaGeradores[aux].nome.toLowerCase() == nome.toLowerCase() && aux != indiceEdicao) {
+                    nomeRepetido = true
+                }
+                aux++
+            }
+
+            if (tudoCerto == true && nomeRepetido == true) {
+                msg_gerador.innerHTML = `<div class="msg-erro">Já existe um gerador com esse nome!</div>`
+                tudoCerto = false
+            }
+
+            if (tudoCerto == true) {
+                let gerador = {
+                    nome: nome,
+                    modelo: modelo,
+                    capacidade: Number(capacidade),
+                    profundidade: Number(profundidade),
+                    largura: Number(largura),
+                    altura: Number(altura)
+                }
+
+                if (indiceEdicao == -1) {
+                    listaGeradores.push(gerador)
+                    msg_gerador.innerHTML = `<div class="msg-sucesso">Gerador ${nome} cadastrado com sucesso!</div>`
+                } else {
+                    listaGeradores[indiceEdicao] = gerador
+                    msg_gerador.innerHTML = `<div class="msg-sucesso">Gerador ${nome} atualizado com sucesso!</div>`
+                    sairDoModoEdicao()
+                }
+
+                limparCampos()
+                atualizarFiltro()
+            }
+        }
+
+        function editarGerador() {
+            let posicao = slc_geradores.value
+
+            if (painel_filtro.classList.contains("escondido")) {
+                painel_filtro.classList.remove("escondido")
+            }
+
+            if (listaGeradores.length == 0) {
+                msg_gerador.innerHTML = `<div class="msg-erro">Não existe nenhum gerador cadastrado para editar!</div>`
+            } else if (posicao == "") {
+                msg_gerador.innerHTML = `<div class="msg-erro">Escolha um gerador no filtro para editar!</div>`
+            } else {
+                let gerador = listaGeradores[posicao]
+
+                ipt_nome.value = gerador.nome
+                ipt_modelo.value = gerador.modelo
+                ipt_capacidade.value = gerador.capacidade
+                ipt_profundidade.value = gerador.profundidade
+                ipt_largura.value = gerador.largura
+                ipt_altura.value = gerador.altura
+
+                indiceEdicao = Number(posicao)
+                btn_cadastrar.innerHTML = "Salvar alterações"
+                btn_cancelar.classList.remove("escondido")
+
+                msg_gerador.innerHTML = `<div class="msg-sucesso">Editando o gerador ${gerador.nome}.</div>`
+            }
+        }
+
+        function excluirGerador() {
+            let posicao = slc_geradores.value
+
+            if (painel_filtro.classList.contains("escondido")) {
+                painel_filtro.classList.remove("escondido")
+            }
+
+            if (listaGeradores.length == 0) {
+                msg_gerador.innerHTML = `<div class="msg-erro">Não existe nenhum gerador cadastrado para excluir!</div>`
+            } else if (posicao == "") {
+                msg_gerador.innerHTML = `<div class="msg-erro">Escolha um gerador no filtro para excluir!</div>`
+            } else {
+                let nome = listaGeradores[posicao].nome
+
+                if (confirm(`Deseja realmente excluir o gerador ${nome}?`)) {
+                    listaGeradores.splice(posicao, 1)
+
+                    if (indiceEdicao == Number(posicao)) {
+                        limparCampos()
+                        sairDoModoEdicao()
+                    }
+
+                    atualizarFiltro()
+                    msg_gerador.innerHTML = `<div class="msg-sucesso">Gerador ${nome} excluído com sucesso!</div>`
+                }
+            }
+        }
+
+        function cancelarEdicao() {
+            limparCampos()
+            sairDoModoEdicao()
+            msg_gerador.innerHTML = ""
+        }
+
+        function sairDoModoEdicao() {
+            indiceEdicao = -1
+            btn_cadastrar.innerHTML = "Cadastrar"
+            btn_cancelar.classList.add("escondido")
+        }
+    </script>
 </body>
 </html>
