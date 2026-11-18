@@ -76,10 +76,7 @@
     </div>
 </body>
 <script>
-    let bancoNomes = []
-    let bancoEmails = []
-    let bancoSenhas = []
-
+   
     function cadastrar() {
         let nome = ipt_nome.value.trim()
         let email = ipt_email.value.trim()
@@ -96,11 +93,6 @@
 
         if (tudoCerto == true && senha != confirmarSenha) {
             msg_senha.innerHTML = `<div class="senha">As senhas não coincidem!</div>`
-            tudoCerto = false
-        }
-
-        if (tudoCerto == true && bancoEmails.includes(email)) {
-            msg_senha.innerHTML = `<div class="senha">Este e-mail já está cadastrado!</div>`
             tudoCerto = false
         }
 
@@ -139,11 +131,30 @@
 
 
         if (tudoCerto == true) {
-            bancoNomes.push(nome)
-            bancoEmails.push(email)
-            bancoSenhas.push(senha)
-
-            msg_senha.innerHTML = `<div class="senhaCerta">Cadastro efetuado com sucesso, ${nome}!</div>`
+         fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                sobrenomeServer: sobrenome,
+                emailServer: email,
+                codigoEmpresaServer: empresa,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                msg_senha.innerHTML = `<div class="senhaCerta">Cadastro efetuado com sucesso, ${nome}!</div>`;
+            } else {
+                resposta.text().then(function (erro) {
+                    msg_senha.innerHTML = `<div class="senha">${erro}</div>`;
+                });
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            msg_senha.innerHTML = `<div class="senha">Houve um erro ao realizar o cadastro!</div>`;
+        });   
         }
     }
 </script>
