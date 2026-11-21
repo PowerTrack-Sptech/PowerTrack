@@ -169,13 +169,11 @@ body {
     cursor: pointer;
 }
 
-.botao-filtro,
 .botao-editar {
     background-color: white;
     color: #1774ff;
 }
 
-.botao-filtro:hover,
 .botao-editar:hover {
     background-color: #dcecff;
 }
@@ -189,37 +187,17 @@ body {
     background-color: #d31b1b;
 }
 
-/* Painel que abre ao clicar em Filtro */
-.painel-filtro {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding: 16px 20px;
-    border: 1px solid #e1e9f5;
-    border-radius: 12px;
-    background-color: white;
-}
-
-.painel-filtro label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #555252;
-}
-
-.painel-filtro select {
-    min-width: 280px;
+/* Lista de geradores que fica ao lado dos botões */
+.acoes-topo select {
+    min-width: 260px;
     padding: 9px 12px;
     border: 1px solid #1774ff;
     border-radius: 6px;
-    background-color: #f2f2f2;
+    background-color: white;
     color: #062454;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
-}
-
-.escondido {
-    display: none;
+    font-weight: bold;
 }
 
 /* Cartão branco com o formulário */

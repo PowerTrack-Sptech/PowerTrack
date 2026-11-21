@@ -47,17 +47,12 @@
             </div>
 
             <div class="acoes-topo">
-                <button class="botao-acao botao-filtro" onclick="abrirFiltro()">Filtro</button>
+                <select id="slc_geradores">
+                    <option value="">Nenhum gerador cadastrado</option>
+                </select>
                 <button class="botao-acao botao-editar" onclick="editarGerador()">Editar</button>
                 <button class="botao-acao botao-excluir" onclick="excluirGerador()">Excluir</button>
             </div>
-        </div>
-
-        <div class="painel-filtro escondido" id="painel_filtro">
-            <label for="slc_geradores">Selecione um gerador</label>
-            <select id="slc_geradores">
-                <option value="">Nenhum gerador cadastrado</option>
-            </select>
         </div>
 
         <div class="card-cadastro">
@@ -100,7 +95,7 @@
 
             <div class="botao-cadastrar">
                 <button id="btn_cadastrar" onclick="cadastrarGerador()">Cadastrar</button>
-                <button class="botao-cancelar escondido" id="btn_cancelar" onclick="cancelarEdicao()">Cancelar</button>
+                <button class="botao-cancelar" id="btn_cancelar" style="display: none" onclick="cancelarEdicao()">Cancelar</button>
             </div>
 
             <div id="msg_gerador"></div>
@@ -114,20 +109,16 @@
 
         let indiceEdicao = -1
 
-        function abrirFiltro() {
-            painel_filtro.classList.toggle("escondido")
-        }
-
-        function atualizarFiltro() {
+        function atualizarSelect() {
             let opcoes = ""
 
             if (listaGeradores.length == 0) {
                 opcoes = `<option value="">Nenhum gerador cadastrado</option>`
             } else {
-                opcoes = `<option value="">Selecione...</option>`
+                opcoes = `<option value="">Selecione um gerador</option>`
 
                 for (let i = 0; i < listaGeradores.length; i++) {
-                    opcoes += `<option value="${i}">${listaGeradores[i].nome} - ${listaGeradores[i].modelo}</option>`
+                    opcoes = opcoes + `<option value="${i}">${listaGeradores[i].nome} - ${listaGeradores[i].modelo}</option>`
                 }
             }
 
@@ -141,50 +132,46 @@
             ipt_profundidade.value = ""
             ipt_largura.value = ""
             ipt_altura.value = ""
+
+            indiceEdicao = -1
+            btn_cadastrar.innerHTML = "Cadastrar"
+            btn_cancelar.style.display = "none"
         }
 
         function cadastrarGerador() {
             let nome = ipt_nome.value.trim()
             let modelo = ipt_modelo.value.trim()
-            let capacidade = ipt_capacidade.value.trim()
-            let profundidade = ipt_profundidade.value.trim()
-            let largura = ipt_largura.value.trim()
-            let altura = ipt_altura.value.trim()
+            let capacidade = Number(ipt_capacidade.value)
+            let profundidade = Number(ipt_profundidade.value)
+            let largura = Number(ipt_largura.value)
+            let altura = Number(ipt_altura.value)
             let tudoCerto = true
 
-            if (nome == "" || modelo == "" || capacidade == "" || profundidade == "" || largura == "" || altura == "") {
+            if (nome == "" || modelo == "" || ipt_capacidade.value == "" || ipt_profundidade.value == "" || ipt_largura.value == "" || ipt_altura.value == "") {
                 msg_gerador.innerHTML = `<div class="msg-erro">Por favor, preencha todos os campos!</div>`
                 tudoCerto = false
             }
 
-            if (tudoCerto == true && (Number(capacidade) <= 0 || Number(profundidade) <= 0 || Number(largura) <= 0 || Number(altura) <= 0)) {
+            if (tudoCerto == true && (capacidade <= 0 || profundidade <= 0 || largura <= 0 || altura <= 0)) {
                 msg_gerador.innerHTML = `<div class="msg-erro">A capacidade e as medidas precisam ser maiores que zero!</div>`
                 tudoCerto = false
             }
 
-            let aux = 0
-            let nomeRepetido = false
-
-            while (aux < listaGeradores.length && nomeRepetido == false) {
-                if (listaGeradores[aux].nome.toLowerCase() == nome.toLowerCase() && aux != indiceEdicao) {
-                    nomeRepetido = true
+            for (let i = 0; i < listaGeradores.length; i++) {
+                if (tudoCerto == true && i != indiceEdicao && listaGeradores[i].nome.toLowerCase() == nome.toLowerCase()) {
+                    msg_gerador.innerHTML = `<div class="msg-erro">Já existe um gerador com esse nome!</div>`
+                    tudoCerto = false
                 }
-                aux++
-            }
-
-            if (tudoCerto == true && nomeRepetido == true) {
-                msg_gerador.innerHTML = `<div class="msg-erro">Já existe um gerador com esse nome!</div>`
-                tudoCerto = false
             }
 
             if (tudoCerto == true) {
                 let gerador = {
                     nome: nome,
                     modelo: modelo,
-                    capacidade: Number(capacidade),
-                    profundidade: Number(profundidade),
-                    largura: Number(largura),
-                    altura: Number(altura)
+                    capacidade: capacidade,
+                    profundidade: profundidade,
+                    largura: largura,
+                    altura: altura
                 }
 
                 if (indiceEdicao == -1) {
@@ -193,25 +180,18 @@
                 } else {
                     listaGeradores[indiceEdicao] = gerador
                     msg_gerador.innerHTML = `<div class="msg-sucesso">Gerador ${nome} atualizado com sucesso!</div>`
-                    sairDoModoEdicao()
                 }
 
                 limparCampos()
-                atualizarFiltro()
+                atualizarSelect()
             }
         }
 
         function editarGerador() {
             let posicao = slc_geradores.value
 
-            if (painel_filtro.classList.contains("escondido")) {
-                painel_filtro.classList.remove("escondido")
-            }
-
-            if (listaGeradores.length == 0) {
-                msg_gerador.innerHTML = `<div class="msg-erro">Não existe nenhum gerador cadastrado para editar!</div>`
-            } else if (posicao == "") {
-                msg_gerador.innerHTML = `<div class="msg-erro">Escolha um gerador no filtro para editar!</div>`
+            if (posicao == "") {
+                msg_gerador.innerHTML = `<div class="msg-erro">Escolha um gerador na lista para editar!</div>`
             } else {
                 let gerador = listaGeradores[posicao]
 
@@ -224,7 +204,7 @@
 
                 indiceEdicao = Number(posicao)
                 btn_cadastrar.innerHTML = "Salvar alterações"
-                btn_cancelar.classList.remove("escondido")
+                btn_cancelar.style.display = "inline-block"
 
                 msg_gerador.innerHTML = `<div class="msg-sucesso">Editando o gerador ${gerador.nome}.</div>`
             }
@@ -233,26 +213,17 @@
         function excluirGerador() {
             let posicao = slc_geradores.value
 
-            if (painel_filtro.classList.contains("escondido")) {
-                painel_filtro.classList.remove("escondido")
-            }
-
-            if (listaGeradores.length == 0) {
-                msg_gerador.innerHTML = `<div class="msg-erro">Não existe nenhum gerador cadastrado para excluir!</div>`
-            } else if (posicao == "") {
-                msg_gerador.innerHTML = `<div class="msg-erro">Escolha um gerador no filtro para excluir!</div>`
+            if (posicao == "") {
+                msg_gerador.innerHTML = `<div class="msg-erro">Escolha um gerador na lista para excluir!</div>`
             } else {
                 let nome = listaGeradores[posicao].nome
 
                 if (confirm(`Deseja realmente excluir o gerador ${nome}?`)) {
                     listaGeradores.splice(posicao, 1)
 
-                    if (indiceEdicao == Number(posicao)) {
-                        limparCampos()
-                        sairDoModoEdicao()
-                    }
+                    limparCampos()
+                    atualizarSelect()
 
-                    atualizarFiltro()
                     msg_gerador.innerHTML = `<div class="msg-sucesso">Gerador ${nome} excluído com sucesso!</div>`
                 }
             }
@@ -260,14 +231,7 @@
 
         function cancelarEdicao() {
             limparCampos()
-            sairDoModoEdicao()
             msg_gerador.innerHTML = ""
-        }
-
-        function sairDoModoEdicao() {
-            indiceEdicao = -1
-            btn_cadastrar.innerHTML = "Cadastrar"
-            btn_cancelar.classList.add("escondido")
         }
     </script>
 </body>
