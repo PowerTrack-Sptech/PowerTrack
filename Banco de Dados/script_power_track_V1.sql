@@ -44,10 +44,10 @@ CREATE TABLE endereco (
 
 CREATE TABLE gerador (
 	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL,
 	modelo VARCHAR(50) NOT NULL,
 	capacidade_tanque_litros DECIMAL(12,2) NOT NULL,
 	largura_tanque_cm DECIMAL(6,2) NOT NULL,
-	profundidade_tanque_cm DECIMAL(6,2) NOT NULL,
 	altura_tanque_cm DECIMAL(6,2) NOT NULL,
 	fk_empresa INT NOT NULL,
 	CONSTRAINT chk_gerador_empresa
@@ -55,23 +55,14 @@ CREATE TABLE gerador (
     REFERENCES empresa(id)
 );
 
-CREATE TABLE alerta(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	tipo_alerta VARCHAR(30) NOT NULL,
-    data_alerta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-	CONSTRAINT chk_tipo_alerta CHECK( tipo_alerta IN ('Atenção','Crítico')),
-    fk_gerador INT NOT NULL,
-    CONSTRAINT fk_alerta_gerador 
-    FOREIGN KEY (fk_gerador) 
-    REFERENCES gerador(id)
-);
-
 CREATE TABLE sensor (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	modelo_sensor VARCHAR(20) NOT NULL,
+	modelo VARCHAR(20) NOT NULL,
 	data_instalacao_sensor DATE NOT NULL,
 	status_sensor VARCHAR(20) NOT NULL DEFAULT 'Ativo',
 	CONSTRAINT chk_status_sensor CHECK (status_sensor IN ('Ativo', 'Inativo')),
+    tipo_alerta VARCHAR(20) DEFAULT 'Normal', -- Vai ser definido através do nivel do combustivel, com Case
+    CONSTRAINT chk_tipo_alerta CHECK (tipo_alerta IN ('Critico', 'Atenção', 'Normal')),
 	fk_gerador INT NOT NULL,
 	CONSTRAINT chk_sensor_gerador
 	FOREIGN KEY (fk_gerador)
@@ -88,7 +79,10 @@ CREATE TABLE medida (
 	REFERENCES sensor(id)
 );
 
--- INSERINDO DADOS SIMULADOS PARA SELECT DAS DASHBOARDS 
+-- INSERINDO DADOS NAS TABELAS 
+
+INSERT INTO usuario (nome, sobrenome, email, senha, status_usuario, fk_empresa) VALUES 
+('João', 'Victor', 'joaovictor@gmail.com', 'Joao1234', 1, 1 );
 
 INSERT INTO empresa (nome_fantasia, cnpj, email, telefone_empresa, codigo_empresa, fk_empresa_fabricante) VALUES 
 ('Data Center Alpha','67283849000198', 'datacenteralpha@gmail.com', '11973625364', '77890651', NULL),
@@ -99,44 +93,16 @@ INSERT INTO empresa (nome_fantasia, cnpj, email, telefone_empresa, codigo_empres
 ('Data Center Oliveira', '33459087000155', 'datacenteroliveira@gmail.com', '11985429099', '12386258', NULL),
 ('Shopping Paulista', '23775668000139', 'shoppingpaulista@gmail.com', '11988045865', '87538426', 6);
 
-INSERT INTO usuario (nome, sobrenome, email, senha, status_usuario, fk_empresa) VALUES 
-('Fernando', 'Brandão', 'fernandobrandao@gmail.com', 'brandão1234', 1, 1),
-('Júlia', 'Araripe', 'juliararipe@gmail.com', 'julia012', 1, 2),
-('Marcos', 'Antônio', 'marcão123@gmail.com', 'marcos123', 1, 3),
-('Matheus', 'Matos', 'matheusmatos@gmail.com', 'matheusm77@', 0,4),
-('Julia', 'Lima', 'julialima@gmail.com', 'julialima00', 0, 5),
-('Claudio', 'Frizzarini', 'freeza@gmail.com', 'freeza_uii', 1, 6),
-('Marcio', 'Santana', 'marciosantana@gmail.com', 'lubuntu26', 1, 7);
+INSERT INTO gerador (nome, modelo, capacidade_tanque_litros, largura_tanque_cm, profundidade_tanque_cm, altura_tanque_cm, fk_empresa) VALUES
+('GER - 01','VoltForce', 10000.00, 200.00, 200.00, 250.00, 1),
+('GER - 02','VoltForce', 5000.00, 160.00, 160.00, 200.00, 2),
+('GER - 03','VoltForce', 8000.00, 200.00, 200.00, 200.00, 3),
+('GER - 04','VoltForce', 6000.00, 180.00, 180.00, 200.00, 4),
+('GER - 05','VoltForce', 3000.00, 150.00, 150.00, 150.00, 5),
+('GER - 06','VoltForce', 12000.00, 200.00, 200.00, 300.00, 6),
+('GER - 07','VoltForce', 4000.00, 160.00, 160.00, 160.00, 7);
 
-INSERT INTO endereco (logradouro, numero, bairro, cidade, cep, fk_empresa) VALUES 
-('Avenida Tecnologia', '1200', 'Centro Empresarial', 'São Paulo', '09340200', 1),
-('Rua das Acácias', '245', 'Jardim Paulista', 'São Paulo', '25670350', 2),
-('Avenida Industrial', '850', 'Distrito Industrial', 'Santo André', '15800975', 3),
-('Avenida dos Comerciantes', '377', 'Centro', 'São Bernardo do Campo', '35670900', 4),
-('Rua do Conhecimento', '233', 'Vila Universitária', 'São Paulo', '23450875', 5),
-('Rua Haddock Lobo', '595', 'Cerqueira César', 'São Paulo', '04567000', 6),
-('Avenida Paulista', '660', 'Bela Vista', 'São Paulo', '01310100', 7);
-
-INSERT INTO gerador (modelo, capacidade_tanque_litros, largura_tanque_cm, profundidade_tanque_cm, altura_tanque_cm, fk_empresa) VALUES
-('VoltForce', 10000.00, 200.00, 200.00, 250.00, 1),
-('VoltForce', 5000.00, 160.00, 160.00, 200.00, 2),
-('VoltForce', 8000.00, 200.00, 200.00, 200.00, 3),
-('VoltForce', 6000.00, 180.00, 180.00, 200.00, 4),
-('VoltForce', 3000.00, 150.00, 150.00, 150.00, 5),
-('VoltForce', 12000.00, 200.00, 200.00, 300.00, 6),
-('VoltForce', 4000.00, 160.00, 160.00, 160.00, 7);
-
-INSERT INTO alerta (tipo_alerta, data_alerta, fk_gerador) VALUES
-('Crítico', '2026-10-26 21:15:00', 3),
-('Crítico', '2026-10-26 21:25:00', 6),
-('Atenção', '2026-10-26 20:00:00', 6),
-('Atenção', '2026-10-26 20:30:00', 6),
-('Atenção', '2026-10-26 21:00:00', 6),
-('Atenção', '2026-10-26 21:23:00', 5),
-('Atenção', '2026-10-26 21:12:00', 7),
-('Atenção', '2026-10-26 21:30:00', 2);
-
-INSERT INTO sensor (modelo_sensor, data_instalacao_sensor, status_sensor, fk_gerador) VALUES 
+INSERT INTO sensor (modelo, data_instalacao_sensor, status_sensor, fk_gerador) VALUES 
 ('HC-SR04','2026-10-01','Ativo',1),
 ('HC-SR04','2026-10-02','Ativo',2),
 ('HC-SR04','2026-10-03','Ativo',3),
@@ -145,47 +111,8 @@ INSERT INTO sensor (modelo_sensor, data_instalacao_sensor, status_sensor, fk_ger
 ('HC-SR04','2026-10-06','Ativo',6),
 ('HC-SR04','2026-10-07','Ativo',7);
 
--- Dados de acordo com a dashboard
 -- Distância medida = altura do tanque × (1 − percentual de combustível)
 -- O percentual precisa ser convertido para decimal. Por exemplo, 82% vira 0.82.
-INSERT INTO medida (data_medicao, distancia_cm, fk_sensor) VALUES 
-('2026-10-26 21:38:00', 45.00, 1),
-('2026-10-26 21:28:00', 50.00, 1),
-('2026-10-26 21:18:00', 55.00, 1),
-
-('2026-10-26 21:35:00', 72.00, 2),
-('2026-10-26 21:25:00', 76.00, 2),
-('2026-10-26 21:15:00', 80.00, 2),
-
-('2026-10-26 21:30:00', 150.00, 3),
-('2026-10-26 21:20:00', 155.00, 3),
-('2026-10-26 21:10:00', 160.00, 3),
-
-('2026-10-26 21:25:00', 54.00, 4),
-('2026-10-26 21:15:00', 59.00, 4),
-('2026-10-26 21:05:00', 64.00, 4),
-
-('2026-10-26 21:23:00', 82.50, 5),
-('2026-10-26 21:13:00', 86.00, 5),
-('2026-10-26 21:03:00', 90.00, 5),
-
-('2026-10-26 21:15:00', 237.00, 6),
-('2026-10-26 20:55:00', 243.00, 6),
-('2026-10-26 20:35:00', 250.00, 6),
-
-('2026-10-26 21:12:00', 75.20, 7),
-('2026-10-26 21:02:00', 80.00, 7),
-('2026-10-26 20:52:00', 85.00, 7);
-
--- SELECTS DAS TABELAS 
-
-SELECT * FROM empresa;
-SELECT * FROM usuario;
-SELECT * FROM endereco;
-SELECT * FROM gerador;
-SELECT * FROM alerta;
-SELECT * FROM sensor;
-SELECT * FROM medida;
 
 -- SELECTS DA DASHBOARD 
 
