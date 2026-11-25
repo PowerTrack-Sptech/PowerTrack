@@ -21,7 +21,7 @@ const serial = async (
         {
             host: 'localhost',
             user: 'User_Geral',
-            password: 'urubu100',
+            password: 'urubu100@',
             database: 'PowerTrack',
             port: 3306
         }
@@ -52,21 +52,23 @@ const serial = async (
         console.log(data);
         const valores = data.split(';');
         const sensorDigital = parseInt(valores[1]);
-        const sensorAnalogico = parseFloat(valores[0]);
+        const HC_SR04 = parseFloat(valores[0]);
 
         // armazena os valores dos sensores nos arrays correspondentes
-        valoresSensorAnalogico.push(sensorAnalogico);
+        valoresSensorAnalogico.push(HC_SR04);
         valoresSensorDigital.push(sensorDigital);
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
+            const sensor_simulado_01 = 
+
             // este insert irá inserir os dados na tabela "medida"/
             await poolBancoDados.execute(
                 'INSERT INTO medida (distancia_cm,  fk_sensor ) VALUES (?, ?)',
-                [sensorAnalogico, 1]
+                [HC_SR04, 1]
             );
-            console.log("valores inseridos no banco: ", sensorAnalogico);
+            console.log("valores inseridos no banco: ", HC_SR04);
 
         }
 
