@@ -80,9 +80,13 @@
         let email = ipt_email.value.trim()
         let senha = ipt_senha.value
      
-        if(senha == '' || email == ''){
+        if(bloqueado == true){
+            msg_senha.innerHTML = `<div class ="senha">Login bloqueado!</div>`
+        }
+        else if(senha == '' || email == ''){
             msg_senha.innerHTML = `<div class ="senha">Preencha todos os campos!</div>`
         }
+    
         else if(bloqueado == false){
          
         console.log("FORM LOGIN: ", email);
@@ -116,8 +120,19 @@
 
                 });
 
-            } else {
-                console.log("Houve um erro ao tentar realizar o login!");
+            }    
+            
+        else{
+            contador--;
+            if (contador <= 0){
+            bloqueado = true
+            msg_senha.innerHTML = `<div class ="senha"> Senha ou E-mail inválido! ${contador} tentativas restantes </div>`;
+        }
+                  else{  
+                  
+                    msg_senha.innerHTML = `<div class ="senha"> Senha ou E-mail inválido! ${contador} tentativas restantes </div>`;
+                    console.log("Houve um erro ao tentar realizar o login!");
+                  }
             }
 
         }).catch(function (erro) {
@@ -126,13 +141,6 @@
 
         return false;
     
-        }
-        else if (contador == 1){
-            bloqueado = true
-        }
-        else {
-            contador--;
-            msg_senha.innerHTML = `<div class ="senha"> Senha ou E-mail inválido! ${contador} tentativas restantes </div>`;
         }
         }
        
