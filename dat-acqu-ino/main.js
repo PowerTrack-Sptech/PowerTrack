@@ -20,7 +20,7 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         {
             host: 'localhost',
-            user: 'User_Geral',
+            user: 'Usuario_geral',
             password: 'urubu100@',
             database: 'PowerTrack',
             port: 3306
@@ -61,7 +61,15 @@ const serial = async (
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
-            const sensor_simulado_01 = 
+            const sensor_simulado_01 = HC_SR04 + 10;
+
+            const sensor_simulado_02 = HC_SR04 - 25;
+
+            const sensor_simulado_03 = HC_SR04 - 40;
+
+            const sensor_simulado_04 = HC_SR04 + 40;
+
+            const sensor_simulado_05 = HC_SR04 - 50;
 
             // este insert irá inserir os dados na tabela "medida"/
             await poolBancoDados.execute(
@@ -69,6 +77,36 @@ const serial = async (
                 [HC_SR04, 1]
             );
             console.log("valores inseridos no banco: ", HC_SR04);
+
+            await poolBancoDados.execute(
+                'INSERT INTO medida (distancia_cm,  fk_sensor ) VALUES (?, ?)',
+                [sensor_simulado_01, 2]
+            );
+            console.log("valores inseridos no banco: ", sensor_simulado_01);
+
+            await poolBancoDados.execute(
+                'INSERT INTO medida (distancia_cm,  fk_sensor ) VALUES (?, ?)',
+                [sensor_simulado_02, 3]
+            );
+            console.log("valores inseridos no banco: ", sensor_simulado_02);
+
+            await poolBancoDados.execute(
+                'INSERT INTO medida (distancia_cm,  fk_sensor ) VALUES (?, ?)',
+                [sensor_simulado_03, 4]
+            );
+            console.log("valores inseridos no banco: ", sensor_simulado_03);
+
+            await poolBancoDados.execute(
+                'INSERT INTO medida (distancia_cm,  fk_sensor ) VALUES (?, ?)',
+                [sensor_simulado_04, 5]
+            );
+            console.log("valores inseridos no banco: ", sensor_simulado_04);
+
+            await poolBancoDados.execute(
+                'INSERT INTO medida (distancia_cm,  fk_sensor ) VALUES (?, ?)',
+                [sensor_simulado_05, 6]
+            );
+            console.log("valores inseridos no banco: ", sensor_simulado_05);
 
         }
 
