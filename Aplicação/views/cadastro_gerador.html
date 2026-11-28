@@ -77,8 +77,17 @@
                 </div>
 
                 <div class="campo">
-                    <label for="ipt_profundidade">Profundidade do Tanque (cm)</label>
-                    <input type="number" id="ipt_profundidade" placeholder="Ex: 200">
+                    <label for="slc_empresa">Empresa</label>
+                    <select id="slc_empresa">
+                        <option value="" selected disabled>Selecione uma empresa</option>
+                        <option value="1">Data Center Alpha</option>
+                        <option value="2">Hospital Vida+</option>
+                        <option value="3">Industria Silva</option>
+                        <option value="4">Shopping Central</option>
+                        <option value="5">Universidade São Paulo</option>
+                        <option value="6">Data Center Oliveira</option>
+                        <option value="7">Shopping Paulista</option>
+                    </select>
                 </div>
 
                 <div class="campo">
@@ -129,7 +138,7 @@
             ipt_nome.value = ""
             ipt_modelo.value = ""
             ipt_capacidade.value = ""
-            ipt_profundidade.value = ""
+            slc_empresa.value = ""
             ipt_largura.value = ""
             ipt_altura.value = ""
 
@@ -142,17 +151,17 @@
             let nome = ipt_nome.value.trim()
             let modelo = ipt_modelo.value.trim()
             let capacidade = Number(ipt_capacidade.value)
-            let profundidade = Number(ipt_profundidade.value)
+            let empresa = slc_empresa.value
             let largura = Number(ipt_largura.value)
             let altura = Number(ipt_altura.value)
             let tudoCerto = true
 
-            if (nome == "" || modelo == "" || ipt_capacidade.value == "" || ipt_profundidade.value == "" || ipt_largura.value == "" || ipt_altura.value == "") {
+            if (nome == "" || modelo == "" || ipt_capacidade.value == "" || empresa == "" || ipt_largura.value == "" || ipt_altura.value == "") {
                 msg_gerador.innerHTML = `<div class="msg-erro">Por favor, preencha todos os campos!</div>`
                 tudoCerto = false
             }
 
-            if (tudoCerto == true && (capacidade <= 0 || profundidade <= 0 || largura <= 0 || altura <= 0)) {
+            if (tudoCerto == true && (capacidade <= 0 || largura <= 0 || altura <= 0)) {
                 msg_gerador.innerHTML = `<div class="msg-erro">A capacidade e as medidas precisam ser maiores que zero!</div>`
                 tudoCerto = false
             }
@@ -166,12 +175,12 @@
 
             if (tudoCerto == true) {
                 let gerador = {
-                    nome: nome,
-                    modelo: modelo,
-                    capacidade: capacidade,
-                    profundidade: profundidade,
-                    largura: largura,
-                    altura: altura
+                    nome,
+                    modelo,
+                    capacidade,
+                    empresa,
+                    largura,
+                    altura
                 }
 
                 if (indiceEdicao == -1) {
@@ -198,7 +207,7 @@
                 ipt_nome.value = gerador.nome
                 ipt_modelo.value = gerador.modelo
                 ipt_capacidade.value = gerador.capacidade
-                ipt_profundidade.value = gerador.profundidade
+                slc_empresa.value = gerador.empresa
                 ipt_largura.value = gerador.largura
                 ipt_altura.value = gerador.altura
 
